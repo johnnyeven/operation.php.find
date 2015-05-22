@@ -1,0 +1,11 @@
+.header {height:50px;background:#404040;}
+.container {width:100%;}
+.left {float:left;position: relative;width:50%;}
+.right {float:right;position: relative;width:50%;}
+
+    .left .editor-button-group {position:absolute;z-index:1000;top:10px;width:200px;height:30px;background-color:#B0B0B0;display:none;}
+    .left .editor-panel {position:absolute;}
+        #editor-textarea {position: absolute;top:0;left:0;right:0;bottom:0;}
+
+    .right .preview-panel {line-height:27px;position: absolute;top:0;left:0;right:0;bottom:0;overflow-y: scroll;font-family: Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;}
+        .preview-panel hr {border:0;border-bottom:1px dashed #cfcfcf;margin:30px 0}

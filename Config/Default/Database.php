@@ -1,0 +1,23 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: johnnyeven
+ * Date: 2015/3/31
+ * Time: 22:05
+ */
+
+return array(
+    'default_database'  =>  'default',
+    'default'           =>  array(
+        'hostname'      =>  'localhost',
+        'username'      =>  'root',
+        'password'      =>  '',
+        'database'      =>  '',
+        'db_driver'     =>  'mysqli',
+        'db_prefix'     =>  '',
+        'char_set'      =>  'utf8',
+        'dbcollat'      =>  'utf8_general_ci',
+        'pconnect'      =>  FALSE,
+        'db_debug'      =>  TRUE
+    )
+);
