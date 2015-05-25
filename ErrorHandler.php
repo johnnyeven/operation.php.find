@@ -17,6 +17,6 @@ class ErrorHandler {
     }
 
     public function proceed() {
-
+        echo $this->error->getMessage();
     }
 }
