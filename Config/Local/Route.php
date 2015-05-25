@@ -22,4 +22,7 @@ $router->get('panel', function(Request $request, Response $response) {
 	\Foundation\Support\Facades\View::render('panel_index');
 });
 
+$router->get('create', function(Request $request, Response $response) {
+	\Foundation\Support\Facades\View::render('create_project');
+});
 
