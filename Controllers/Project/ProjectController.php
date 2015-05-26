@@ -30,6 +30,6 @@ class ProjectController extends Controller
 
 	public function index($userName, $projectName)
 	{
-		echo $userName . '/' . $projectName;
+		View::render('project_index');
 	}
 }

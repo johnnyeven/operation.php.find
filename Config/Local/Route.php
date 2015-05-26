@@ -23,5 +23,5 @@ $router->get('create', function(Request $request, Response $response) {
 });
 
 $router->get('([A-Za-z0-9]+)', 'Panel/PanelController.index');
-$router->get('([A-Za-z0-9_-]+)/([A-Za-z0-9_\-\.]+)', 'Project/ProjectController.index');
+$router->get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)', 'Project/ProjectController.index');
 
