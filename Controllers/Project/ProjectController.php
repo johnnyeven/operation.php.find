@@ -30,6 +30,65 @@ class ProjectController extends Controller
 
 	public function index($userName, $projectName)
 	{
-		View::render('project_index');
+		View::render('project_index', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function bug($userName, $projectName)
+	{
+		View::render('project_bug', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function module($userName, $projectName)
+	{
+		View::render('project_module', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function notice($userName, $projectName)
+	{
+		View::render('project_notice', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function release($userName, $projectName)
+	{
+		View::render('project_release', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function requirement($userName, $projectName)
+	{
+		View::render('project_requirement', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function task($userName, $projectName)
+	{
+		View::render('project_task', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
+
+	public function wiki($userName, $projectName)
+	{
+		View::render('project_wiki', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
 	}
 }

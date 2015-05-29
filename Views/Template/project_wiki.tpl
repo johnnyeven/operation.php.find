@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/common.css">
-    <link rel="stylesheet" href="/assets/css/project-index.css">
+    <link rel="stylesheet" href="/assets/css/project-wiki.css">
     <link rel="stylesheet" href="/assets/css/markdown-theme-dawn.css">
     <link rel="stylesheet" href="/assets/css/desert-cmd.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -70,9 +70,9 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
+                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
                         <li role="presentation"><a href="#"><span class="glyphicon glyphicon-time"></span> 活动</a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-th-list"></span> Wiki</a></li>
+                        <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-th-list"></span> Wiki</a></li>
                         <li class="nav-divider"></li>
                         <li role="presentation"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> 需求 <span class="badge">12</span></a></li>
                         <li role="presentation"><a href="#"><span class="glyphicon glyphicon-th-large"></span> 模块 <span class="badge">2</span></a></li>
@@ -85,45 +85,14 @@
                 </div>
                 <div class="col-md-10">
                     <ol class="breadcrumb">
-                        <li class="active">主页</li>
+                        <li><a href="">主页</a></li>
+                        <li class="active">Wiki</li>
                     </ol>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 成员 <span class="badge">12</span></h3>
-                                </div>
-                                <ul class="list-group">
-                                    <li class="list-group-item">项目负责人 <a href="#">李翌文</a></li>
-                                    <li class="list-group-item">项目经理 <a href="#">李翌文</a></li>
-                                    <li class="list-group-item">产品经理 <a href="#">李翌文</a></li>
-                                    <li class="list-group-item">研发工程师 <a href="#">李翌文</a>, <a href="#">王煜</a>, <a href="#">李俊</a></li>
-                                    <li class="list-group-item">交互设计师 <a href="#">王永强</a></li>
-                                    <li class="list-group-item"><button class="btn btn-info form-control">查看全部</button></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-time"></span> 活动</h3>
-                                </div>
-                                <ul class="list-group">
-                                    <li class="list-group-item"><a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a></li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40293</a> 状态变更为 处理中</li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 对 <a href="#">智能管车</a> 有新评论</li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决</li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 对 <a href="#">智能管车</a> 有新评论</li>
-                                    <li class="list-group-item"><button class="btn btn-info form-control">查看全部</button></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-heart"></span> 项目介绍</h3>
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-book"></span> Wiki</h3>
                                 </div>
                                 <div class="panel-body markdown-content">
                                     <h1 data-anchor-id="bkbe" id="operationphp-framework-用户手册">Operation.PHP Framework 用户手册</h1>
