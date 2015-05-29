@@ -21,35 +21,7 @@
 <div class="container-fluid site-wrapper">
     <div class="nest-container">
 
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <h1 class="navbar-brand">发现 <small>用思想创造价值</small></h1>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse">
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="搜索">
-                        </div>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#">首页</a></li>
-                        <li><a href="#">协作平台</a></li>
-                        <li><a href="#">关于我们</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
+        {%include file="std_nav.tpl"%}
         <div class="spaceholder"></div>
 
         <div class="project-content container">
@@ -69,16 +41,16 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-time"></span> 活动</a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-th-list"></span> Wiki</a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}"><span class="glyphicon glyphicon-home"></span> 主页</a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/notice"><span class="glyphicon glyphicon-time"></span> 活动</a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/wiki"><span class="glyphicon glyphicon-th-list"></span> Wiki</a></li>
                         <li class="nav-divider"></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> 需求 <span class="badge">12</span></a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-th-large"></span> 模块 <span class="badge">2</span></a></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-check"></span> 任务 <span class="badge">4</span></a></li>
-                        <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-question-sign"></span> 问题 <span class="badge">284</span></a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/requirement"><span class="glyphicon glyphicon-list-alt"></span> 需求 <span class="badge">12</span></a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/module"><span class="glyphicon glyphicon-th-large"></span> 模块 <span class="badge">2</span></a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/task"><span class="glyphicon glyphicon-check"></span> 任务 <span class="badge">4</span></a></li>
+                        <li role="presentation" class="active"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/bug"><span class="glyphicon glyphicon-question-sign"></span> 问题 <span class="badge">284</span></a></li>
                         <li class="nav-divider"></li>
-                        <li role="presentation"><a href="#"><span class="glyphicon glyphicon-gift"></span> 发布</a></li>
+                        <li role="presentation"><a href="{%baseUrl($params['userName'])%}/{%$params['projectName']%}/release"><span class="glyphicon glyphicon-gift"></span> 发布</a></li>
                         <li role="presentation"><a href="#"><span class="glyphicon glyphicon-file"></span> 文档</a></li>
                     </ul>
                 </div>
@@ -263,12 +235,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="mastfoot">
-            <div class="inner">
-                <p>Copyright &copy; 2015 Johnny Lee</p>
-            </div>
-        </div>
+        {%include file="std_footer.tpl"%}
     </div>
 </div>
 

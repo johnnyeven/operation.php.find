@@ -26,6 +26,8 @@ class PanelController extends Controller
 	function __construct(Request $request, Response $response)
 	{
 		parent::__construct($request, $response);
+		$this->app->loader->helper('Url');
+		View::registerFunction('baseUrl', 'baseUrl');
 	}
 
 	public function index($userName)

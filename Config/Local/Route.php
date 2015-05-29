@@ -4,21 +4,26 @@ use Foundation\Http\Request;
 use Foundation\Http\Response;
 
 $app =& Application::getInstance();
+$app->loader->helper('Url');
 $router =& $app->router;
 
 $router->get('/', function(Request $request, Response $response) {
+	registerFunction();
 	\Foundation\Support\Facades\View::render('index');
 });
 
 $router->get('login', function(Request $request, Response $response) {
+	registerFunction();
 	\Foundation\Support\Facades\View::render('login');
 });
 
 $router->get('register', function(Request $request, Response $response) {
+	registerFunction();
 	\Foundation\Support\Facades\View::render('register');
 });
 
 $router->get('create', function(Request $request, Response $response) {
+	registerFunction();
 	\Foundation\Support\Facades\View::render('create_project');
 });
 
@@ -33,3 +38,7 @@ $router->get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/requirement', 'Project/Project
 $router->get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/task', 'Project/ProjectController.task');
 $router->get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/wiki', 'Project/ProjectController.wiki');
 
+function registerFunction()
+{
+	\Foundation\Support\Facades\View::registerFunction('baseUrl', 'baseUrl');
+}

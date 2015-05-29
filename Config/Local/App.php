@@ -8,5 +8,5 @@
 
 return array(
     'debug'             =>  true,
-    'url'               =>  'http://localhost/'
+    'url'               =>  'http://find.profzone.net/'
 );
