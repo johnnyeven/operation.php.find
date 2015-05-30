@@ -19,8 +19,8 @@
 																</div>
 												</form>
 												<ul class="nav navbar-nav navbar-right">
-																<li class="active"><a href="{%baseUrl('')%}">首页</a></li>
-																<li><a href="{%baseUrl('login')%}">协作平台</a></li>
+																<li{%if !in_array($params['pageName'], array('panel_index', 'project_index', 'project_notice', 'project_wiki', 'project_requirement', 'project_module', 'project_task', 'project_bug', 'project_release', 'project_document'))%} class="active"{%/if%}><a href="{%baseUrl('')%}">首页</a></li>
+																<li{%if in_array($params['pageName'], array('panel_index', 'project_index', 'project_notice', 'project_wiki', 'project_requirement', 'project_module', 'project_task', 'project_bug', 'project_release', 'project_document'))%} class="active"{%/if%}><a href="{%baseUrl('login')%}">协作平台</a></li>
 																<li><a href="#">关于我们</a></li>
 												</ul>
 								</div><!-- /.navbar-collapse -->

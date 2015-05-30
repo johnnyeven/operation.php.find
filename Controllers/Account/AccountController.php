@@ -32,7 +32,9 @@ class AccountController extends Controller
 
 	public function index($userName)
 	{
-		View::render('panel_index');
+		View::render('panel_index', array(
+			'pageName'  =>  'panel_index'
+		));
 	}
 
 	public function login()
