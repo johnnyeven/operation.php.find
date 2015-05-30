@@ -86,7 +86,7 @@
                         <h1 class="nest-title-head">发现</h1>
                         <p class="lead">有创意，有激情，你需要的是一个整合人力的平台</p>
                         <p class="lead">带上你的创意，开启发现之旅！</p>
-                        <p class="lead"><a class="btn btn-lg btn-default" href="#">点击开启</a></p>
+                        <p class="lead"><a class="btn btn-lg btn-default" href="{%baseUrl('login')%}">点击开启</a></p>
                     </div>
                 </div>
             </div>
