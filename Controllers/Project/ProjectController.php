@@ -93,4 +93,12 @@ class ProjectController extends Controller
 			'projectName'   =>  $projectName
 		));
 	}
+
+	public function document($userName, $projectName)
+	{
+		View::render('project_document', array(
+			'userName'      =>  $userName,
+			'projectName'   =>  $projectName
+		));
+	}
 }

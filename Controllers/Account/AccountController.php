@@ -11,7 +11,9 @@
  * @link
  */
 
-namespace Controllers\Panel;
+namespace Controllers\Account;
+
+if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
 
 use Foundation\Controller;
 use Foundation\Http\Request;
@@ -19,9 +21,7 @@ use Foundation\Http\Response;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\View;
 
-if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
-
-class PanelController extends Controller
+class AccountController extends Controller
 {
 	function __construct(Request $request, Response $response)
 	{
@@ -33,5 +33,20 @@ class PanelController extends Controller
 	public function index($userName)
 	{
 		View::render('panel_index');
+	}
+
+	public function login()
+	{
+		View::render('login');
+	}
+
+	public function register()
+	{
+		View::render('register');
+	}
+
+	public function createProject()
+	{
+		View::render('create_project');
 	}
 }
