@@ -24,7 +24,7 @@
         <div class="login-content">
             <div class="login-container">
                 <div class="login-panel">
-                    <form method="get" action="{%baseUrl('johnnyeven')%}">
+                    <form method="post" action="{%baseUrl('process_login')%}">
                         <h3>登录</h3>
                         <div class="form-group">
                             <label for="iptUsername">用户名</label>

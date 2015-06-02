@@ -13,6 +13,7 @@ $router->get('/', function(Request $request, Response $response) {
 });
 
 $router->get('login', 'Account/AccountController.login');
+$router->post('process_login', 'Account/AccountController.processLogin');
 $router->get('register', 'Account/AccountController.register');
 $router->get('create', 'Account/AccountController.createProject');
 $router->get('([A-Za-z0-9]+)', 'Account/AccountController.index');
