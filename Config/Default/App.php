@@ -8,7 +8,8 @@
 
 return array(
     'debug'             =>  false,
-    'url'               =>  'http://localhost/',
+    'url'               =>  'http://find.profzone.net/',
+    'ucenter_url'       =>  'http://ucenter.profzone.net/',
     'timezone'          =>  'PRC',
     'time_format'       =>  'Y-m-d H:i:s',
     'locale'            =>  'en',

@@ -6,6 +6,7 @@
     <title>发现 - 登录</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/zebra/zebra_dialog.css">
     <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="/assets/css/login.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,7 +41,7 @@
                             </label>
                         </div>
                         <div class="form-group clearfix">
-                            <button type="submit" class="btn btn-lg btn-default pull-right ">登录</button>
+                            <button id="btnLogin" type="button" class="btn btn-lg btn-default pull-right ">登录</button>
                         </div>
                     </form>
                 </div>
@@ -53,3 +54,6 @@
 </body>
 </html>
 <script type="text/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/assets/js/zebra_dialog.js"></script>
+<script type="text/javascript" src="/assets/js/find.base.js"></script>
+<script type="text/javascript" src="/assets/js/find.login.js"></script>

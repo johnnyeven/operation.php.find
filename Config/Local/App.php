@@ -7,6 +7,5 @@
  */
 
 return array(
-    'debug'             =>  true,
-    'url'               =>  'http://find.profzone.net/'
+    'debug'             =>  true
 );

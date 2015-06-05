@@ -14,11 +14,11 @@
 return array(
 	'process_login'  =>  array(
 		array(
-			'field'     =>  'iptUsername',
+			'field'     =>  'username',
 			'rules'     =>  'required|minLength[6]|maxLength[16]|alphaNumeric'
 		),
 		array(
-			'field'     =>  'iptPassword',
+			'field'     =>  'password',
 			'rules'     =>  'required|minLength[6]|maxLength[20]'
 		)
 	)

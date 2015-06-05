@@ -80,9 +80,9 @@ class AccountController extends Controller
 		$connection = $this->app->loader->library('Connection/Connection');
 		$remote = $connection->loadRemote('ucenter.User.UserController');
 		$result = $remote->login(array(
-			'username'  =>  $args['iptUsername'],
-			'password'  =>  $args['iptPassword']
+			'username'  =>  $args['username'],
+			'password'  =>  $args['password']
 		), 'POST', 'json');
-		var_dump($result);
+		$this->app->response->json($result);
 	}
 }
