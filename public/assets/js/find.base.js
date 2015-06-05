@@ -125,6 +125,7 @@ App.prototype = {
                     }
                 },
                 complete: function(XMLHttpRequest, textStatus) {
+                    $.unblockUI();
                     if (onLoadComplete) {
                         onLoadComplete(XMLHttpRequest, textStatus);
                     }

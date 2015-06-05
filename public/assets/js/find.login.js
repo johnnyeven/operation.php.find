@@ -1,5 +1,8 @@
 $(function() {
     $("#btnLogin").click(function() {
+        $.blockUI({
+            message: null
+        });
         var url = app.getFormAction($(this));
         app.load({
             url: url,
