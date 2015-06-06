@@ -17,6 +17,10 @@ class ErrorHandler {
     }
 
     public function proceed() {
-        echo $this->error->getMessage();
+        header('Content-type: application/json');
+        echo json_encode(array(
+            'code'  =>  $this->error->getCode(),
+            'message'   =>  $this->error->getMessage()
+        ));
     }
 }

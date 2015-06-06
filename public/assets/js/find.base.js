@@ -160,3 +160,6 @@ App.prototype = {
 }
 
 var app = new App();
+if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
+    define( "findApp", ['jquery'],  function () { return app; } );
+}
