@@ -6,15 +6,7 @@
  * Time: 22:36
  */
 
-/**
-    'beforeController'   =>  array(
-        array(
-            'class'     =>  "Extend\\Hooks\\TokenValidationHook",
-            'function'  =>  "beforeController",
-            'params'    =>  null
-        )
-    )
- */
 return array(
-
+    'authAccount'           =>  "Extend\\Hooks\\AccountAuthHook",
+    'authProject'           =>  "Extend\\Hooks\\ProjectAuthHook"
 );

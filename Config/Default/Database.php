@@ -11,8 +11,8 @@ return array(
     'default'           =>  array(
         'hostname'      =>  'localhost',
         'username'      =>  'root',
-        'password'      =>  '',
-        'database'      =>  '',
+        'password'      =>  '84@41%%wi96^4',
+        'database'      =>  'profzone_find',
         'db_driver'     =>  'mysqli',
         'db_prefix'     =>  '',
         'char_set'      =>  'utf8',

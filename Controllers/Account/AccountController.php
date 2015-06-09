@@ -20,6 +20,7 @@ use Foundation\Http\Request;
 use Foundation\Http\Response;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\View;
+use Models\Account;
 
 class AccountController extends Controller
 {
@@ -50,8 +51,20 @@ class AccountController extends Controller
 
 	public function index($userName)
 	{
+		$account = Account::get([
+			'identifier'    =>  $userName
+		]);
+		if(empty($account))
+		{
+			return;
+		}
+		$account = $account[0];
+		$projects = $account->projects;
+
 		View::render('panel_index', array(
-			'pageName'  =>  'panel_index'
+			'pageName'  =>  'panel_index',
+			'account'   =>  $account,
+			'projects'  =>  $projects
 		));
 	}
 
@@ -83,6 +96,25 @@ class AccountController extends Controller
 			'username'  =>  $args['username'],
 			'password'  =>  $args['password']
 		), 'POST', 'json');
+
+		if($result['code'] == '0')
+		{
+			$uid = $result['data']['id'];
+			$account = Account::get(array(
+				'uid'   =>  $uid
+			));
+			if(!empty($account))
+			{
+				$account = $account[0];
+				$result['data']['account'] = $account->getOriginalData();
+			}
+			else
+			{
+				ErrorManager::getInstance()->throwException(10001);
+			}
+			$tokenName = $this->app->config->get('App.cookie_prefix') . $this->app->config->get('App.token_cookie_name');
+			$this->app->request->input()->setCookie($tokenName, $result['data']['authInfo']['token']);
+		}
 		$this->app->response->json($result);
 	}
 }

@@ -22,8 +22,9 @@ return array(
     'log_enabled'       =>  TRUE,
     'log_level'         =>  array('INFO', 'DEBUG', 'ERROR'),
 
+    'token_cookie_name' =>  'token',
     'cookie_prefix'     =>  '',
-    'cookie_domain'     =>  '',
+    'cookie_domain'     =>  '.profzone.net',
     'cookie_path'       =>  '/',
     'cookie_secure'     =>  false,
     'cookie_expire'     =>  86400,

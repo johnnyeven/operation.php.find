@@ -31,6 +31,7 @@ require(['jquery', 'jquery.zebra', 'jquery.blockUI', 'findApp'], function ($, ze
                 },
                 onSuccess: function(result) {
                     app.popSuccess('登录成功');
+                    location.href = app.getAppUrl() + result.account.identifier;
                 }
             });
         });
