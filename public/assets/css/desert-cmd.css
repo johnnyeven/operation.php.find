@@ -17,7 +17,7 @@ pre .dec { color: #98fb98 } /* decimal         - lightgreen */
 ol.linenums { margin-top: 0; margin-bottom: 0; color: #666 } /* IE indents via margin-left */
 
 /* jiawzhang: add this to leave more space to display line number, especially, when the line number is greater than 100. */
-ol.linenums { margin-left: 35px;}
+/*ol.linenums { margin-left: 35px;}*/
 /* jiawzhang: polish the code snippet. */
 ol.linenums > li { padding-left: 15px;}
 pre.prettyprint {

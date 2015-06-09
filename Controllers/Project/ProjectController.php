@@ -18,16 +18,30 @@ use Foundation\Http\Request;
 use Foundation\Http\Response;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\View;
+use Models\Account;
+use Models\Project;
 
 if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
 
 class ProjectController extends Controller
 {
+	/**
+	 * @var Account
+	 */
+	private $account;
+
+	/**
+	 * @var Project
+	 */
+	private $project;
+
 	function __construct(Request $request, Response $response)
 	{
 		parent::__construct($request, $response);
 		$this->app->loader->helper('Url');
 		View::registerFunction('baseUrl', 'baseUrl');
+		$this->account = $this->request->getParameter('account');
+		$this->project = $this->request->getParameter('project');
 	}
 
 	public function index($userName, $projectName)
