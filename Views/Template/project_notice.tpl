@@ -27,7 +27,7 @@
             <div class="row project-title">
                 <div class="col-md-12">
                     <div class="pull-left">
-                        <h1>{%$params['userName']%} / {%$params['projectName']%}</h1>
+                        {%include file="project_title.tpl"%}
                     </div>
                     <div class="pull-right">
                         <div class="btn-group" role="group">

@@ -48,10 +48,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_index', array(
 			'pageName'      =>  'project_index',
-			'userName'      =>  $this->account->realname,
-			'projectName'   =>  $this->project->name,
-			'userIdentifier'      =>  $userName,
-			'projectIdentifier'   =>  $projectName
+			'account'       =>  $this->account,
+			'project'       =>  $this->project
 		));
 	}
 
@@ -59,10 +57,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_bug', array(
 			'pageName'      =>  'project_bug',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -70,10 +66,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_module', array(
 			'pageName'      =>  'project_module',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -81,10 +75,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_notice', array(
 			'pageName'      =>  'project_notice',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -92,10 +84,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_release', array(
 			'pageName'      =>  'project_release',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -103,10 +93,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_requirement', array(
 			'pageName'      =>  'project_requirement',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -114,10 +102,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_task', array(
 			'pageName'      =>  'project_task',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -125,10 +111,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_wiki', array(
 			'pageName'      =>  'project_wiki',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 
@@ -136,10 +120,8 @@ class ProjectController extends Controller
 	{
 		View::render('project_document', array(
 			'pageName'      =>  'project_document',
-            'userName'      =>  $this->account->realname,
-            'projectName'   =>  $this->project->name,
-            'userIdentifier'      =>  $userName,
-            'projectIdentifier'   =>  $projectName
+            'account'       =>  $this->account,
+            'project'       =>  $this->project
 		));
 	}
 }

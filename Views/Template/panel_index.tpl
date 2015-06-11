@@ -39,24 +39,14 @@
                             </ul>
                         </div>
                         <ul class="list-group">
+                            {%foreach $params['projects'] as $project%}
                             <li class="list-group-item">
-                                <a href="{%baseUrl('johnnyeven/crm')%}">
+                                <a href="{%baseUrl($params['account']->identifier|cat:'/'|cat:$project->identifier)%}">
                                     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                    客户关系管理系统
+                                    {%$project->name%}
                                 </a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="{%baseUrl('johnnyeven/g7s')%}">
-                                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                    智能管车
-                                </a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{%baseUrl('johnnyeven/book')%}">
-                                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                    图书借阅管理系统
-                                </a>
-                            </li>
+                            {%/foreach%}
                             <li class="list-group-item readmore">
                                 <a href="#">
                                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
