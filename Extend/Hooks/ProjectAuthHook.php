@@ -27,7 +27,7 @@ class ProjectAuthHook implements IHookable
 		if($request->hasParameter('account') && is_array($params) && isset($params[1]))
 		{
 			$account = $request->getParameter('account');
-			$project = Project::get([
+			$project = Project::findOne([
 				'uid'           =>  $account->uid,
 				'identifier'    =>  $params[1]
 			]);

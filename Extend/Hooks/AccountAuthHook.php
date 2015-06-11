@@ -27,7 +27,7 @@ class AccountAuthHook implements IHookable
 		if(is_array($params) && isset($params[0]))
 		{
 			$accountIdentifier = $params[0];
-			$account = Account::get([
+			$account = Account::findOne([
 				'identifier'    =>  $accountIdentifier
 			]);
 			if(!empty($account))

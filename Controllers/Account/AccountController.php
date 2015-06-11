@@ -51,14 +51,7 @@ class AccountController extends Controller
 
 	public function index($userName)
 	{
-		$account = Account::get([
-			'identifier'    =>  $userName
-		]);
-		if(empty($account))
-		{
-			return;
-		}
-		$account = $account[0];
+		$account = $this->request->getParameter('account');
 		$projects = $account->projects;
 
 		View::render('panel_index', array(
@@ -100,7 +93,7 @@ class AccountController extends Controller
 		if($result['code'] == '0')
 		{
 			$uid = $result['data']['id'];
-			$account = Account::get(array(
+			$account = Account::findOne(array(
 				'uid'   =>  $uid
 			));
 			if(!empty($account))
