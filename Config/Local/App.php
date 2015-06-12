@@ -7,5 +7,6 @@
  */
 
 return array(
-    'debug'             =>  true
+    'debug'             =>  true,
+    'compress_output'   =>  false
 );

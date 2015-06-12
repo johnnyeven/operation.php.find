@@ -16,7 +16,7 @@
  * 错误配置
  */
 return array(
-    'error101'     =>  'application_not_allow_instance',
+    'error101'     =>  'not_allow_instance',
     'error102'     =>  'application_method_not_found',
     'error103'     =>  'application_controller_not_found',
     'error104'     =>  'application_cant_parse_route',
