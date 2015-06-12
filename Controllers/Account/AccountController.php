@@ -16,9 +16,10 @@ namespace Controllers\Account;
 if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
 
 use Foundation\Controller;
-use Foundation\Http\Request;
-use Foundation\Http\Response;
 use Foundation\Support\ErrorManager;
+use Foundation\Support\Facades\Input;
+use Foundation\Support\Facades\Request;
+use Foundation\Support\Facades\Response;
 use Foundation\Support\Facades\View;
 use Models\Account;
 
@@ -29,9 +30,9 @@ class AccountController extends Controller
 	 */
 	private $validation;
 
-	function __construct(Request $request, Response $response)
+	function __construct()
 	{
-		parent::__construct($request, $response);
+		parent::__construct();
 		$this->app->loader->helper('Url');
 		View::registerFunction('baseUrl', 'baseUrl');
 
@@ -51,7 +52,7 @@ class AccountController extends Controller
 
 	public function index($userName)
 	{
-		$account = $this->request->getParameter('account');
+		$account = Request::getParameter('account');
 		$projects = $account->projects;
 
 		View::render('panel_index', array(
@@ -78,7 +79,7 @@ class AccountController extends Controller
 
 	public function processLogin()
 	{
-		$args = $this->app->request->input()->post();
+		$args = Input::post();
 
 		/**
 		 * @var \Foundation\Library\Connection\Connection $connection
@@ -106,8 +107,8 @@ class AccountController extends Controller
 				ErrorManager::getInstance()->throwException(10001);
 			}
 			$tokenName = $this->app->config->get('App.cookie_prefix') . $this->app->config->get('App.token_cookie_name');
-			$this->app->request->input()->setCookie($tokenName, $result['data']['authInfo']['token']);
+			Input::setCookie($tokenName, $result['data']['authInfo']['token']);
 		}
-		$this->app->response->json($result);
+		Response::json($result);
 	}
 }

@@ -7,7 +7,7 @@ $app =& Application::getInstance();
 $app->loader->helper('Url');
 $router =& $app->router;
 
-$router->get('/', function(Request $request, Response $response) {
+$router->get('/', function() {
 	registerFunction();
 	\Foundation\Support\Facades\View::render('index');
 });

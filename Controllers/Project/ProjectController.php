@@ -14,9 +14,8 @@
 namespace Controllers\Project;
 
 use Foundation\Controller;
-use Foundation\Http\Request;
-use Foundation\Http\Response;
 use Foundation\Support\ErrorManager;
+use Foundation\Support\Facades\Request;
 use Foundation\Support\Facades\View;
 use Models\Account;
 use Models\Project;
@@ -35,13 +34,13 @@ class ProjectController extends Controller
 	 */
 	private $project;
 
-	function __construct(Request $request, Response $response)
+	function __construct()
 	{
-		parent::__construct($request, $response);
+		parent::__construct();
 		$this->app->loader->helper('Url');
 		View::registerFunction('baseUrl', 'baseUrl');
-		$this->account = $this->request->getParameter('account');
-		$this->project = $this->request->getParameter('project');
+		$this->account = Request::getParameter('account');
+		$this->project = Request::getParameter('project');
 	}
 
 	public function index($userName, $projectName)
