@@ -10,11 +10,10 @@ require_once __DIR__ . '/Config/Env.php';
 require_once __DIR__ . '/../../core/Foundation/Support/Helpers/Common.php';
 
 use Foundation\Config;
-use Foundation\Routing\Router;
 use Foundation\Support\Hook;
 use Foundation\Support\Language;
-use Foundation\Support\Loader;
 use Foundation\Support\Security;
+use Foundation\Support\Facades\Router;
 
 try
 {
@@ -25,9 +24,9 @@ try
     }
     $app->config = new Config();
     $app->config->init();
-    $app->loader = new Loader();
-    $app->router = new Router();
-    $app->router->init();
+
+    Router::init();
+
     $app->hook = new Hook();
     $app->language = new Language();
     $app->security = new Security();

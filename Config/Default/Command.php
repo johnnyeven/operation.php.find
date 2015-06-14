@@ -6,12 +6,9 @@
  * Time: 20:38
  */
 
-/**
-    'helloWorld'    =>  array(
-        'command'       =>  'Commands\\HelloWorldCommand',
-        'description'   =>  ''
-    )
- */
-return array(
+//'helloWorld'    =>  array(
+//    'command'       =>  'Commands\\HelloWorldCommand',
+//    'description'   =>  ''
+//)
 
-);
+return array();

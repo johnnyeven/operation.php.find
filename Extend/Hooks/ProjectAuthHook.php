@@ -13,20 +13,19 @@
 
 namespace Extend\Hooks;
 
-use Foundation\Http\Request;
-use Foundation\Http\Response;
-use Foundation\Support\ErrorManager;
+use Foundation\Support\Facades\Exception;
+use Foundation\Support\Facades\Request;
 use Foundation\Support\IHookable;
 use Models\Project;
 
 class ProjectAuthHook implements IHookable
 {
 
-	public function handle(Request $request, Response $response, array $params = null)
+	public function handle(array $params = null)
 	{
-		if($request->hasParameter('account') && is_array($params) && isset($params[1]))
+		if(Request::hasParameter('account') && is_array($params) && isset($params[1]))
 		{
-			$account = $request->getParameter('account');
+			$account = Request::getParameter('account');
 			$project = Project::findOne([
 				'uid'           =>  $account->uid,
 				'identifier'    =>  $params[1]
@@ -34,16 +33,16 @@ class ProjectAuthHook implements IHookable
 			if(!empty($project))
 			{
 				$project = $project[0];
-				$request->addParameter('project', $project);
+				Request::addParameter('project', $project);
 			}
 			else
 			{
-				ErrorManager::getInstance()->throwException(10003);
+				Exception::throwException(10003);
 			}
 		}
 		else
 		{
-			ErrorManager::getInstance()->throwException(10001);
+			Exception::throwException(10001);
 		}
 	}
 }

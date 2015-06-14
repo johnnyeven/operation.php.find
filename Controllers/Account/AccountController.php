@@ -18,6 +18,7 @@ if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
 use Foundation\Controller;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\Input;
+use Foundation\Support\Facades\Loader;
 use Foundation\Support\Facades\Request;
 use Foundation\Support\Facades\Response;
 use Foundation\Support\Facades\View;
@@ -33,10 +34,10 @@ class AccountController extends Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->app->loader->helper('Url');
+		Loader::helper('Url');
 		View::registerFunction('baseUrl', 'baseUrl');
 
-		$this->validation = $this->app->loader->library('Validation');
+		$this->validation = Loader::library('Validation');
 		$this->validation->load('Account');
 
 		if(!$this->validation->run())
@@ -84,7 +85,7 @@ class AccountController extends Controller
 		/**
 		 * @var \Foundation\Library\Connection\Connection $connection
 		 */
-		$connection = $this->app->loader->library('Connection/Connection');
+		$connection = Loader::library('Connection/Connection');
 		$remote = $connection->loadRemote('ucenter.User.UserController');
 		$result = $remote->login(array(
 			'username'  =>  $args['username'],

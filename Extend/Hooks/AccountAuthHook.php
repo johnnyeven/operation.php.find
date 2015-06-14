@@ -13,16 +13,15 @@
 
 namespace Extend\Hooks;
 
-use Foundation\Http\Request;
-use Foundation\Http\Response;
-use Foundation\Support\ErrorManager;
+use Foundation\Support\Facades\Exception;
+use Foundation\Support\Facades\Request;
 use Foundation\Support\IHookable;
 use Models\Account;
 
 class AccountAuthHook implements IHookable
 {
 
-	public function handle(Request $request, Response $response, array $params = null)
+	public function handle(array $params = null)
 	{
 		if(is_array($params) && isset($params[0]))
 		{
@@ -33,16 +32,16 @@ class AccountAuthHook implements IHookable
 			if(!empty($account))
 			{
 				$account = $account[0];
-				$request->addParameter('account', $account);
+				Request::addParameter('account', $account);
 			}
 			else
 			{
-				ErrorManager::getInstance()->throwException(10002);
+				Exception::throwException(10002);
 			}
 		}
 		else
 		{
-			ErrorManager::getInstance()->throwException(10002);
+			Exception::throwException(10002);
 		}
 	}
 }
