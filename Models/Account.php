@@ -26,4 +26,9 @@ class Account extends Model
 	{
 		return $this->hasMany('Project', 'uid');
 	}
+
+	public function notices()
+	{
+		return $this->hasMany('Notice', 'uid');
+	}
 }

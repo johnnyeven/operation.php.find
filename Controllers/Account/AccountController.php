@@ -15,6 +15,7 @@ namespace Controllers\Account;
 
 if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
 
+use Extend\Library\NoticeAdapter\NoticeAdapter;
 use Foundation\Controller;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\Input;
@@ -55,11 +56,20 @@ class AccountController extends Controller
 	{
 		$account = Request::getParameter('account');
 		$projects = $account->projects;
+		$notices = $account->notices;
+
+		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
+		$noticeFormats = [];
+		foreach($notices as $notice)
+		{
+			$noticeFormats[] = NoticeAdapter::newNotice($notice);
+		}
 
 		View::render('panel_index', array(
 			'pageName'  =>  'panel_index',
 			'account'   =>  $account,
-			'projects'  =>  $projects
+			'projects'  =>  $projects,
+			'notices'   =>  $noticeFormats
 		));
 	}
 
