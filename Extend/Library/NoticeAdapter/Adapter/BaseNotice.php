@@ -13,7 +13,9 @@
 
 namespace Extend\Library\NoticeAdapter\Adapter;
 
+use Models\Account;
 use Models\Notice;
+use Models\Project;
 
 abstract class BaseNotice implements INoticeAdapter
 {
@@ -22,8 +24,14 @@ abstract class BaseNotice implements INoticeAdapter
      */
     protected $_notice;
 
-    function __construct(Notice $notice)
+    /**
+     * @var Account
+     */
+    protected $_account;
+
+    function __construct(Notice $notice, Account $account)
     {
         $this->_notice = $notice;
+        $this->_account = $account;
     }
 }

@@ -13,11 +13,16 @@
 
 namespace Extend\Library\NoticeAdapter\Adapter;
 
+use Foundation\Support\Facades\View;
+
 class StarNotice extends BaseNotice
 {
 
     public function format()
     {
-
+        echo View::render('notice/notice_star', [
+            'notice'    =>  $this->_notice,
+            'account'   =>  $this->_account
+        ], TRUE);
     }
 }

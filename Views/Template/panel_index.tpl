@@ -58,54 +58,11 @@
                 </div>
                 <div class="col-md-8">
                     <ul class="list-group">
+                        {%foreach $params['notices'] as $notice%}
                         <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </div>
-                                <div class="col-md-11">
-                                    <a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-                                </div>
-                            </div>
+                            {%$notice->format()%}
                         </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="glyphicon glyphicon-comment"></span>
-                                </div>
-                                <div class="col-md-11">
-                                    <p><small>3 天前</small></p>
-                                    <p><a href="#">李翌文</a> 对 <a href="#">智能管车</a> 有新评论</p>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <a href=""><img class="img-circle" src="assets/images/468149.png" width="40" height="40"></a>
-                                        </div>
-                                        <div class="col-md-11">
-                                            <p>我觉得这个项目做的很不错！</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <span class="glyphicon glyphicon-question-sign"></span>
-                                </div>
-                                <div class="col-md-11">
-                                    <p><small>3 天前</small></p>
-                                    <p><a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40293</a> 状态变更为 处理中</p>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <a href=""><img class="img-circle" src="assets/images/468149.png" width="40" height="40"></a>
-                                        </div>
-                                        <div class="col-md-11">
-                                            <p><a href="#">#40293</a> 点击登录输入正确的用户名和密码也无法登录</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                        {%/foreach%}
                         <li class="list-group-item text-center">
                             <button class="btn btn-success form-control">获取更多...</button>
                         </li>

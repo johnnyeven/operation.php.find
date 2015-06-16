@@ -24,6 +24,7 @@ use Foundation\Support\Facades\Request;
 use Foundation\Support\Facades\Response;
 use Foundation\Support\Facades\View;
 use Models\Account;
+use Models\Notice;
 
 class AccountController extends Controller
 {
@@ -56,13 +57,45 @@ class AccountController extends Controller
 	{
 		$account = Request::getParameter('account');
 		$projects = $account->projects;
-		$notices = $account->notices;
+		$notices = Notice::where('find_project_notice.uid', $account->uid)
+			->join('find_project', 'find_project.id = find_project_notice.project_id', 'left')
+			->join('find_workflow', 'find_workflow.id = find_project_notice.workflow_id', 'left')
+			->limit(15)
+			->get([
+				'find_project_notice.id',
+				'find_project_notice.uid',
+				'find_project_notice.account_realname',
+				'find_project_notice.project_id',
+				'find_project_notice.project_name',
+				'find_project_notice.type',
+				'find_project_notice.workflow_id',
+				'find_project_notice.description',
+				'find_project_notice.createtime',
+				'find_project.`name`',
+				'find_project.description as project_description',
+				'find_project.is_public',
+				'find_project.identifier',
+				'find_project.wiki_start_page_id',
+				'find_workflow.number',
+				'find_workflow.title',
+				'find_workflow.description as workflow_description',
+				'find_workflow.track_id',
+				'find_workflow.parrent_id',
+				'find_workflow.createtime as workflow_createtime',
+				'find_workflow.updatetime',
+				'find_workflow.`status`',
+				'find_workflow.priority',
+				'find_workflow.assign_to_id',
+				'find_workflow.release_id',
+				'find_workflow.starttime',
+				'find_workflow.endtime'
+			]);
 
 		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
 		$noticeFormats = [];
 		foreach($notices as $notice)
 		{
-			$noticeFormats[] = NoticeAdapter::newNotice($notice);
+			$noticeFormats[] = NoticeAdapter::newNotice($notice, $account);
 		}
 
 		View::render('panel_index', array(

@@ -15,11 +15,11 @@ namespace Extend\Library\NoticeAdapter\Adapter;
 
 use Foundation\Support\Facades\View;
 
-class CommentNotice extends BaseNotice
+class WorkflowNotice extends BaseNotice
 {
     public function format()
     {
-        echo View::render('notice/notice_comment', [
+        echo View::render('notice/notice_workflow', [
             'notice'    =>  $this->_notice,
             'account'   =>  $this->_account
         ], TRUE);

@@ -13,5 +13,6 @@
 
 return [
     '1'     =>  'Extend\Library\NoticeAdapter\Adapter\StarNotice',
-    '2'     =>  'Extend\Library\NoticeAdapter\Adapter\CommentNotice'
+    '2'     =>  'Extend\Library\NoticeAdapter\Adapter\CommentNotice',
+    '3'     =>  'Extend\Library\NoticeAdapter\Adapter\WorkflowNotice'
 ];

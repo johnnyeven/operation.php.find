@@ -14,18 +14,19 @@
 namespace Extend\Library\NoticeAdapter;
 
 use Foundation\Application;
+use Models\Account;
 use Models\Notice;
 
 class NoticeAdapter
 {
     private static $_config = null;
 
-    public static function newNotice(Notice $notice)
+    public static function newNotice(Notice $notice, Account $account)
     {
         self::_loadConfig();
         if(isset(self::$_config[$notice->type]))
         {
-            return new self::$_config[$notice->type]($notice);
+            return new self::$_config[$notice->type]($notice, $account);
         }
         return null;
     }
