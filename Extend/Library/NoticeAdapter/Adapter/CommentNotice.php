@@ -11,7 +11,13 @@
  * @link
  */
 
-return [
-    '1'     =>  'Extend\Library\NoticeAdapter\Adapter\StarNotice',
-    '2'     =>  'Extend\Library\NoticeAdapter\Adapter\CommentNotice'
-];
+namespace Extend\Library\NoticeAdapter\Adapter;
+
+
+class CommentNotice extends BaseNotice
+{
+    public function format()
+    {
+
+    }
+}
