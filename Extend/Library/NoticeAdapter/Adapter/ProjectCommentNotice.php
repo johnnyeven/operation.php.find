@@ -15,24 +15,21 @@ namespace Extend\Library\NoticeAdapter\Adapter;
 
 use Foundation\Support\Facades\View;
 
-class WorkflowNotice extends BaseNotice
+class ProjectCommentNotice extends BaseNotice
 {
     public function format()
     {
-        $action = '';
-        $extend = $this->_notice->workflow_extends;
+        $extend = $this->_notice->project_extends;
+        $comment = '';
         if(!empty($extend))
         {
             $extend = json_decode($extend, TRUE);
-            if(isset($extend['status']))
-            {
-                $action .= '状态变更为 ' . $extend['status'];
-            }
+            $comment = $extend['comment'];
         }
-        echo View::render('notice/notice_workflow', [
+        echo View::render('notice/notice_project_comment', [
             'notice'    =>  $this->_notice,
             'account'   =>  $this->_account,
-            'action'    =>  $action
+            'comment'   =>  $comment
         ], TRUE);
     }
 }

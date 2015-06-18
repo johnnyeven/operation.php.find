@@ -33,27 +33,75 @@
                         </div>
                         <div class="panel-body">
                             <ul class="nav nav-pills">
-                                <li role="presentation" class="active"><a href="#">所有</a></li>
-                                <li role="presentation"><a href="#">我创建的</a></li>
-                                <li role="presentation"><a href="#">他人的</a></li>
+                                <li role="presentation" class="active"><a href="#all" data-toggle="tab" aria-controls="all">所有</a></li>
+                                <li role="presentation"><a href="#mine" data-toggle="tab" aria-controls="mine">我创建的</a></li>
+                                <li role="presentation"><a href="#other" data-toggle="tab" aria-controls="other">他人的</a></li>
                             </ul>
                         </div>
-                        <ul class="list-group">
-                            {%foreach $params['projects'] as $project%}
-                            <li class="list-group-item">
-                                <a href="{%baseUrl($params['account']->identifier|cat:'/'|cat:$project->identifier)%}">
-                                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                    {%$project->name%}
-                                </a>
-                            </li>
-                            {%/foreach%}
-                            <li class="list-group-item readmore">
-                                <a href="#">
-                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                                    获取更多...
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="all">
+                                <ul class="list-group">
+                                    {%foreach $params['projects'] as $project%}
+                                        <li class="list-group-item">
+                                            <a href="{%baseUrl($params['account']->identifier|cat:'/'|cat:$project->identifier)%}">
+                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                                {%$project->name%}
+                                            </a>
+                                        </li>
+                                    {%/foreach%}
+                                    {%foreach $params['otherProjects'] as $project%}
+                                        <li class="list-group-item">
+                                            <a href="{%baseUrl($params['account']->identifier|cat:'/'|cat:$project->identifier)%}">
+                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                                {%$project->name%}
+                                            </a>
+                                        </li>
+                                    {%/foreach%}
+                                    <li class="list-group-item readmore">
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                            获取更多...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="mine">
+                                <ul class="list-group">
+                                    {%foreach $params['projects'] as $project%}
+                                        <li class="list-group-item">
+                                            <a href="{%baseUrl($params['account']->identifier|cat:'/'|cat:$project->identifier)%}">
+                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                                {%$project->name%}
+                                            </a>
+                                        </li>
+                                    {%/foreach%}
+                                    <li class="list-group-item readmore">
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                            获取更多...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="other">
+                                <ul class="list-group">
+                                    {%foreach $params['otherProjects'] as $project%}
+                                        <li class="list-group-item">
+                                            <a href="{%baseUrl($params['account']->identifier|cat:'/'|cat:$project->identifier)%}">
+                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                                {%$project->name%}
+                                            </a>
+                                        </li>
+                                    {%/foreach%}
+                                    <li class="list-group-item readmore">
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                                            获取更多...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -77,3 +125,4 @@
 </body>
 </html>
 <script type="text/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>

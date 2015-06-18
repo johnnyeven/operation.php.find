@@ -33,6 +33,10 @@ class ProjectAuthHook implements IHookable
 			if(!empty($project))
 			{
 				$project = $project[0];
+				if($project->is_public != '1' && $project->uid != $account->uid)
+				{
+					Exception::throwException(10004);
+				}
 				Request::addParameter('project', $project);
 			}
 			else

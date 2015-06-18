@@ -14,5 +14,6 @@
 return [
 	'account_not_initialized'               =>  '没有绑定的帐号信息',
 	'account_not_fetched'                   =>  '没有找到指定的帐号',
-	'project_not_fetched'                   =>  '没有找到指定的项目'
+	'project_not_fetched'                   =>  '没有找到指定的项目',
+	'project_not_public'                    =>  '项目未公开'
 ];
