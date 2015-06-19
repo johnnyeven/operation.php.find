@@ -25,6 +25,11 @@ class ProjectAuthHook implements IHookable
 	{
 		if(Request::hasParameter('account') && is_array($params) && isset($params[1]))
 		{
+			$currentAccount = null;
+			if(Request::hasParameter('currentAccount'))
+			{
+				$currentAccount = Request::getParameter('currentAccount');
+			}
 			$account = Request::getParameter('account');
 			$project = Project::findOne([
 				'uid'           =>  $account->uid,
@@ -33,9 +38,16 @@ class ProjectAuthHook implements IHookable
 			if(!empty($project))
 			{
 				$project = $project[0];
-				if($project->is_public != '1' && $project->uid != $account->uid)
+				if($project->is_public != '1')
 				{
-					Exception::throwException(10004);
+					if(is_null($currentAccount))
+					{
+						Exception::throwException(10004);
+					}
+					elseif($project->uid != $currentAccount->uid)
+					{
+						Exception::throwException(10004);
+					}
 				}
 				Request::addParameter('project', $project);
 			}

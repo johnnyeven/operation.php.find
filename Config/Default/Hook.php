@@ -8,5 +8,6 @@
 
 return array(
     'authAccount'           =>  "Extend\\Hooks\\AccountAuthHook",
-    'authProject'           =>  "Extend\\Hooks\\ProjectAuthHook"
+    'authProject'           =>  "Extend\\Hooks\\ProjectAuthHook",
+    'authAccountLoginWithException'           =>  "Extend\\Hooks\\AccountLoginAuthWithExceptionHook"
 );

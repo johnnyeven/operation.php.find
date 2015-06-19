@@ -10,7 +10,10 @@ Router::get('/', function() {
 Router::get('login', 'Account/AccountController.login');
 Router::post('process_login', 'Account/AccountController.processLogin');
 Router::get('register', 'Account/AccountController.register');
-Router::get('create', 'Account/AccountController.createProject');
+Router::get('create', [
+	'beforeAction'  =>  'authAccountLoginWithException',
+	'action'        =>  'Account/AccountController.createProject'
+]);
 Router::get('([A-Za-z0-9_\-]+)', [
 	'beforeAction'  =>  'authAccount',
 	'action'        =>  'Account/AccountController.index'

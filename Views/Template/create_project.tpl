@@ -30,11 +30,11 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label" for="iptOwner">所有者</label>
-                                    <input type="text" class="form-control" id="iptOwner" name="iptOwner" value="李翌文" readonly>
+                                    <input type="text" class="form-control" id="iptOwner" name="iptOwner" value="{%$params['account']->realname%}" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group has-error">
+                                <div class="form-group">
                                     <label class="control-label" for="iptProjectName">项目名称</label>
                                     <input type="text" class="form-control" id="iptProjectName" name="iptProjectName">
                                 </div>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label class="control-label" for="iptPermalink">固定链接</label>
                             <div class="input-group">
-                                <span class="input-group-addon">http://find.profzone.net/johnnyeven/</span>
+                                <span class="input-group-addon">{%baseUrl($params['account']->identifier)%}/</span>
                                 <input type="text" class="form-control" id="iptPermalink" name="iptPermalink" value="truck">
                             </div>
                         </div>

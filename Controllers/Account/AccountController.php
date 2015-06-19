@@ -98,7 +98,11 @@ class AccountController extends Controller
 
 	public function createProject()
 	{
-		View::render('create_project');
+		$currentAccount = Request::getParameter('currentAccount');
+		View::render('create_project', [
+			'pageName'  =>  'create_project',
+			'account'   =>  $currentAccount
+		]);
 	}
 
 	public function processLogin()
@@ -124,6 +128,9 @@ class AccountController extends Controller
 			if(!empty($account))
 			{
 				$account = $account[0];
+				$account->ucenter_token = $result['data']['authInfo']['token'];
+				$account->token_expired = $result['data']['authInfo']['expired'];
+				$account->save();
 				$result['data']['account'] = $account->getOriginalData();
 			}
 			else
