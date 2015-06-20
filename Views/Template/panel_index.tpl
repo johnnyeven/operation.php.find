@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading clearfix">
-                            <h1 class="panel-title pull-left">你参与的项目 <span class="label label-default">42</span></h1>
+                            <h1 class="panel-title pull-left">你参与的项目 <span class="label label-default">{%$params['projectsCount']%}</span></h1>
                             <a class="btn btn-success pull-right" href="{%baseUrl('create')%}">创建新项目</a>
                         </div>
                         <div class="panel-body">

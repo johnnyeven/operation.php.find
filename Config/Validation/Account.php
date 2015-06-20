@@ -12,14 +12,24 @@
  */
 
 return array(
-	'process_login'  =>  array(
-		array(
+	'process_login'  =>  [
+		[
 			'field'     =>  'username',
 			'rules'     =>  'required|minLength[6]|maxLength[16]|alphaNumeric'
-		),
-		array(
+		],
+		[
 			'field'     =>  'password',
 			'rules'     =>  'required|minLength[6]|maxLength[20]'
-		)
-	)
+		]
+	],
+    'process_create_project'    =>  [
+        [
+            'field'     =>  'name',
+            'rules'     =>  'required|minLength[6]|maxLength[32]'
+        ],
+        [
+            'field'     =>  'identifier',
+            'rules'     =>  'required|minLength[6]|maxLength[16]|alpha'
+        ]
+    ]
 );
