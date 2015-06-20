@@ -19,16 +19,34 @@ use Models\ProjectMember;
 
 class ProjectProxy extends Proxy
 {
+    public function createProject($args)
+    {
+        return [
+            'identifier'    =>  'testttt'
+        ];
+    }
+
     public function getProjectByUid($uid)
     {
         $result = ProjectMember::where('uid', $uid)->get();
+        if(empty($result))
+        {
+            return [
+                'count'         =>  0,
+                'otherProjects' =>  []
+            ];
+        }
         $projectIds = [];
         foreach($result as $value)
         {
             $projectIds[] = $value->project_id;
         }
-        return Project::whereIn('id', $projectIds)
+        $result = Project::whereIn('id', $projectIds)
             ->where('uid !=', $uid)
             ->get();
+        return [
+            'count'         =>  count($projectIds),
+            'otherProjects' =>  $result
+        ];
     }
 }

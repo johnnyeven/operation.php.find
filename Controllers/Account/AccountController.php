@@ -24,7 +24,6 @@ use Foundation\Support\Facades\Request;
 use Foundation\Support\Facades\Response;
 use Foundation\Support\Facades\View;
 use Models\Account;
-use Models\Notice;
 
 class AccountController extends Controller
 {
@@ -81,7 +80,8 @@ class AccountController extends Controller
 			'pageName'  =>  'panel_index',
 			'account'   =>  $account,
 			'projects'  =>  $projects,
-			'otherProjects' =>  $otherProjects,
+            'projectsCount' =>  $otherProjects['count'],
+			'otherProjects' =>  $otherProjects['otherProjects'],
 			'notices'   =>  $noticeFormats
 		));
 	}
@@ -142,4 +142,23 @@ class AccountController extends Controller
 		}
 		Response::json($result);
 	}
+
+    public function processCreateProject()
+    {
+        $args = Input::post();
+
+        /**
+         * @var \Proxy\ProjectProxy $projectProxy
+         */
+        $projectProxy = Loader::proxy('ProjectProxy');
+        $project = $projectProxy->createProject($args);
+
+        Response::json([
+            'code'  =>  0,
+            'data'  =>  [
+                'project'   =>  $project,
+                'account'   =>  Request::getParameter('currentAccount')
+            ]
+        ]);
+    }
 }

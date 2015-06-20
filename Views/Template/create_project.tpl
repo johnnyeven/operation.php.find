@@ -6,6 +6,7 @@
     <title>开启一个新项目</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/zebra/zebra_dialog.css">
     <link rel="stylesheet" href="/assets/css/common.css">
     <link rel="stylesheet" href="/assets/css/create-project.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,7 +25,7 @@
         <div class="create-project-content">
             <div class="create-project-container">
                 <div class="create-project-panel">
-                    <form method="get" action="{%baseUrl('johnnyeven')%}">
+                    <form method="get" action="{%baseUrl('process_create_project')%}">
                         <h3>开启新项目</h3>
                         <div class="row">
                             <div class="col-md-3">
@@ -65,7 +66,7 @@
                             </div>
                         </div>
                         <div class="form-group clearfix">
-                            <button type="submit" class="btn btn-success pull-right ">创建</button>
+                            <button id="btnSubmit" type="button" class="btn btn-success pull-right ">创建</button>
                         </div>
                     </form>
                 </div>
@@ -77,6 +78,4 @@
 
 </body>
 </html>
-<script type="text/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/assets/js/create-project.js"></script>
+<script type="text/javascript" data-main="/assets/js/create-project.js" src="/assets/js/require.js"></script>
