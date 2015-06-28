@@ -44,6 +44,15 @@ Router::group([
 	Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/document', 'Project/ProjectController.document');
 });
 
+Router::group([
+    'beforeAction'  =>  [
+        'apiCheckCode'
+    ]
+], function($router)
+{
+    Router::post('api/v3/check_access', 'Api/PermissionController.checkAccess');
+});
+
 function registerFunction()
 {
 	Loader::helper('Url');
