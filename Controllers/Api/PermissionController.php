@@ -13,6 +13,8 @@
  * @link
  */
 
+namespace Controllers\Api;
+
 use Foundation\Controller;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\Response;

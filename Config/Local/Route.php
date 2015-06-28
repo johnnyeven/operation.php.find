@@ -50,6 +50,7 @@ Router::group([
     ]
 ], function($router)
 {
+	Router::post('api/v3/get_user_by_key', 'Api/UserController.getUserByKey');
     Router::post('api/v3/check_access', 'Api/PermissionController.checkAccess');
 });
 
