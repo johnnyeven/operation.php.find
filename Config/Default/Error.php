@@ -91,5 +91,6 @@ return array(
     'error10004'    =>  'project_not_public',
     'error10005'    =>  'user_not_login',
 
-    'error20001'    =>  'key_not_exist'
+    'error20001'    =>  'key_not_exist',
+    'error20002'    =>  'project_not_exist'
 );
