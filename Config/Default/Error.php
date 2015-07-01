@@ -83,5 +83,13 @@ return array(
 
     'error2201'     =>  'view_driver_not_defined',
 
-    'error2301'     =>  'facade_view_method_not_found'
+    'error2301'     =>  'facade_view_method_not_found',
+
+    'error10001'    =>  'account_not_initialized',
+    'error10002'    =>  'account_not_fetched',
+    'error10003'    =>  'project_not_fetched',
+    'error10004'    =>  'project_not_public',
+    'error10005'    =>  'user_not_login',
+
+    'error20001'    =>  'key_not_exist'
 );
