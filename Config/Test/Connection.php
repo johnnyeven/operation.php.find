@@ -8,7 +8,7 @@
 
 return array(
     'ucenter'   =>  array(
-        'host'      =>  'ucenter.profzone.net',
+        'host'      =>  'test.ucenter.profzone.net',
         'proxy'     =>  'http',
         'port'      =>  80,
         'hash'      =>  true
