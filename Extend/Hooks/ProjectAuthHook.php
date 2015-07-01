@@ -37,7 +37,6 @@ class ProjectAuthHook implements IHookable
 			]);
 			if(!empty($project))
 			{
-				$project = $project[0];
 				if($project->is_public != '1')
 				{
 					if(is_null($currentAccount))
