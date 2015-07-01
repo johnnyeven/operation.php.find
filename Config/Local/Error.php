@@ -16,5 +16,7 @@ return [
 	'error10002'    =>  'account_not_fetched',
 	'error10003'    =>  'project_not_fetched',
 	'error10004'    =>  'project_not_public',
-	'error10005'    =>  'user_not_login'
+	'error10005'    =>  'user_not_login',
+
+	'error20001'    =>  'key_not_exist'
 ];

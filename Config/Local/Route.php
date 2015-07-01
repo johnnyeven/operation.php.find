@@ -10,6 +10,7 @@ Router::get('/', function() {
 Router::get('login', 'Account/AccountController.login');
 Router::post('process_login', 'Account/AccountController.processLogin');
 Router::get('register', 'Account/AccountController.register');
+Router::get('process_register', 'Account/AccountController.processRegister');
 
 Router::group([
     'beforeAction'  =>  'authAccountLoginWithException'

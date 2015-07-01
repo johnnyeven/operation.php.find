@@ -143,6 +143,11 @@ class AccountController extends Controller
 		Response::json($result);
 	}
 
+	public function processRegister()
+	{
+
+	}
+
     public function processCreateProject()
     {
         $args = Input::post();
