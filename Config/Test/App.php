@@ -8,7 +8,6 @@
 
 return array(
     'debug'             =>  true,
-    'compress_output'   =>  false,
     'url'               =>  'http://test.find.profzone.net/',
     'ucenter_url'       =>  'http://test.ucenter.profzone.net/',
 );
