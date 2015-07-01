@@ -127,7 +127,6 @@ class AccountController extends Controller
 			));
 			if(!empty($account))
 			{
-				$account = $account[0];
 				$account->ucenter_token = $result['data']['authInfo']['token'];
 				$account->token_expired = $result['data']['authInfo']['expired'];
 				$account->save();

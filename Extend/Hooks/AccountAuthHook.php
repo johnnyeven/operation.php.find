@@ -31,7 +31,6 @@ class AccountAuthHook implements IHookable
 			]);
 			if(!empty($account))
 			{
-				$account = $account[0];
 				Request::addParameter('account', $account);
 			}
 			else
