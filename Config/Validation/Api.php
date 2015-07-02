@@ -19,11 +19,17 @@ return array(
 		],
 		[
 			'field'     =>  'key_id',
-			'rules'     =>  'required|minLength[1]|maxLength[20]|number'
+			'rules'     =>  'required|number'
 		],
         [
             'field'     =>  'repo',
             'rules'     =>  'required'
         ]
+	],
+	'api/v3/get_user_by_key'   =>  [
+		[
+			'field'     =>  'key',
+			'rules'     =>  'required|number'
+		],
 	]
 );
