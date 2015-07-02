@@ -60,6 +60,41 @@ class PermissionController extends Controller
         $repo = fetchRepoIdentifier(Input::request('repo'));
 
         $result = false;
+
+        if($command == 'git-upload-pack')
+        {
+            $result = $this->_pullCommandAccessCheck($repo, $keyId);
+        }
+        else
+        {
+            $result = $this->_pushCommandAccessCheck($repo, $keyId);
+        }
+
+        Response::json([
+            'code'  =>  0,
+            'data'  =>  $result
+        ]);
+    }
+
+    private function _pullCommandAccessCheck($repo, $keyId)
+    {
+        $result = false;
+        if(!empty($repo))
+        {
+            $project = Project::findOne([
+                'identifier'    =>  $repo
+            ]);
+            if($project->is_public == '1')
+            {
+                $result = true;
+            }
+        }
+        return $result;
+    }
+
+    private function _pushCommandAccessCheck($repo, $keyId)
+    {
+        $result = false;
         if(!empty($repo))
         {
             $key = Key::findOne([
@@ -80,11 +115,7 @@ class PermissionController extends Controller
             {
                 $result = true;
             }
-
-            Response::json([
-                'code'  =>  0,
-                'data'  =>  $result
-            ]);
         }
+        return $result;
     }
 }
