@@ -12,5 +12,11 @@ return array(
         'proxy'     =>  'http',
         'port'      =>  80,
         'hash'      =>  true
+    ),
+    'find'   =>  array(
+        'host'      =>  'find.profzone.net',
+        'proxy'     =>  'http',
+        'port'      =>  80,
+        'hash'      =>  true
     )
 );

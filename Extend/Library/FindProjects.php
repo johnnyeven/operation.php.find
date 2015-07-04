@@ -11,7 +11,7 @@
  * @link
  */
 
-namespace shell\Extend\Library;
+namespace Extend\Library;
 
 
 class FindProjects
