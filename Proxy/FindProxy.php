@@ -15,10 +15,12 @@ namespace Proxy;
 
 
 use Foundation\Proxy;
+use Foundation\Support\Facades\Exception;
 use Foundation\Support\Facades\Input;
 use Foundation\Support\Facades\Loader;
 use Models\Account;
 use Models\Key;
+use Models\Project;
 
 class FindProxy extends Proxy
 {
@@ -70,5 +72,48 @@ class FindProxy extends Proxy
             return $result['data'];
         }
         return false;
+    }
+
+    private function _pullCommandAccessCheck($repo, $keyId)
+    {
+        $result = false;
+        if(!empty($repo))
+        {
+            $project = Project::findOne([
+                'identifier'    =>  $repo
+            ]);
+            if($project->is_public == '1')
+            {
+                $result = true;
+            }
+        }
+        return $result;
+    }
+
+    private function _pushCommandAccessCheck($repo, $keyId)
+    {
+        $result = false;
+        if(!empty($repo))
+        {
+            $key = Key::findOne([
+                'id'    =>  $keyId
+            ]);
+            $project = Project::findOne([
+                'identifier'    =>  $repo
+            ]);
+            if(empty($key))
+            {
+                Exception::throwException(20001);
+            }
+            if(empty($project))
+            {
+                Exception::throwException(20002);
+            }
+            if($key->uid == $project->uid)
+            {
+                $result = true;
+            }
+        }
+        return $result;
     }
 }

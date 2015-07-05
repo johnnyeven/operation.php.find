@@ -6,13 +6,15 @@
  * Time: 23:55
  */
 
+namespace ErrorHandler;
+
 class ErrorHandler {
     /**
-     * @var Exception
+     * @var \Exception
      */
-    private $error;
+    protected $error;
 
-    function __construct(Exception $e) {
+    function __construct(\Exception $e) {
         $this->error = $e;
     }
 

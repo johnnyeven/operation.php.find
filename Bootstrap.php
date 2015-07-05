@@ -34,12 +34,5 @@ try
 }
 catch (Exception $e)
 {
-    $filepath = appPath() . DIRECTORY_SEPARATOR . 'ErrorHandler' . EXT;
-    if(file_exists($filepath)) {
-        require_once $filepath;
-        $handler = new \ErrorHandler($e);
-        $handler->proceed();
-    } else {
-        echo '未定义错误处理器';
-    }
+    \Foundation\Support\ErrorManager::getInstance()->handleException($e);
 }
