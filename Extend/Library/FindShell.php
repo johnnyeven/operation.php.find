@@ -14,6 +14,7 @@
 
 namespace Extend\Library;
 
+use Foundation\Support\Facades\Exception;
 use Foundation\Support\Facades\Loader;
 use Foundation\Support\FindException;
 
@@ -61,7 +62,9 @@ class FindShell
 
         if(empty($this->user))
         {
-            throw new FindException('find-shell: User not found. (key=' . $this->keyId . ')', 0, 'GitErrorHandler');
+            Exception::throwException(30002, [
+                $this->keyId
+            ]);
         }
     }
 
@@ -95,21 +98,30 @@ class FindShell
 
         if(!in_array($this->gitCommand, self::$gitCommandList))
         {
-            throw new FindException('find-shell: Attempt to execute disallowed command ' . $this->gitCommand . ' by ' . $this->user['name'] . '.', 0, 'GitErrorHandler');
+            Exception::throwException(30002, [
+                $this->gitCommand,
+                $this->user['name']
+            ]);
         }
 
         if($this->gitCommand == 'git-annex-shell')
         {
             if(!$this->config->gitAnnexEnabled())
             {
-                throw new FindException('find-shell: Attempt to execute disallowed command ' . $this->gitCommand . ' by ' . $this->user['name'] . '.', 0, 'GitErrorHandler');
+                Exception::throwException(30002, [
+                    $this->gitCommand,
+                    $this->user['name']
+                ]);
             }
         }
         else
         {
             if(count($args) != 2)
             {
-                throw new FindException('find-shell: Attempt to execute disallowed command ' . $this->gitCommand . ' by ' . $this->user['name'] . '.', 0, 'GitErrorHandler');
+                Exception::throwException(30002, [
+                    $this->gitCommand,
+                    $this->user['name']
+                ]);
             }
 
             $this->repoName = $args[1];
@@ -120,7 +132,10 @@ class FindShell
     {
         if(!$this->proxy->checkAccess($this->gitCommand, $this->repoName, $this->keyId))
         {
-            throw new FindException('find-shell: Access denied for git command ' . $this->gitCommand . ' by ' . $this->user['name'] . '.', 0, 'GitErrorHandler');
+            Exception::throwException(30003, [
+                $this->gitCommand,
+                $this->user['name']
+            ]);
         }
     }
 
@@ -133,7 +148,10 @@ class FindShell
         {
             if(!$this->config->gitAnnexEnabled())
             {
-                throw new FindException('find-shell: Attempt to execute disallowed command ' . $this->gitCommand . ' by ' . $this->user['name'] . '.', 0, 'GitErrorHandler');
+                Exception::throwException(30002, [
+                    $this->gitCommand,
+                    $this->user['name']
+                ]);
             }
         }
         else
