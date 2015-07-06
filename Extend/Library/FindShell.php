@@ -62,7 +62,7 @@ class FindShell
 
         if(empty($this->user))
         {
-            Exception::throwException(30002, [
+            Exception::throwException(30001, [
                 $this->keyId
             ]);
         }
