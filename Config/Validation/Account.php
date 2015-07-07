@@ -30,6 +30,10 @@ return array(
         [
             'field'     =>  'identifier',
             'rules'     =>  'required|minLength[6]|maxLength[16]|alpha'
+        ],
+        [
+            'field'     =>  'is_public',
+            'rules'     =>  'required|number'
         ]
     ]
 );

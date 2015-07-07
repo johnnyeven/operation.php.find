@@ -143,7 +143,6 @@ class FindShell
     {
         $this->repoPath = $this->reposPath . DIRECTORY_SEPARATOR . $this->repoName;
 
-
         if($this->gitCommand == 'git-annex-shell')
         {
             if(!$this->config->gitAnnexEnabled())
