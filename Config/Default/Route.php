@@ -26,6 +26,7 @@ Router::get('([A-Za-z0-9_\-]+)', [
 ]);
 Router::group([
     'beforeAction'  =>  [
+        'authAccountLoginWithOutException',
         'authAccount',
         'authProject'
     ]

@@ -10,6 +10,7 @@ return array(
     'authAccount'           =>  "Extend\\Hooks\\AccountAuthHook",
     'authProject'           =>  "Extend\\Hooks\\ProjectAuthHook",
     'authAccountLoginWithException'           =>  "Extend\\Hooks\\AccountLoginAuthWithExceptionHook",
+    'authAccountLoginWithOutException'           =>  "Extend\\Hooks\\AccountLoginAuthWithOutExceptionHook",
 
     'apiCheckCode'          =>  "Extend\\Hooks\\ApiCheckCodeHook"
 );

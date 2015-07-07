@@ -28,7 +28,7 @@ require(['jquery', 'jquery.zebra', 'jquery.blockUI', 'findApp'], function ($, ze
                 params: {
                     'name': $("#iptProjectName").val(),
                     'identifier': $("#iptPermalink").val(),
-                    'isPublic': $("input[name=optPermission]:selected").val()
+                    'is_public': $("input[name='optPermission']:checked").val()
                 },
                 onSuccess: function(result) {
                     app.popSuccess('创建项目成功，正在进入项目主页');

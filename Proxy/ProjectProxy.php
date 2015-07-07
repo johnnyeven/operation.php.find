@@ -14,16 +14,44 @@
 namespace Proxy;
 
 use Foundation\Proxy;
+use Foundation\Support\Facades\Exception;
+use Foundation\Support\Facades\Loader;
+use Foundation\Support\Facades\Request;
 use Models\Project;
 use Models\ProjectMember;
 
 class ProjectProxy extends Proxy
 {
+    /**
+     * @param $args
+     *
+     * @return \Models\Project
+     */
     public function createProject($args)
     {
-        return [
-            'identifier'    =>  'testttt'
-        ];
+        $name = $args['name'];
+        $identifier = $args['identifier'];
+        $isPublic = $args['is_public'];
+
+        $project = Project::findOne([
+            'identifier'    =>  $identifier
+        ]);
+        if(!empty($project))
+        {
+            Exception::throwException(10006);
+        }
+
+        $guid = Loader::library('Guid');
+        $account = Request::getParameter('currentAccount');
+        $project = Project::create([
+            'id'            =>  $guid->toString(),
+            'name'          =>  $name,
+            'is_public'     =>  $isPublic,
+            'identifier'    =>  $identifier,
+            'uid'           =>  $account->uid
+        ]);
+
+        return $project;
     }
 
     public function getProjectByUid($uid)

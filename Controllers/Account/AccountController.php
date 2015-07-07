@@ -157,6 +157,16 @@ class AccountController extends Controller
         $projectProxy = Loader::proxy('ProjectProxy');
         $project = $projectProxy->createProject($args);
 
+	    /**
+	     * @var \Extend\Library\FindProjects $projectShell
+	     */
+	    $projectShell = Loader::library('FindProjects', [
+		    'create-project',
+		    $project->identifier
+	    ]);
+	    $projectShell->execute();
+
+
         Response::json([
             'code'  =>  0,
             'data'  =>  [
