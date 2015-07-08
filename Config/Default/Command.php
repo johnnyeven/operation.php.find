@@ -7,12 +7,4 @@
  */
 
 return array(
-    'git'     =>  array(
-        'command'       =>  'Commands\\GitShellCommand',
-        'description'   =>  '接管Git命令'
-    ),
-    'project'      =>  array(
-        'command'       =>  'Commands\\FindProjectCommand',
-        'description'   =>  '项目相关命令'
-    )
 );

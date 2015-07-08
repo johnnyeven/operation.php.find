@@ -93,18 +93,5 @@ return array(
     'error10006'    =>  'project_exist',
 
     'error20001'    =>  'key_not_exist',
-    'error20002'    =>  'project_not_exist',
-
-    'error30001'    =>  [
-        'message'       =>  'findshell_user_not_found',
-        'handler'       =>  'GitErrorHandler'
-    ],
-    'error30002'    =>  [
-        'message'       =>  'findshell_disallowed_command',
-        'handler'       =>  'GitErrorHandler'
-    ],
-    'error30003'    =>  [
-        'message'       =>  'findshell_not_authorized',
-        'handler'       =>  'GitErrorHandler'
-    ]
+    'error20002'    =>  'project_not_exist'
 );
