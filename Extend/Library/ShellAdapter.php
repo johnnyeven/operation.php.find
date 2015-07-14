@@ -37,6 +37,7 @@ class ShellAdapter
 
     public function createProject($identifier)
     {
-
+        $command = $this->_shellCmd . 'project create-project ' . $identifier;
+        shell_exec($command);
     }
 }

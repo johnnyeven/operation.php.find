@@ -161,6 +161,7 @@ class AccountController extends Controller
 	     * @var \Extend\Library\ShellAdapter $projectShell
 	     */
 	    $projectShell = Loader::library('ShellAdapter');
+		$projectShell->createProject($project->identifier);
 
         Response::json([
             'code'  =>  0,
