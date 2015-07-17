@@ -156,12 +156,13 @@ class AccountController extends Controller
          */
         $projectProxy = Loader::proxy('ProjectProxy');
         $project = $projectProxy->createProject($args);
+		$currentAccount = Request::getParameter('currentAccount');
 
 	    /**
 	     * @var \Extend\Library\ShellAdapter $projectShell
 	     */
 	    $projectShell = Loader::library('ShellAdapter');
-		$projectShell->createProject($project->identifier);
+		$projectShell->createProject($currentAccount->identifier . DIRECTORY_SEPARATOR . $project->identifier);
 
         Response::json([
             'code'  =>  0,
