@@ -12,5 +12,5 @@
  */
 
 return [
-    'shell_cmd'         =>  'php D:\xampp\htdocs\operation.php\command shell '
+    'shell_cmd'         =>  'php D:\xampp\htdocs\find-shell\bin\project-shell '
 ];
