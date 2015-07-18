@@ -12,5 +12,5 @@
  */
 
 return [
-    'shell_cmd'         =>  '/home/git/find-shell/bin/project-shell '
+    'shell_cmd'         =>  '/var/www/find-shell/bin/project-shell '
 ];
