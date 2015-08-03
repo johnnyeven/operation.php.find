@@ -44,5 +44,8 @@ return array(
     'csrf_cookie_name'      =>  'csrf_cookie',
     'csrf_expire'           =>  7200,
 
-    'proxy_ips'             =>  ''
+    'proxy_ips'             =>  '',
+
+    'project_role_init_name'          =>  '项目负责人',
+    'project_role_init_permission'    =>  'all'
 );

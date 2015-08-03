@@ -19,6 +19,7 @@ use Foundation\Support\Facades\Loader;
 use Foundation\Support\Facades\Request;
 use Models\Project;
 use Models\ProjectMember;
+use Models\ProjectRole;
 
 class ProjectProxy extends Proxy
 {
@@ -42,6 +43,7 @@ class ProjectProxy extends Proxy
         }
 
         $guid = Loader::library('Guid');
+        $guid->getGuid();
         $account = Request::getParameter('currentAccount');
         $project = Project::create([
             'id'            =>  $guid->toString(),
@@ -52,6 +54,35 @@ class ProjectProxy extends Proxy
         ]);
 
         return $project;
+    }
+
+    public function createProjectRole($roleName, $permission, $projectId)
+    {
+        if(!empty($roleName) && !empty($permission) && !empty($projectId))
+        {
+            $guid = Loader::library('Guid');
+            $guid->getGuid();
+            return ProjectRole::create([
+                'role_id'       =>  $guid->toString(),
+                'role_name'     =>  $roleName,
+                'permission'    =>  $permission,
+                'project_id'    =>  $projectId
+            ]);
+        }
+        return null;
+    }
+
+    public function createProjectMemberRelation($projectId, $roleId, $uid)
+    {
+        if(!empty($projectId) && !empty($roleId) && !empty($uid))
+        {
+            return ProjectMember::create([
+                'project_id'    =>  $projectId,
+                'role_id'       =>  $roleId,
+                'uid'           =>  $uid
+            ]);
+        }
+        return null;
     }
 
     public function getProjectByUid($uid)
