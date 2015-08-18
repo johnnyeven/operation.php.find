@@ -9,7 +9,7 @@
 return array(
     'default_database'  =>  'default',
     'default'           =>  array(
-        'hostname'      =>  'localhost',
+        'hostname'      =>  '127.0.0.1',
         'username'      =>  'root',
         'password'      =>  '84@41%%wi96^4',
         'database'      =>  'profzone_find',
@@ -18,6 +18,8 @@ return array(
         'char_set'      =>  'utf8',
         'dbcollat'      =>  'utf8_general_ci',
         'pconnect'      =>  FALSE,
-        'db_debug'      =>  TRUE
+        'db_debug'      =>  TRUE,
+        'sql_log'       =>  TRUE,
+        'log_file'      =>  'sql'
     )
 );

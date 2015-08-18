@@ -108,4 +108,34 @@ class ProjectProxy extends Proxy
             'otherProjects' =>  $result
         ];
     }
+
+    public function getProjectMemberCount($projectId)
+    {
+        return ProjectMember::where([
+            'project_id'    =>  $projectId
+        ])->countAllResults();
+    }
+
+    public function getProjectMemberWithRole($projectId)
+    {
+        $result = [];
+        $roles = ProjectRole::where([
+            'project_id'   =>  $projectId
+        ])->limit(5)->get();
+        array_walk($roles, function($role, $i) use(&$result)
+        {
+            $result[$role->role_name] = ProjectMember::where([
+                'role_id'   =>  $role->role_id
+            ])
+                ->join('find_account', 'find_project_member.uid = find_account.uid')
+                ->limit(5)
+                ->get([
+                    'find_account.uid',
+                    'find_account.identifier',
+                    'find_account.realname'
+                ]);
+        });
+
+        return $result;
+    }
 }

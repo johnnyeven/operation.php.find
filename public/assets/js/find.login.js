@@ -1,10 +1,10 @@
 require.config({
     baseUrl: 'assets/js',
     paths: {
-        'jquery': 'jquery-1.11.3.min',
+        jquery: 'jquery-1.11.3.min',
         'jquery.zebra': 'zebra_dialog',
         'jquery.blockUI': 'jquery.blockUI',
-        'findApp': 'find.base'
+        findApp: 'find.base'
     },
     //shim: {
     //    'jquery.zebra': {

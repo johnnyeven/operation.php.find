@@ -156,11 +156,11 @@ class AccountController extends Controller
          * @var \Proxy\ProjectProxy $projectProxy
          */
         $projectProxy = Loader::proxy('ProjectProxy');
-		//创建项目
+		//鍒涘缓椤圭洰
         $project = $projectProxy->createProject($args);
-		//创建初始角色
+		//鍒涘缓鍒濆瑙掕壊
 		$projectRole = $projectProxy->createProjectRole(config('App.project_role_init_name'), config('App.project_role_init_permission'), $project->id);
-		//创建初始项目成员关系
+		//鍒涘缓鍒濆椤圭洰鎴愬憳鍏崇郴
 		$projectProxy->createProjectMemberRelation($project->id, $projectRole->role_id, $currentAccount->uid);
 
 	    /**

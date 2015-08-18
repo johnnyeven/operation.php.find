@@ -19,6 +19,14 @@ use Models\Notice;
 
 class NoticeProxy extends Proxy
 {
+    public function getNoticeByProject($projectId, $limit, $offset)
+    {
+        return Notice::where('find_project_notice.project_id', $projectId)
+            ->limit($limit)
+            ->offset($offset)
+            ->get();
+    }
+
     public function getNoticeByUser($uid, $limit, $offset)
     {
         return Notice::where('find_project_notice.uid', $uid)

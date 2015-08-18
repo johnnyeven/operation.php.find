@@ -51,14 +51,16 @@
                         <div class="col-md-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 成员 <span class="badge">12</span></h3>
+                                    <h3 class="panel-title"><span class="glyphicon glyphicon-user"></span> 成员 <span class="badge">{%$params['memberCount']%}</span></h3>
                                 </div>
                                 <ul class="list-group">
-                                    <li class="list-group-item">项目负责人 <a href="#">李翌文</a></li>
-                                    <li class="list-group-item">项目经理 <a href="#">李翌文</a></li>
-                                    <li class="list-group-item">产品经理 <a href="#">李翌文</a></li>
-                                    <li class="list-group-item">研发工程师 <a href="#">李翌文</a>, <a href="#">王煜</a>, <a href="#">李俊</a></li>
-                                    <li class="list-group-item">交互设计师 <a href="#">王永强</a></li>
+                                    {%foreach $params['roles'] as $name => $members%}
+                                    <li class="list-group-item">{%$name%}
+                                        {%foreach $members as $member%}
+                                            <a href="#">{%$member->realname%}</a>
+                                        {%/foreach%}
+                                    </li>
+                                    {%/foreach%}
                                     <li class="list-group-item"><button class="btn btn-info form-control">查看全部</button></li>
                                 </ul>
                             </div>

@@ -46,6 +46,6 @@ return array(
 
     'proxy_ips'             =>  '',
 
-    'project_role_init_name'          =>  'ÏîÄ¿¸ºÔðÈË',
+    'project_role_init_name'          =>  'é¡¹ç›®è´Ÿè´£äºº',
     'project_role_init_permission'    =>  'all'
 );
