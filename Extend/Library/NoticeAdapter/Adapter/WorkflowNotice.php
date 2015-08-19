@@ -17,7 +17,7 @@ use Foundation\Support\Facades\View;
 
 class WorkflowNotice extends BaseNotice
 {
-    public function format()
+    public function format($light = FALSE)
     {
         $action = '';
         $extend = $this->_notice->workflow_extends;
@@ -29,9 +29,8 @@ class WorkflowNotice extends BaseNotice
                 $action .= '状态变更为 ' . $extend['status'];
             }
         }
-        echo View::render('notice/notice_workflow', [
+        echo View::render('notice/notice_workflow' . ($light ? '_light' : ''), [
             'notice'    =>  $this->_notice,
-            'account'   =>  $this->_account,
             'action'    =>  $action
         ], TRUE);
     }

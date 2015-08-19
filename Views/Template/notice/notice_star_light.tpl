@@ -1,0 +1,1 @@
+<li class="list-group-item"><a href="{%baseUrl($params['notice']->account_identifier)%}">{%$params['notice']->account_realname%}</a> 关注了项目 <a href="{%baseUrl($params['notice']->account_identifier|cat:'/'|cat:$params['notice']->project_identifier)%}">{%$params['notice']->project_name%}</a></li>

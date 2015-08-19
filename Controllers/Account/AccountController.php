@@ -67,13 +67,13 @@ class AccountController extends Controller
 		 * @var \Proxy\NoticeProxy $noticeProxy
 		 */
 		$noticeProxy = Loader::proxy('NoticeProxy');
-		$notices = $noticeProxy->getNoticeByUser($account->uid, 15, 0);
+		$notices = $noticeProxy->getNoticeByUser($account->uid, 15);
 
 		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
 		$noticeFormats = [];
 		foreach($notices as $notice)
 		{
-			$noticeFormats[] = NoticeAdapter::newNotice($notice, $account);
+			$noticeFormats[] = NoticeAdapter::newNotice($notice);
 		}
 
 		View::render('panel_index', array(

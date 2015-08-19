@@ -71,11 +71,9 @@
                                     <h3 class="panel-title"><span class="glyphicon glyphicon-time"></span> 活动</h3>
                                 </div>
                                 <ul class="list-group">
-                                    <li class="list-group-item"><a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a></li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40293</a> 状态变更为 处理中</li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 对 <a href="#">智能管车</a> 有新评论</li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决</li>
-                                    <li class="list-group-item"><a href="#">李翌文</a> 对 <a href="#">智能管车</a> 有新评论</li>
+                                    {%foreach $params['notices'] as $notice%}
+                                    {%$notice->format(TRUE)%}
+                                    {%/foreach%}
                                     <li class="list-group-item"><button class="btn btn-info form-control">查看全部</button></li>
                                 </ul>
                             </div>

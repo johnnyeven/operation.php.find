@@ -13,6 +13,7 @@
 
 namespace Controllers\Project;
 
+use Extend\Library\NoticeAdapter\NoticeAdapter;
 use Foundation\Controller;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\Loader;
@@ -55,12 +56,25 @@ class ProjectController extends Controller
 		$memberCount = $projectProxy->getProjectMemberCount($this->project->id);
 		$roles = $projectProxy->getProjectMemberWithRole($this->project->id);
 
+		/**
+		 * @var \Proxy\NoticeProxy $noticeProxy
+		 */
+		$noticeProxy = Loader::proxy('NoticeProxy');
+		$notices = $noticeProxy->getNoticeByProject($this->project->id, 5);
+		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
+		$noticeFormats = [];
+		foreach($notices as $notice)
+		{
+			$noticeFormats[] = NoticeAdapter::newNotice($notice);
+		}
+
 		View::render('project_index', array(
 			'pageName'      =>  'project_index',
 			'account'       =>  $this->account,
 			'project'       =>  $this->project,
 			'memberCount'	=>	$memberCount,
-			'roles'			=>	$roles
+			'roles'			=>	$roles,
+			'notices'		=>	$noticeFormats
 		));
 	}
 
