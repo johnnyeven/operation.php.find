@@ -18,11 +18,10 @@ use Foundation\Support\Facades\View;
 class StarNotice extends BaseNotice
 {
 
-    public function format()
+    public function format($light = FALSE)
     {
-        echo View::render('notice/notice_star', [
-            'notice'    =>  $this->_notice,
-            'account'   =>  $this->_account
+        echo View::render('notice/notice_star' . ($light ? '_light' : ''), [
+            'notice'    =>  $this->_notice
         ], TRUE);
     }
 }

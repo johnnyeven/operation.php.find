@@ -67,13 +67,13 @@ class AccountController extends Controller
 		 * @var \Proxy\NoticeProxy $noticeProxy
 		 */
 		$noticeProxy = Loader::proxy('NoticeProxy');
-		$notices = $noticeProxy->getNoticeByUser($account->uid, 15, 0);
+		$notices = $noticeProxy->getNoticeByUser($account->uid, 15);
 
 		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
 		$noticeFormats = [];
 		foreach($notices as $notice)
 		{
-			$noticeFormats[] = NoticeAdapter::newNotice($notice, $account);
+			$noticeFormats[] = NoticeAdapter::newNotice($notice);
 		}
 
 		View::render('panel_index', array(
@@ -156,11 +156,11 @@ class AccountController extends Controller
          * @var \Proxy\ProjectProxy $projectProxy
          */
         $projectProxy = Loader::proxy('ProjectProxy');
-		//创建项目
+		//鍒涘缓椤圭洰
         $project = $projectProxy->createProject($args);
-		//创建初始角色
+		//鍒涘缓鍒濆瑙掕壊
 		$projectRole = $projectProxy->createProjectRole(config('App.project_role_init_name'), config('App.project_role_init_permission'), $project->id);
-		//创建初始项目成员关系
+		//鍒涘缓鍒濆椤圭洰鎴愬憳鍏崇郴
 		$projectProxy->createProjectMemberRelation($project->id, $projectRole->role_id, $currentAccount->uid);
 
 	    /**

@@ -24,14 +24,8 @@ abstract class BaseNotice implements INoticeAdapter
      */
     protected $_notice;
 
-    /**
-     * @var Account
-     */
-    protected $_account;
-
-    function __construct(Notice $notice, Account $account)
+    function __construct(Notice $notice)
     {
         $this->_notice = $notice;
-        $this->_account = $account;
     }
 }

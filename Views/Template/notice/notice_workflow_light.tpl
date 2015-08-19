@@ -1,0 +1,1 @@
+<li class="list-group-item"><a href="{%baseUrl($params['notice']->account_identifier)%}">{%$params['notice']->account_realname%}</a> 将 <a href="{%baseUrl($params['notice']->account_identifier|cat:'/'|cat:$params['notice']->project_identifier)%}">{%$params['notice']->project_name%}</a> 问题 <a href="#">#{%$params['notice']->workflow_number%}</a> {%$params['action']%}</li>

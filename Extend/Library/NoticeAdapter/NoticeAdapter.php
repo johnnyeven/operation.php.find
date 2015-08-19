@@ -21,12 +21,12 @@ class NoticeAdapter
 {
     private static $_config = null;
 
-    public static function newNotice(Notice $notice, Account $account)
+    public static function newNotice(Notice $notice)
     {
         self::_loadConfig();
         if(isset(self::$_config[$notice->type]))
         {
-            return new self::$_config[$notice->type]($notice, $account);
+            return new self::$_config[$notice->type]($notice);
         }
         return null;
     }
