@@ -8,6 +8,7 @@
 
 require_once __DIR__ . '/Config/Env.php';
 require_once __DIR__ . '/../../core/Foundation/Support/Helpers/Common.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use Foundation\Config;
 use Foundation\Support\Hook;

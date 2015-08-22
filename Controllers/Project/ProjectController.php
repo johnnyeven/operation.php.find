@@ -15,6 +15,7 @@ namespace Controllers\Project;
 
 use Extend\Library\NoticeAdapter\NoticeAdapter;
 use Foundation\Controller;
+use Foundation\Database\Model\Model;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\Loader;
 use Foundation\Support\Facades\Request;
@@ -68,13 +69,20 @@ class ProjectController extends Controller
 			$noticeFormats[] = NoticeAdapter::newNotice($notice);
 		}
 
+		/**
+		 * @var Model/Repository $repo
+		 */
+		$repo = $this->project->repository();
+		$readme = $repo->readme();
+
 		View::render('project_index', array(
 			'pageName'      =>  'project_index',
 			'account'       =>  $this->account,
 			'project'       =>  $this->project,
 			'memberCount'	=>	$memberCount,
 			'roles'			=>	$roles,
-			'notices'		=>	$noticeFormats
+			'notices'		=>	$noticeFormats,
+			'readme'		=>	$readme
 		));
 	}
 

@@ -1,0 +1,6 @@
+{
+    "require": {
+        "symfony/process": "^2.7",
+        "erusev/parsedown": "^1.5"
+    }
+}

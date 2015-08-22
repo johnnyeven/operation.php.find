@@ -30,30 +30,47 @@ class ProjectProxy extends Proxy
      */
     public function createProject($args)
     {
-        $name = $args['name'];
-        $identifier = $args['identifier'];
-        $isPublic = $args['is_public'];
-
-        $project = Project::findOne([
-            'identifier'    =>  $identifier
-        ]);
-        if(!empty($project))
+        try
         {
-            Exception::throwException(10006);
+            Project::getDB()->transactionStart();
+            $name = $args['name'];
+            $identifier = $args['identifier'];
+            $isPublic = $args['is_public'];
+
+            $project = Project::findOne([
+                'identifier'    =>  $identifier
+            ]);
+            if(!empty($project))
+            {
+                Exception::throwException(10006);
+            }
+
+            $guid = Loader::library('Guid');
+            $guid->getGuid();
+            $account = Request::getParameter('currentAccount');
+            $project = Project::create([
+                'id'            =>  $guid->toString(),
+                'name'          =>  $name,
+                'is_public'     =>  $isPublic,
+                'identifier'    =>  $identifier,
+                'uid'           =>  $account->uid
+            ]);
+
+            //创建初始角色
+            $projectRole = $this->createProjectRole(config('App.project_role_init_name'), config('App.project_role_init_permission'), $project->id);
+            //创建初始项目成员关系
+            $this->createProjectMemberRelation($project->id, $projectRole->role_id, $account->uid);
+            //创建版本库
+            $this->createRepository($account->identifier, $project->identifier);
+
+            Project::getDB()->transactionComplete();
+            return $project;
         }
-
-        $guid = Loader::library('Guid');
-        $guid->getGuid();
-        $account = Request::getParameter('currentAccount');
-        $project = Project::create([
-            'id'            =>  $guid->toString(),
-            'name'          =>  $name,
-            'is_public'     =>  $isPublic,
-            'identifier'    =>  $identifier,
-            'uid'           =>  $account->uid
-        ]);
-
-        return $project;
+        catch(\Exception $e)
+        {
+            Project::getDB()->transactionRollback();
+            throw $e;
+        }
     }
 
     public function createProjectRole($roleName, $permission, $projectId)
@@ -85,6 +102,15 @@ class ProjectProxy extends Proxy
         return null;
     }
 
+    public function createRepository($accountIdentifer, $projectIdentifier)
+    {
+        /**
+         * @var \Extend\Library\ShellAdapter $projectShell
+         */
+        $projectShell = Loader::library('ShellAdapter');
+        $projectShell->createProject($accountIdentifer . DIRECTORY_SEPARATOR . $projectIdentifier);
+    }
+
     public function getProjectByUid($uid)
     {
         $result = ProjectMember::where('uid', $uid)->get();
@@ -98,7 +124,10 @@ class ProjectProxy extends Proxy
         $projectIds = [];
         foreach($result as $value)
         {
-            $projectIds[] = $value->project_id;
+            if(!in_array($value->project_id, $projectIds))
+            {
+                $projectIds[] = $value->project_id;
+            }
         }
         $result = Project::whereIn('id', $projectIds)
             ->where('uid !=', $uid)
@@ -137,5 +166,13 @@ class ProjectProxy extends Proxy
         });
 
         return $result;
+    }
+
+    public function getReadme($projectId)
+    {
+        $project = Project::findOne([
+            'id'    =>  $projectId
+        ]);
+        return $project->readme();
     }
 }

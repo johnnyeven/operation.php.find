@@ -21,8 +21,19 @@ class Project extends Model
 	protected $tableName = 'find_project';
 	protected $autoIncrease = FALSE;
 
+	private $_repo = null;
+
 	public function account()
 	{
 		return $this->belongTo('Account', 'uid', 'uid');
+	}
+
+	public function repository()
+	{
+		if(empty($this->_repo))
+		{
+			$this->_repo = new Repository($this->account->identifier, $this->identifier);
+		}
+		return $this->_repo;
 	}
 }

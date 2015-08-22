@@ -4,6 +4,7 @@ define('ENV', 'local');
 define('EXT', '.php');
 define('LANG', 'zh_cn');
 define('APP_KEY', 'operation_key_2015');
+define('DS', DIRECTORY_SEPARATOR);
 
 define('FILE_READ_MODE', 0644);
 define('FILE_WRITE_MODE', 0666);
