@@ -19,6 +19,7 @@ return [
 	'user_not_login'                        =>  '登录凭证已过期，请重新登录',
 	'project_exist'                         =>  '项目标识已存在',
 	'undefined_shell_command'               =>  'FindShell未指定路径',
+	'shell_exception'						=>	'Shell脚本执行失败',
 
 	'key_not_exist'                         =>  '密钥不存在',
 	'project_not_exist'                     =>  '项目不存在',

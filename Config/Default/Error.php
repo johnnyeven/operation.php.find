@@ -92,6 +92,7 @@ return array(
     'error10005'    =>  'user_not_login',
     'error10006'    =>  'project_exist',
     'error10007'    =>  'undefined_shell_command',
+    'error10008'    =>  'shell_exception',
 
     'error20001'    =>  'key_not_exist',
     'error20002'    =>  'project_not_exist'

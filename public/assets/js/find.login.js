@@ -1,5 +1,5 @@
 require.config({
-    baseUrl: 'assets/js',
+    baseUrl: '/assets/js',
     paths: {
         jquery: 'jquery-1.11.3.min',
         'jquery.zebra': 'zebra_dialog',
