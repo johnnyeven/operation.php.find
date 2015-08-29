@@ -3,6 +3,19 @@ function App() {
 }
 
 App.prototype = {
+    start: function() {
+        $("#find-body").fadeIn();
+        var resizeHandler = function() {
+            var clientHeight = $(window).height() - 50;
+            $("#workarea").height(clientHeight);
+        };
+        window.onresize = resizeHandler;
+        resizeHandler();
+
+        $(document).pjax('a', 'body');
+        $(document).on('pjax:start', function() { NProgress.start(); });
+        $(document).on('pjax:end',   function() { NProgress.done();  });
+    },
     getAppUrl: function() {
         var script = document.getElementsByTagName("script");
         for (var i = 0; i < script.length; i++) {
@@ -161,5 +174,5 @@ App.prototype = {
 
 var app = new App();
 if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
-    define( "findApp", ['jquery'],  function () { return app; } );
+    define( "findApp", ['jquery', 'pjax'],  function () { return app; } );
 }

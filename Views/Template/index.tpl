@@ -1,103 +1,154 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <title>发现 - 用思想创造价值</title>
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/common.css">
-    <link rel="stylesheet" href="/assets/css/index.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="shortcut icon" href="/assets/img/gt_favicon.png">
+    <script src="/assets/js/require.js" data-main="/assets/js/find.index.js"></script>
+    <!--[if lt IE 9]> <script src="/assets/js/html5shiv.js"></script> <![endif]-->
 </head>
-<body style="display: none;">
-<div class="container-fluid site-wrapper">
-    <div class="nest-container">
 
-        {%include file="std_nav.tpl"%}
-        <div class="nest-process">
-        </div>
-        <div class="nest-content with-shadow">
-            <div id="slider-action" class="slider-action">
-                <ul>
-                    <li class="active">
-                        <a>
-                            <span class="dot"></span>
-                            <span class="dot-stroke"></span>
-                            <span class="slider-action-text">人群</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span class="dot"></span>
-                            <span class="dot-stroke"></span>
-                            <span class="slider-action-text">目标</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span class="dot"></span>
-                            <span class="dot-stroke"></span>
-                            <span class="slider-action-text">发现</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div id="slider" class="nest-slider">
-                <div class="nest-step">
-                    <div class="nest-step-container">
-                        <div class="step-separate clearfix">
-                            <div class="nest-step-left">
-                                <div class="nest-step-img-container" style="height: 128px;">
-                                    <img src="assets/images/people.png" />
-                                </div>
-                            </div>
-                            <div class="nest-step-right">
-                                <h1 class="nest-title-head">人群</h1>
-                                <p class="lead">这是一个面向有志于IT领域又有想法的年轻人的地方</p>
-                            </div>
-                        </div>
+<body id="find-body" style="display: none;">
+
+{%include file="std_nav.tpl"%}
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row find-index-head">
+                    <div class="col-md-8 text-center">
+                        <h1>发现</h1>
+                        <h2>用思想创造价值</h2>
+                        <p class="lead">
+                            一个集代码管理、代码审核、软件工程管理于一身的项目管理平台<br>
+                            我们针对在校学生提供教育版，让学生在步入社会前轻松实战
+                        </p>
                     </div>
-                </div>
-                <div class="nest-step">
-                    <div class="nest-step-container">
-                        <div class="step-separate clearfix">
-                            <div class="nest-step-left">
-                                <div class="nest-step-img-container" style="height: 155px;">
-                                    <img src="assets/images/target.png" />
-                                </div>
+                    <div class="col-md-4 find-index-form">
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" id="iptRealname" placeholder="您的名字">
                             </div>
-                            <div class="nest-step-right">
-                                <h1 class="nest-title-head">目的</h1>
-                                <p class="lead">把你所学到的知识运用在项目生产环境中</p>
-                                <p class="lead">展示能力，发现价值</p>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" id="iptEmail" placeholder="您的邮箱">
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="nest-step">
-                    <div class="nest-step-container">
-                        <h1 class="nest-title-head">发现</h1>
-                        <p class="lead">有创意，有激情，你需要的是一个整合人力的平台</p>
-                        <p class="lead">带上你的创意，开启发现之旅！</p>
-                        <p class="lead"><a class="btn btn-lg btn-default" href="{%baseUrl('login')%}">点击开启</a></p>
+                            <div class="form-group">
+                                <input type="password" class="form-control input-lg" id="iptPassword" placeholder="密码">
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-info" data-toggle="tooltip" data-placement="top" title="点击“注册”按钮表示您已经同意服务条款和隐私申明。我们会向您的邮箱发送通知邮件。">注册</button>
+                            已经注册？<a href="#">登录</a>
+                            <div class="form-group pull-right find-index-policy">
+                                <a href="https://help.github.com/terms" target="_blank">服务条款</a>
+                                <a href="https://help.github.com/privacy" target="_blank">隐私申明</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        {%include file="std_footer.tpl"%}
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="illustration">
+                    <img src="/assets/img/ap-screenshot.png" alt="" >
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</header>
+<!-- /Header -->
+
+<!-- Content -->
+<main class="content">
+    <!-- Lead -->
+    <section class="container space-before space-after">
+        <div class="row">
+            <div class="col-sm-10 col-sm-push-1">
+                <h1 class="text-center">What it's all about</h1>
+                <p class="lead text-center">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nam mi odio, gravida at turpis et, porta bibendum justo.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- /Lead -->
+
+
+
+    <!-- Features -->
+    <section class="container space-before">
+
+        <div class="row featurelist space-after">
+            <div class="col-md-5 col-sm-6 col-md-push-1 ">
+                <img class="img-feature img-responsive" src="/assets/img/screen1.png" alt="Sample image">
+            </div>
+            <div class="col-md-5 col-md-push-1 col-sm-6">
+                <h2 class="space-before">The template is quite small, <span class="text-muted">so html code is simple</span></h2>
+                <p>What you have to ask yourself is, do I feel lucky. well do ya' punk? Ever notice how sometimes you come across somebody you shouldn't have f**ked with? Well, I'm that guy. Dyin' ain't much of a livin', boy.</p>
+            </div>
+        </div>
+
+        <div class="row featurelist space-after">
+            <div class="col-md-5 col-sm-6 col-sm-push-6">
+                <img class="img-feature img-responsive" src="/assets/img/screen2.png" alt="Sample image">
+            </div>
+            <div class="col-md-5 col-sm-6 col-md-pull-4 col-sm-pull-6">
+                <h2 class="space-before">Yes, I love cool backgrounds, <span class="text-muted">like the one used here</span></h2>
+                <p>There are 2 more color themes inside this template. You'll just need to uncomment
+                    few lines in the CSS file to activate any of them. </p>
+                <p>Now, continue with our lipsum :)
+                    This is the ak-47 assault rifle, The preferred weapon of your enemy; and it makes a distinctive sound when
+                    fired at you, so remember it. When a naked man's chasing a woman through an alley with a butcher knife and a hard-on, I figure he's not out collecting for the red cross. well, do you have anything to say for yourself? </p>
+            </div>
+        </div>
+
+        <div class="row featurelist space-after">
+            <div class="col-md-5 col-sm-6 col-md-push-1 col-sm-6">
+                <img class="img-feature img-responsive" src="/assets/img/screen3.png" alt="Sample image">
+            </div>
+            <div class="col-md-5 col-md-push-1 col-sm-6">
+                <h2 class="space-before">Violet does look good too!</span></h2>
+                <p>Here. Put that in your report! And "I may have found a way out of here. you want a guarantee, buy a toaster. are you feeling lucky punk dyin' ain't much of a livin', boy. what you have to ask yourself is, Do I feel lucky. Well do ya' punk? You see, in this world there's two kinds of people, my friend: those with loaded guns and those who dig. you dig.</p>
+            </div>
+        </div>
+    </section>
+    <!-- /Features -->
+
+</main>
+
+
+<footer id="footer" class="jumbotron">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-5 col-md-push-1">
+                <h2>Got your interest?</h2>
+                <p>Please tell your friends about SuperAwesome!</p>
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_linkedin"></a>
+                    <a class="addthis_button_google_plusone_share"></a>
+                    <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-536ba34f3dab1f93"></script>
+                <!-- AddThis Button END -->
+
+            </div>
+            <div class="col-md-5 col-md-push-1">
+                <h2>Need help?</h2>
+                <p>For help with this or another template you've downloaded from GetTemplate, please email me at gt@gettemplate.com. </p>
+                <p>If you'd like to report a bug or suggest an improvement, please post and issue on <a href="https://github.com/pozh/">GitHub</a> </p>
+            </div>
+        </div>
+    </section>
+</footer>
+
+<p class="small text-muted text-center">Copyright &copy; 2014, Your name. Design by: <a href="http://gettemplate.com/" rel="designer" title="Free Bootstrap templates">GetTemplate</a></p>
+<br>
+
 </body>
 </html>
-<script type="text/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/js/jquery.mousewheel.min.js"></script>
-<script type="text/javascript" src="/assets/js/nest.js"></script>
