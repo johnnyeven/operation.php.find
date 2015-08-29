@@ -3,7 +3,7 @@ function App() {
 }
 
 App.prototype = {
-    start: function() {
+    start: function(nprogress) {
         $("#find-body").fadeIn();
         var resizeHandler = function() {
             var clientHeight = $(window).height() - 50;
@@ -12,9 +12,8 @@ App.prototype = {
         window.onresize = resizeHandler;
         resizeHandler();
 
-        $(document).pjax('a', 'body');
-        $(document).on('pjax:start', function() { NProgress.start(); });
-        $(document).on('pjax:end',   function() { NProgress.done();  });
+        $(document).on('pjax:start', function() { nprogress.start(); });
+        $(document).on('pjax:end',   function() { nprogress.done();  });
     },
     getAppUrl: function() {
         var script = document.getElementsByTagName("script");
@@ -174,5 +173,5 @@ App.prototype = {
 
 var app = new App();
 if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
-    define( "findApp", ['jquery', 'pjax'],  function () { return app; } );
+    define( "findApp", ['jquery'],  function () { return app; } );
 }

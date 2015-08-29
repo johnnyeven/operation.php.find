@@ -5,11 +5,11 @@
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <title>发现 - 用思想创造价值</title>
     <link rel="shortcut icon" href="/assets/img/gt_favicon.png">
-    <script src="/assets/js/require.js" data-main="/assets/js/find.index.js"></script>
     <!--[if lt IE 9]> <script src="/assets/js/html5shiv.js"></script> <![endif]-->
 </head>
 
 <body id="find-body" style="display: none;">
+<script src="/assets/js/require.js" data-main="/assets/js/find.index.js"></script>
 
 {%include file="std_nav.tpl"%}
 <!-- Header -->

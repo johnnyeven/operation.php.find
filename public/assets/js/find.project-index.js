@@ -2,7 +2,6 @@ require.config({
 	baseUrl: "/assets/js/",
 	paths: {
 		jquery: "jquery-1.11.3.min",
-		pjax: "jquery.pjax",
 		nicescroll: "jquery.nicescroll.min",
 		bootstrap: "bootstrap.min",
 		nprogress: "nprogress",
@@ -27,9 +26,9 @@ require.config({
 });
 
 require(["jquery"], function($) {
-	require(["bootstrap", "nicescroll", "pjax", "nprogress", "prettify", "findApp"], function(bootstrap, nicescroll, pjax, nprogress, prettify, app) {
+	require(["bootstrap", "nicescroll", "nprogress", "prettify", "findApp"], function(bootstrap, nicescroll, nprogress, prettify, app) {
 		$(document).ready(function() {
-			app.start();
+			app.start(nprogress);
 			$("#find-main").niceScroll({
 				cursorcolor: "#666",
 				cursorborder: "none"
@@ -38,7 +37,7 @@ require(["jquery"], function($) {
 				cursorcolor: "#666",
 				cursorborder: "none"
 			});
-			prettify();
+			prettyPrint();
 		});
 	});
 });

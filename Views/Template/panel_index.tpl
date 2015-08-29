@@ -5,25 +5,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>发现 - 李翌文</title>
 	<link rel="shortcut icon" href="/assets/img/gt_favicon.png">
-	<script src="/assets/js/require.js" data-main="/assets/js/find.account-index.js"></script>
 </head>
 <body id="find-body" style="display: none;">
+<script src="/assets/js/require.js" data-main="/assets/js/find.account-index.js"></script>
+<script src="/assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="/assets/js/jquery.pjax.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).pjax('a', 'body');
+</script>
 
 <div class="container-fluid">
 	{%include file="std_nav.tpl"%}
 	<div class="container-fluid find-container">
 		<div id="workarea" class="row">
 			<div class="col-md-2 find-sidebar" id="find-sidebar">
-				<div class="find-project-title">
-					<a href="#">
-						李翌文 <span class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-				</div>
-				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="#"><i class="glyphicon glyphicon-home"></i> 我的项目<span class="badge pull-right">{%$params['projectsCount']%}</span></a></li>
-					<li role="presentation"><a href="#"><i class="glyphicon glyphicon-time"></i> 星标项目</a></li>
-					<li role="presentation"><a href="#"><i class="glyphicon glyphicon-hdd"></i> 组织</a></li>
-				</ul>
+				{%include file="panel_sidebar.tpl"%}
 			</div>
 			<div class="col-md-10 find-main" id="find-main">
 				<div class="row row-padding">

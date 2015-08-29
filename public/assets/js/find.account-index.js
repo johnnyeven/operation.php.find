@@ -2,9 +2,9 @@ require.config({
 	baseUrl: "/assets/js/",
 	paths: {
 		jquery: "jquery-1.11.3.min",
-		pjax: "jquery.pjax",
 		nicescroll: "jquery.nicescroll.min",
 		bootstrap: "bootstrap.min",
+		nprogress: "nprogress",
 		findApp: "find.base"
 	},
 	waitSeconds: 15,
@@ -22,9 +22,9 @@ require.config({
 });
 
 require(["jquery"], function($) {
-	require(["bootstrap", "nicescroll", "pjax", "findApp"], function(bootstrap, nicescroll, pjax, app) {
+	require(["bootstrap", "nicescroll", "nprogress", "findApp"], function(bootstrap, nicescroll, nprogress, app) {
 		$(document).ready(function() {
-			app.start();
+			app.start(nprogress);
 			$("#find-main").niceScroll({
 				cursorcolor: "#666",
 				cursorborder: "none"
