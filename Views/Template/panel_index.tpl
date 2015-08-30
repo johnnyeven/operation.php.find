@@ -5,14 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>发现 - 李翌文</title>
 	<link rel="shortcut icon" href="/assets/img/gt_favicon.png">
+	<script src="/assets/js/require.js" data-main="/assets/js/find.start.js"></script>
+	<!--[if lt IE 9]> <script src="/assets/js/html5shiv.js"></script> <![endif]-->
 </head>
+
 <body id="find-body" style="display: none;">
-<script src="/assets/js/require.js" data-main="/assets/js/find.account-index.js"></script>
-<script src="/assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="/assets/js/jquery.pjax.js" type="text/javascript"></script>
-<script type="text/javascript">
-	$(document).pjax('a', 'body');
-</script>
 
 <div class="container-fluid">
 	{%include file="std_nav.tpl"%}

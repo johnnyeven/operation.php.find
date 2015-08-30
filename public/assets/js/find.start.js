@@ -6,6 +6,8 @@ require.config({
 		bootstrap: "bootstrap.min",
 		bootstrapSelect: "bootstrap-select.min",
 		nprogress: "nprogress",
+		pjax: "jquery.pjax",
+		prettify: "prettify/prettify",
 		findApp: "find.base"
 	},
 	waitSeconds: 15,
@@ -17,7 +19,14 @@ require.config({
 	shim : {
 		findApp: [
 			'css!../css/bootstrap.min.css',
-			'css!../css/bootstrap-select.min',
+			'css!../css/bootstrap-select.min.css',
+			'css!../css/bootstrap-markdown.min.css',
+			'css!../css/desert-cmd.css',
+			'css!../css/font-awesome.min.css',
+			'css!../css/index.css',
+			'css!../css/markdown-theme-dawn.css',
+			'css!../css/messenger.css',
+			'css!../css/messenger-theme-ice.css',
 			'css!../css/nprogress.css',
 			'css!../css/find-theme.css'
 		]
@@ -26,23 +35,17 @@ require.config({
 
 require(["jquery"], function($) {
 	require(["bootstrap", "nicescroll", "nprogress", "findApp"], function(bootstrap, nicescroll, nprogress, app) {
-		require(["bootstrapSelect"], function(bootstrapSelect) {
-			$(document).ready(function() {
+		require(["bootstrapSelect", "prettify"], function(bootstrapSelect, prettify) {
+			$(function() {
 				app.start(nprogress);
-				$("#sltAttribute").selectpicker();
-				$("#sltOperation1").selectpicker();
-				$("#find-main").niceScroll({
-					cursorcolor: "#666",
-					cursorborder: "none"
+
+				$('#illustration').hover( function(){
+					$(this).addClass('expand');
+				}, function(){
+					$(this).removeClass('expand');
 				});
-				$("#find-sidebar").niceScroll({
-					cursorcolor: "#666",
-					cursorborder: "none"
-				});
-				$("#find-sub-sidebar").niceScroll({
-					cursorcolor: "#ccc",
-					cursorborder: "none"
-				});
+
+				prettyPrint();
 			});
 		});
 	});
