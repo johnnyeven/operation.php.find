@@ -38,14 +38,6 @@ require(["jquery"], function($) {
 		require(["bootstrapSelect", "prettify"], function(bootstrapSelect, prettify) {
 			$(function() {
 				app.start(nprogress);
-
-				$('#illustration').hover( function(){
-					$(this).addClass('expand');
-				}, function(){
-					$(this).removeClass('expand');
-				});
-
-				prettyPrint();
 			});
 		});
 	});

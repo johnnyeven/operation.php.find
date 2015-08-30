@@ -45,6 +45,13 @@ App.prototype = {
             cursorcolor: "#ccc",
             cursorborder: "none"
         });
+
+        $('#illustration').hover( function(){
+            $(this).addClass('expand');
+        }, function(){
+            $(this).removeClass('expand');
+        });
+        prettyPrint();
     },
     getAppUrl: function() {
         var script = document.getElementsByTagName("script");
