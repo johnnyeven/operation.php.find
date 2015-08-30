@@ -1,241 +1,155 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>发现 - 用思想创造价值 - 智能管车</title>
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/common.css">
-    <link rel="stylesheet" href="/assets/css/project-task.css">
-    <link rel="stylesheet" href="/assets/css/select2.min.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>发现 - 李翌文</title>
+	<link rel="shortcut icon" href="/assets/img/gt_favicon.png">
+	<script src="/assets/js/require.js" data-main="/assets/js/find.start.js"></script>
+	<!--[if lt IE 9]> <script src="/assets/js/html5shiv.js"></script> <![endif]-->
 </head>
+
 <body>
-<div class="with-shadow"></div>
-<div class="container-fluid site-wrapper">
-    <div class="nest-container">
 
-        {%include file="std_nav.tpl"%}
-        <div class="spaceholder"></div>
-
-        <div class="project-content container">
-            <div class="row project-title">
-                <div class="col-md-12">
-                    <div class="pull-left">
-                        {%include file="project_title.tpl"%}
-                    </div>
-                    <div class="pull-right">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-danger active">取消关注</button>
-                            <button type="button" class="btn btn-danger">申请加入</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    {%include file="project_sidebar.tpl"%}
-                </div>
-                <div class="col-md-10">
-                    <ol class="breadcrumb">
-                        <li><a href="">主页</a></li>
-                        <li class="active">任务</li>
-                    </ol>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><span class="glyphicon glyphicon-check"></span> 任务</h3>
-                                </div>
-                                <table class="table table-hover table-bordered table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th><input type="checkbox"> 编号</th>
-                                            <th>标题</th>
-                                            <th>状态</th>
-                                            <th>模块</th>
-                                            <th>提出方</th>
-                                            <th>指派给</th>
-                                            <th>开始时间</th>
-                                            <th>计划完成时间</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="danger">
-                                            <td><input type="checkbox"> 10001</td>
-                                            <td>微众卡管理</td>
-                                            <td>新建</td>
-                                            <td><a href="#">微众卡管理</a></td>
-                                            <td>项目经理</td>
-                                            <td>李翌文</td>
-                                            <td>2015-04-16</td>
-                                            <td>2015-05-16</td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        <span class="glyphicon glyphicon-wrench"></span> <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-right"></span> 指派给</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-left"></span> 提出方</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-remove"></span> 删除</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="checkbox"> 10002</td>
-                                            <td>订单管理</td>
-                                            <td>已关闭</td>
-                                            <td><a href="#">订单管理</a></td>
-                                            <td>项目经理</td>
-                                            <td>李翌文</td>
-                                            <td>2015-04-16</td>
-                                            <td>2015-05-16</td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        <span class="glyphicon glyphicon-wrench"></span> <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-right"></span> 指派给</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-left"></span> 提出方</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-remove"></span> 删除</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="success">
-                                            <td><input type="checkbox"> 10003</td>
-                                            <td>ETC消费记录管理</td>
-                                            <td>已解决</td>
-                                            <td><a href="#">ETC消费记录管理</a></td>
-                                            <td>项目经理</td>
-                                            <td>李翌文</td>
-                                            <td>2015-04-16</td>
-                                            <td>2015-05-16</td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        <span class="glyphicon glyphicon-wrench"></span> <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-right"></span> 指派给</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-left"></span> 提出方</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-remove"></span> 删除</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="info">
-                                            <td><input type="checkbox"> 10004</td>
-                                            <td>ETC卡管理</td>
-                                            <td>处理中</td>
-                                            <td><a href="#">ETC卡管理</a></td>
-                                            <td>项目经理</td>
-                                            <td>李翌文</td>
-                                            <td>2015-04-16</td>
-                                            <td>2015-05-16</td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        <span class="glyphicon glyphicon-wrench"></span> <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-right"></span> 指派给</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-left"></span> 提出方</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-remove"></span> 删除</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td><input type="checkbox"> 10005</td>
-                                            <td>开发框架搭建</td>
-                                            <td>反馈</td>
-                                            <td><a href="#">开发框架搭建</a></td>
-                                            <td>项目经理</td>
-                                            <td>李翌文</td>
-                                            <td>2015-04-16</td>
-                                            <td>2015-05-16</td>
-                                            <td class="text-center">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                        <span class="glyphicon glyphicon-wrench"></span> <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-right"></span> 指派给</a></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-hand-left"></span> 提出方</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#"><span class="glyphicon glyphicon-remove"></span> 删除</a></li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row table-footer">
-                                    <div class="col-md-6">
-                                        每页显示
-                                        <select id="optPageSize">
-                                            <option>10</option>
-                                            <option selected>20</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        条
-                                    </div>
-                                    <div class="col-md-6 text-right">
-                                        <nav>
-                                            <ul class="pagination">
-                                                <li class="disabled">
-                                                    <a href="#" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {%include file="std_footer.tpl"%}
-    </div>
+<div class="container-fluid">
+	{%include file="std_nav.tpl"%}
+	<div class="container-fluid find-container">
+		<div id="workarea" class="row">
+			<div class="col-md-2 find-sidebar" id="find-sidebar">
+				{%include file="project_sidebar.tpl"%}
+			</div>
+			<div class="col-md-2 find-sub-sidebar" id="find-sub-sidebar">
+				{%include file="project_manage_sub_sidebar.tpl"%}
+			</div>
+			<div class="col-md-8 find-main" id="find-main">
+				<div class="row find-project-main-title">
+					<div class="col-sm-9">
+						需求管理
+					</div>
+					<div class="col-sm-3 text-right">
+						<button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> 新建需求</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading cursor" role="tab" id="headingOne" data-toggle="collapse" href="#colCondition" aria-expanded="true" aria-controls="collapseOne">
+								<h4 class="panel-title">查询条件</h4>
+							</div>
+							<div id="colCondition" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div class="panel-body">
+									<form>
+										<div class="row find-manage-condition">
+											<div class="col-sm-2 find-manage-condition-item">
+												<strong>编号</strong>
+											</div>
+											<div class="col-sm-3 find-manage-condition-item">
+												<select id="sltOperation1" class="selectpicker show-tick" data-width="100%" data-size="5">
+													<option>等于</option>
+												</select>
+											</div>
+											<div class="col-sm-6 find-manage-condition-item">
+												<input type="text" class="form-control" id="iptValue1" placeholder="">
+											</div>
+											<div class="col-sm-1 find-manage-condition-item">
+												<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											</div>
+										</div>
+										<div class="form-actions">
+											<button type="submit" class="btn btn-primary">应用</button>
+											<button type="button" class="btn btn-danger">清除</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">提交<span class="badge">5</span></h3>
+							</div>
+							<ul class="list-group">
+								<li class="list-group-item">
+									<div class="find-commit-message">
+										<strong><span class="label label-danger">新建</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<span class="pull-right">#43987</span>
+									</div>
+									<div class="find-commit-user">
+										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
+										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="find-commit-message">
+										<strong><span class="label label-success">解决</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<span class="pull-right">#43988</span>
+									</div>
+									<div class="find-commit-user">
+										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
+										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="find-commit-message">
+										<strong><span class="label label-info">处理</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<span class="pull-right">#43988</span>
+									</div>
+									<div class="find-commit-user">
+										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
+										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="find-commit-message">
+										<strong><span class="label label-warning">反馈</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<span class="pull-right">#43988</span>
+									</div>
+									<div class="find-commit-user">
+										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
+										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+									</div>
+								</li>
+								<li class="list-group-item">
+									<div class="find-commit-message">
+										<strong><span class="label label-default">关闭</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<span class="pull-right">#43988</span>
+									</div>
+									<div class="find-commit-user">
+										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
+										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<nav class="text-center">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 </body>
 </html>
-<script type="text/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/js/select2.full.min.js"></script>
-<script type="text/javascript" src="/assets/js/project-task.js"></script>

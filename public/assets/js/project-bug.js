@@ -1,3 +1,0 @@
-$(function() {
-    $("#optPageSize").select2();
-});

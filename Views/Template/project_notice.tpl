@@ -1,116 +1,145 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>发现 - 用思想创造价值 - 智能管车</title>
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/common.css">
-    <link rel="stylesheet" href="/assets/css/project-notice.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>发现 - 李翌文</title>
+	<link rel="shortcut icon" href="/assets/img/gt_favicon.png">
+	<script src="/assets/js/require.js" data-main="/assets/js/find.start.js"></script>
+	<!--[if lt IE 9]> <script src="/assets/js/html5shiv.js"></script> <![endif]-->
 </head>
+
 <body>
-<div class="with-shadow"></div>
-<div class="container-fluid site-wrapper">
-    <div class="nest-container">
 
-        {%include file="std_nav.tpl"%}
-        <div class="spaceholder"></div>
+<div class="container-fluid">
+	{%include file="std_nav.tpl"%}
+	<div class="container-fluid find-container">
+		<div id="workarea" class="row">
+			<div class="col-md-2 find-sidebar" id="find-sidebar">
+				{%include file="project_sidebar.tpl"%}
+			</div>
+			<div class="col-md-2 find-sub-sidebar" id="find-sub-sidebar">
+				{%include file="project_notice_sub_sidebar.tpl"%}
+			</div>
+			<div class="col-md-8 find-main" id="find-main">
+				<div class="row find-project-main-title text-center">
 
-        <div class="project-content container">
-            <div class="row project-title">
-                <div class="col-md-12">
-                    <div class="pull-left">
-                        {%include file="project_title.tpl"%}
-                    </div>
-                    <div class="pull-right">
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-danger active">取消关注</button>
-                            <button type="button" class="btn btn-danger">申请加入</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">
-                    {%include file="project_sidebar.tpl"%}
-                </div>
-                <div class="col-md-10">
-                    <ol class="breadcrumb">
-                        <li><a href="">主页</a></li>
-                        <li class="active">活动</li>
-                    </ol>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <span class="glyphicon glyphicon-star"></span>
-                                        </div>
-                                        <div class="col-md-11">
-                                            <a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <span class="glyphicon glyphicon-comment"></span>
-                                        </div>
-                                        <div class="col-md-11">
-                                            <p><small>3 天前</small></p>
-                                            <p><a href="#">李翌文</a> 对 <a href="#">智能管车</a> 有新评论</p>
-                                            <div class="row">
-                                                <div class="col-md-1">
-                                                    <a href=""><img class="img-circle" src="/assets/images/468149.png" width="40" height="40"></a>
-                                                </div>
-                                                <div class="col-md-11">
-                                                    <p>我觉得这个项目做的很不错！</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <span class="glyphicon glyphicon-question-sign"></span>
-                                        </div>
-                                        <div class="col-md-11">
-                                            <p><small>3 天前</small></p>
-                                            <p><a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40293</a> 状态变更为 处理中</p>
-                                            <div class="row">
-                                                <div class="col-md-1">
-                                                    <a href=""><img class="img-circle" src="/assets/images/468149.png" width="40" height="40"></a>
-                                                </div>
-                                                <div class="col-md-11">
-                                                    <p><a href="#">#40293</a> 点击登录输入正确的用户名和密码也无法登录</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item text-center">
-                                    <button class="btn btn-success form-control">获取更多...</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {%include file="std_footer.tpl"%}
-    </div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body row">
+						<div class="col-sm-1">
+							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
+						</div>
+						<div class="col-sm-11">
+							<div class="row">
+								<div class="col-sm-8">
+									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
+								</div>
+								<div class="col-sm-4 text-right">
+									<p><small class="find-notice-time">22 分钟前</small></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body row">
+						<div class="col-sm-1">
+							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
+						</div>
+						<div class="col-sm-11">
+							<div class="row">
+								<div class="col-sm-8">
+									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
+								</div>
+								<div class="col-sm-4 text-right">
+									<p><small class="find-notice-time">22 分钟前</small></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body row">
+						<div class="col-sm-1">
+							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
+						</div>
+						<div class="col-sm-11">
+							<div class="row">
+								<div class="col-sm-8">
+									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
+								</div>
+								<div class="col-sm-4 text-right">
+									<p><small class="find-notice-time">22 分钟前</small></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body row">
+						<div class="col-sm-1">
+							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
+						</div>
+						<div class="col-sm-11">
+							<div class="row">
+								<div class="col-sm-8">
+									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
+								</div>
+								<div class="col-sm-4 text-right">
+									<p><small class="find-notice-time">22 分钟前</small></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body row">
+						<div class="col-sm-1">
+							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
+						</div>
+						<div class="col-sm-11">
+							<div class="row">
+								<div class="col-sm-8">
+									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
+								</div>
+								<div class="col-sm-4 text-right">
+									<p><small class="find-notice-time">22 分钟前</small></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="btn btn-lg btn-block btn-info">加载更多...</a>
+			</div>
+		</div>
+	</div>
 </div>
 
 </body>
 </html>
-<script type="text/javascript" src="/assets/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
