@@ -3,6 +3,49 @@ function App() {
 }
 
 App.prototype = {
+    start: function(nprogress) {
+        $("#find-body").fadeIn();
+        this.initUI();
+
+        var that = this;
+        $.pjax({
+            selector: 'a',
+            container: 'body', //内容替换的容器
+            show: '',  //展现的动画，支持默认和fade, 可以自定义动画方式，这里为自定义的function即可。
+            cache: false,  //是否使用缓存
+            storage: true,  //是否使用本地存储
+            titleSuffix: '', //标题后缀
+            filter: function(){},
+            callback: function(){
+                that.initUI();
+            }
+        })
+        $(document).on('pjax.start', function() { nprogress.start(); });
+        $(document).on('pjax.end',   function() { nprogress.done();  });
+    },
+    initUI: function() {
+        var resizeHandler = function() {
+            var clientHeight = $(window).height() - 50;
+            $("#workarea").height(clientHeight);
+        };
+        window.onresize = resizeHandler;
+        resizeHandler();
+
+        $("#sltAttribute").selectpicker();
+        $("#sltOperation1").selectpicker();
+        $("#find-main").niceScroll({
+            cursorcolor: "#666",
+            cursorborder: "none"
+        });
+        $("#find-sidebar").niceScroll({
+            cursorcolor: "#666",
+            cursorborder: "none"
+        });
+        $("#find-sub-sidebar").niceScroll({
+            cursorcolor: "#ccc",
+            cursorborder: "none"
+        });
+    },
     getAppUrl: function() {
         var script = document.getElementsByTagName("script");
         for (var i = 0; i < script.length; i++) {
@@ -161,5 +204,5 @@ App.prototype = {
 
 var app = new App();
 if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
-    define( "findApp", ['jquery'],  function () { return app; } );
+    define( "findApp", ['jquery', 'pjax'],  function () { return app; } );
 }

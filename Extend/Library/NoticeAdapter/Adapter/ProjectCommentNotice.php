@@ -17,7 +17,7 @@ use Foundation\Support\Facades\View;
 
 class ProjectCommentNotice extends BaseNotice
 {
-    public function format()
+    public function format($light = FALSE)
     {
         $extend = $this->_notice->project_extends;
         $comment = '';
@@ -26,9 +26,8 @@ class ProjectCommentNotice extends BaseNotice
             $extend = json_decode($extend, TRUE);
             $comment = $extend['comment'];
         }
-        echo View::render('notice/notice_project_comment', [
+        echo View::render('notice/notice_project_comment' . ($light ? '_light' : ''), [
             'notice'    =>  $this->_notice,
-            'account'   =>  $this->_account,
             'comment'   =>  $comment
         ], TRUE);
     }

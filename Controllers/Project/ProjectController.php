@@ -13,13 +13,17 @@
 
 namespace Controllers\Project;
 
+use Extend\Library\NoticeAdapter\NoticeAdapter;
 use Foundation\Controller;
+use Foundation\Database\Model\Model;
 use Foundation\Support\ErrorManager;
 use Foundation\Support\Facades\Loader;
 use Foundation\Support\Facades\Request;
 use Foundation\Support\Facades\View;
 use Models\Account;
 use Models\Project;
+use Models\ProjectMember;
+use Models\ProjectRole;
 
 if(!defined('OPERATIONPHP')) ErrorManager::getInstance()->throwException(10001);
 
@@ -46,10 +50,39 @@ class ProjectController extends Controller
 
 	public function index($userName, $projectName)
 	{
+		/**
+		 * @var \Proxy\ProjectProxy $projectProxy
+		 */
+		$projectProxy = Loader::proxy('ProjectProxy');
+		$memberCount = $projectProxy->getProjectMemberCount($this->project->id);
+		$roles = $projectProxy->getProjectMemberWithRole($this->project->id);
+
+		/**
+		 * @var \Proxy\NoticeProxy $noticeProxy
+		 */
+		$noticeProxy = Loader::proxy('NoticeProxy');
+		$notices = $noticeProxy->getNoticeByProject($this->project->id, 5);
+		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
+		$noticeFormats = [];
+		foreach($notices as $notice)
+		{
+			$noticeFormats[] = NoticeAdapter::newNotice($notice);
+		}
+
+		/**
+		 * @var Model/Repository $repo
+		 */
+		$repo = $this->project->repository();
+		$readme = $repo->readme();
+
 		View::render('project_index', array(
 			'pageName'      =>  'project_index',
 			'account'       =>  $this->account,
-			'project'       =>  $this->project
+			'project'       =>  $this->project,
+			'memberCount'	=>	$memberCount,
+			'roles'			=>	$roles,
+			'notices'		=>	$noticeFormats,
+			'readme'		=>	$readme
 		));
 	}
 

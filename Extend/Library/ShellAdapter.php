@@ -16,6 +16,8 @@ namespace Extend\Library;
 
 use Foundation\Application;
 use Foundation\Support\Facades\Exception;
+use Models\Repository;
+use Symfony\Component\Process\Process;
 
 class ShellAdapter
 {
@@ -35,9 +37,46 @@ class ShellAdapter
         }
     }
 
+    public function getRepoHome()
+    {
+        $command = 'get-repo-home';
+        return $this->run($command);
+    }
+
     public function createProject($identifier)
     {
-        $command = $this->_shellCmd . 'create-project ' . $identifier;
-        shell_exec($command);
+        $command = 'create-project ' . $identifier;
+        return $this->run($command);
+    }
+
+    public function getCurrentBranch(Repository $repo)
+    {
+        $command = 'current-branch';
+        return $this->run($command, $repo);
+    }
+
+    public function getBlob(Repository $repo, $branch, $path)
+    {
+        $command = 'get-blob ' . $branch . ':"' . $path . '"';
+        $result = $this->run($command, $repo);
+        return $result;
+    }
+
+    public function run($command, Repository $repo = null)
+    {
+        $repoPath = '';
+        if(!is_null($repo))
+        {
+            $repoPath = ' --repoPath "' . $repo->getPath() . '"';
+        }
+        $process = new Process($this->_shellCmd . ' ' . $command . $repoPath);
+        $process->setTimeout(180);
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new \RuntimeException($process->getErrorOutput());
+        }
+
+        return $process->getOutput();
     }
 }

@@ -4,13 +4,13 @@
 }
 
 .markdown-content code {
-    color: #AAA;
-    background-color: #222;
+    color: #666;
+    background-color: #ccc;
     padding:5px;
 }
 
 .markdown-content hr {
-    border-top: 1px solid #333;
+    border-top: 1px solid #ddd;
 }
 
 .markdown-content a {

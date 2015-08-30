@@ -12,5 +12,8 @@ return array(
     'authAccountLoginWithException'           =>  "Extend\\Hooks\\AccountLoginAuthWithExceptionHook",
     'authAccountLoginWithOutException'           =>  "Extend\\Hooks\\AccountLoginAuthWithOutExceptionHook",
 
-    'apiCheckCode'          =>  "Extend\\Hooks\\ApiCheckCodeHook"
+    'apiCheckCode'          =>  "Extend\\Hooks\\ApiCheckCodeHook",
+
+    //Turbolink
+    'beforeOutput'          =>  "Extend\\Hooks\\CheckTurbolink"
 );

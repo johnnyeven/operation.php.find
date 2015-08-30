@@ -15,5 +15,5 @@ namespace Extend\Library\NoticeAdapter\Adapter;
 
 interface INoticeAdapter
 {
-    public function format();
+    public function format($light = FALSE);
 }
