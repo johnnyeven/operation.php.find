@@ -49,15 +49,54 @@ class ShellAdapter
         return $this->run($command);
     }
 
+    public function hasCommit(Repository $repo, $hash)
+    {
+        $command = 'has-commit ' . $hash;
+        return $this->run($command, $repo);
+    }
+
+    public function getBranches(Repository $repo)
+    {
+        $command = 'get-branches';
+        return $this->run($command, $repo);
+    }
+
+    public function getTags(Repository $repo)
+    {
+        $command = 'get-tags';
+        return $this->run($command, $repo);
+    }
+
     public function getCurrentBranch(Repository $repo)
     {
         $command = 'current-branch';
         return $this->run($command, $repo);
     }
 
-    public function getBlob(Repository $repo, $branch, $path)
+    public function getTree(Repository $repo, $hash)
     {
-        $command = 'get-blob ' . $branch . ':"' . $path . '"';
+        $command = 'get-tree ' . $hash;
+        $result = $this->run($command, $repo);
+        return $result;
+    }
+
+    public function getBlob(Repository $repo, $hash)
+    {
+        $command = 'get-blob ' . $hash;
+        $result = $this->run($command, $repo);
+        return $result;
+    }
+
+    public function getCommit(Repository $repo, $commitHash)
+    {
+        $command = 'get-commit ' . $commitHash;
+        $result = $this->run($command, $repo);
+        return $result;
+    }
+
+    public function getLastCommit(Repository $repo, $branch, $hash)
+    {
+        $command = 'get-last-commit ' . $branch . ' ' . $hash;
         $result = $this->run($command, $repo);
         return $result;
     }
@@ -69,6 +108,7 @@ class ShellAdapter
         {
             $repoPath = ' --repoPath "' . $repo->getPath() . '"';
         }
+        logDebug($this->_shellCmd . ' ' . $command . $repoPath);
         $process = new Process($this->_shellCmd . ' ' . $command . $repoPath);
         $process->setTimeout(180);
         $process->run();

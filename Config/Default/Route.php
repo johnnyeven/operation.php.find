@@ -44,6 +44,9 @@ Router::group([
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/task', 'Project/ProjectController.task');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/wiki', 'Project/ProjectController.wiki');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/document', 'Project/ProjectController.document');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/tree(/.*)?', 'Project/RepoController.tree');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/tree_logs', 'Project/RepoController.treeLogs');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/blob(/.*)?', 'Project/RepoController.blob');
 });
 
 Router::group([

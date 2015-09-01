@@ -23,6 +23,9 @@
 				<li><a href="#">特性</a></li>
 				<li><a href="#">探索</a></li>
 			</ul>
+			<div class="navbar-right find-index-nav-loading">
+				<i class="fa fa-ellipsis-v"></i>
+			</div>
 			<div class="navbar-right find-index-nav-button">
 				<a class="btn btn-info" href="#">注册</a>
 				<a class="btn btn-default" href="{%baseUrl('login')%}">登录</a>

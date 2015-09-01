@@ -25,117 +25,28 @@
 				<div class="row find-project-main-title text-center">
 
 				</div>
-				<div class="panel panel-default">
-					<div class="panel-body row">
-						<div class="col-sm-1">
-							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
-						</div>
-						<div class="col-sm-11">
-							<div class="row">
-								<div class="col-sm-8">
-									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-								</div>
-								<div class="col-sm-4 text-right">
-									<p><small class="find-notice-time">22 分钟前</small></p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
-								</div>
-							</div>
-						</div>
+				<div class="find-notice-checkbox">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-info">
+							<input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-upload"></span> 推送通知
+						</label>
+						<label class="btn btn-info">
+							<input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-download-alt"></span> 合并通知
+						</label>
+						<label class="btn btn-info">
+							<input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-comment"></span> 评论通知
+						</label>
+						<label class="btn btn-info">
+							<input type="checkbox" autocomplete="off"><span class="glyphicon glyphicon-th-list"></span> 管理通知
+						</label>
 					</div>
+					<button type="button" class="btn btn-info pull-right"><span class="fa fa-rss"></span></button>
 				</div>
-				<div class="panel panel-default">
-					<div class="panel-body row">
-						<div class="col-sm-1">
-							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
-						</div>
-						<div class="col-sm-11">
-							<div class="row">
-								<div class="col-sm-8">
-									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-								</div>
-								<div class="col-sm-4 text-right">
-									<p><small class="find-notice-time">22 分钟前</small></p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-body row">
-						<div class="col-sm-1">
-							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
-						</div>
-						<div class="col-sm-11">
-							<div class="row">
-								<div class="col-sm-8">
-									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-								</div>
-								<div class="col-sm-4 text-right">
-									<p><small class="find-notice-time">22 分钟前</small></p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-body row">
-						<div class="col-sm-1">
-							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
-						</div>
-						<div class="col-sm-11">
-							<div class="row">
-								<div class="col-sm-8">
-									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-								</div>
-								<div class="col-sm-4 text-right">
-									<p><small class="find-notice-time">22 分钟前</small></p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-body row">
-						<div class="col-sm-1">
-							<img class="img-circle" src="/assets/img/468149.png" width="32" height="32">
-						</div>
-						<div class="col-sm-11">
-							<div class="row">
-								<div class="col-sm-8">
-									<a href="#">李翌文</a> 关注了项目 <a href="#">智能管车</a>
-								</div>
-								<div class="col-sm-4 text-right">
-									<p><small class="find-notice-time">22 分钟前</small></p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<a href="#">李翌文</a> 将 <a href="#">智能管车</a> 问题 <a href="#">#40413</a> 状态变更为 已解决
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<a href="#" class="btn btn-lg btn-block btn-info">加载更多...</a>
+				<ul class="account-notice-list">
+				{%foreach $params['notices'] as $notice%}
+					<li>{%$notice->format()%}</li>
+				{%/foreach%}
+				</ul>
 			</div>
 		</div>
 	</div>

@@ -51,25 +51,6 @@ class ProjectController extends Controller
 	public function index($userName, $projectName)
 	{
 		/**
-		 * @var \Proxy\ProjectProxy $projectProxy
-		 */
-		$projectProxy = Loader::proxy('ProjectProxy');
-		$memberCount = $projectProxy->getProjectMemberCount($this->project->id);
-		$roles = $projectProxy->getProjectMemberWithRole($this->project->id);
-
-		/**
-		 * @var \Proxy\NoticeProxy $noticeProxy
-		 */
-		$noticeProxy = Loader::proxy('NoticeProxy');
-		$notices = $noticeProxy->getNoticeByProject($this->project->id, 5);
-		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
-		$noticeFormats = [];
-		foreach($notices as $notice)
-		{
-			$noticeFormats[] = NoticeAdapter::newNotice($notice);
-		}
-
-		/**
 		 * @var Model/Repository $repo
 		 */
 		$repo = $this->project->repository();
@@ -79,9 +60,6 @@ class ProjectController extends Controller
 			'pageName'      =>  'project_index',
 			'account'       =>  $this->account,
 			'project'       =>  $this->project,
-			'memberCount'	=>	$memberCount,
-			'roles'			=>	$roles,
-			'notices'		=>	$noticeFormats,
 			'readme'		=>	$readme
 		));
 	}
@@ -106,10 +84,23 @@ class ProjectController extends Controller
 
 	public function notice($userName, $projectName)
 	{
+		/**
+		 * @var \Proxy\NoticeProxy $noticeProxy
+		 */
+		$noticeProxy = Loader::proxy('NoticeProxy');
+		$notices = $noticeProxy->getNoticeByProject($this->project->id, 5);
+		Loader::library('NoticeAdapter/NoticeAdapter', null, FALSE);
+		$noticeFormats = [];
+		foreach($notices as $notice)
+		{
+			$noticeFormats[] = NoticeAdapter::newNotice($notice);
+		}
+
 		View::render('project_notice', array(
 			'pageName'      =>  'project_notice',
             'account'       =>  $this->account,
-            'project'       =>  $this->project
+            'project'       =>  $this->project,
+			'notices'		=>	$noticeFormats
 		));
 	}
 

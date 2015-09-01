@@ -9,17 +9,18 @@ App.prototype = {
 
         var that = this;
         $.pjax({
+            timeout: 60000,
             selector: 'a',
-            container: 'body', //内容替换的容器
-            show: '',  //展现的动画，支持默认和fade, 可以自定义动画方式，这里为自定义的function即可。
-            cache: false,  //是否使用缓存
-            storage: true,  //是否使用本地存储
-            titleSuffix: '', //标题后缀
-            filter: function(){},
+            container: 'body',
+            show: '',
+            cache: false,
+            storage: false,
+            titleSuffix: '',
+            //filter: function(){},
             callback: function(){
                 that.initUI();
             }
-        })
+        });
         $(document).on('pjax.start', function() { nprogress.start(); });
         $(document).on('pjax.end',   function() { nprogress.done();  });
     },
@@ -31,11 +32,15 @@ App.prototype = {
         window.onresize = resizeHandler;
         resizeHandler();
 
-        $("#sltAttribute").selectpicker();
-        $("#sltOperation1").selectpicker();
-        $("#find-main").niceScroll({
+        $("select.selectpicker").selectpicker();
+        $(".nicescroll").niceScroll({
             cursorcolor: "#666",
             cursorborder: "none"
+        });
+        $("#find-main").niceScroll({
+            cursorcolor: "#666",
+            cursorborder: "none",
+            mousescrollstep: 50
         });
         $("#find-sidebar").niceScroll({
             cursorcolor: "#666",

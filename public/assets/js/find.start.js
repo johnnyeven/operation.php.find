@@ -23,12 +23,12 @@ require.config({
 			'css!../css/bootstrap-markdown.min.css',
 			'css!../css/desert-cmd.css',
 			'css!../css/font-awesome.min.css',
-			'css!../css/index.css',
 			'css!../css/markdown-theme-dawn.css',
 			'css!../css/messenger.css',
 			'css!../css/messenger-theme-ice.css',
 			'css!../css/nprogress.css',
-			'css!../css/find-theme.css'
+			'css!../css/find-theme.css',
+			'css!../css/index.css',
 		]
 	}
 });
