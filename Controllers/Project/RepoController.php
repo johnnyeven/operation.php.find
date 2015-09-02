@@ -40,8 +40,6 @@ class RepoController extends Controller
     function __construct()
     {
         parent::__construct();
-        Loader::helper('Url');
-        View::registerFunction('baseUrl', 'baseUrl');
         $this->account = Request::getParameter('account');
         $this->project = Request::getParameter('project');
     }
@@ -59,15 +57,14 @@ class RepoController extends Controller
         $repo = $repoProxy->getRepo();
         list($branch, $path) = $repoProxy->extractRef($repo, $branch, $path);
 
-        $tree = $repoProxy->getTree($branch, $path);
-        $files = $tree->output();
+        $tree = $repoProxy->getTreeOutput($branch, $path);
 
         View::render('project_repo_tree', array(
             'pageName'      =>  'project_repo_tree',
             'account'       =>  $this->account,
             'project'       =>  $this->project,
             'branch'        =>  $branch,
-            'files'         =>  $files
+            'files'         =>  $tree
         ));
     }
 }

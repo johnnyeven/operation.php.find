@@ -11,6 +11,9 @@
  * @link
  */
 
+use Foundation\Support\Facades\Request;
+use Foundation\Support\Facades\View;
+
 if(!function_exists('fetchRepoIdentifier'))
 {
     function fetchRepoIdentifier($repoPath)
@@ -25,5 +28,25 @@ if(!function_exists('fetchRepoIdentifier'))
             }
         }
         return null;
+    }
+}
+
+if(!function_exists('getDefaultBranch'))
+{
+    function getDefaultBranch()
+    {
+        /**
+         * @var \Models\Project $project
+         */
+        $project = Request::getParameter('project');
+        if(!empty($project))
+        {
+            $repo = $project->repository();
+            if(!empty($repo))
+            {
+                return $repo->getDefaultBranch();
+            }
+        }
+        return 'master';
     }
 }

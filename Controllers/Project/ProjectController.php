@@ -42,8 +42,6 @@ class ProjectController extends Controller
 	function __construct()
 	{
 		parent::__construct();
-		Loader::helper('Url');
-		View::registerFunction('baseUrl', 'baseUrl');
 		$this->account = Request::getParameter('account');
 		$this->project = Request::getParameter('project');
 	}
@@ -51,10 +49,12 @@ class ProjectController extends Controller
 	public function index($userName, $projectName)
 	{
 		/**
-		 * @var Model/Repository $repo
+		 * @var \Proxy\RepositoryProxy $repoProxy
 		 */
-		$repo = $this->project->repository();
-		$readme = $repo->readme();
+		$repoProxy = Loader::proxy('RepositoryProxy', [
+			'project'   =>  $this->project
+		]);
+		$readme = $repoProxy->getReadme();
 
 		View::render('project_index', array(
 			'pageName'      =>  'project_index',

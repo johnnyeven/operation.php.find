@@ -17,6 +17,7 @@ namespace Proxy;
 use Foundation\Proxy;
 use Foundation\Support\Facades\Exception;
 use Foundation\Support\Facades\Loader;
+use Models\Account;
 use Models\Commit;
 use Models\Project;
 use Models\Repository;
@@ -25,11 +26,20 @@ use Models\Tree;
 class RepositoryProxy extends Proxy
 {
     /**
+     * @var Account
+     */
+    private $_account;
+    /**
      * @var Project
      */
     private $_project;
 
     private $_repo;
+
+    /**
+     * @var \Foundation\Library\Cache
+     */
+    private $_cache;
 
     function __construct($param)
     {
@@ -38,7 +48,9 @@ class RepositoryProxy extends Proxy
         if(isset($param['project']))
         {
             $this->_project = $param['project'];
+            $this->_account = $this->_project->account;
             $this->_repo = $this->_project->repository();
+            $this->_cache = Loader::library('Cache');
         }
         else
         {
@@ -174,6 +186,31 @@ class RepositoryProxy extends Proxy
         return array($branch, $tree);
     }
 
+    public function getReadme()
+    {
+        $repo = $this->_cache->get($this->_buildRepoCacheId());
+        if(isset($repo['readme']))
+        {
+            $readme = $repo['readme'];
+        }
+        else
+        {
+            $readme = $this->_repo->readme();
+            if(!is_null($repo))
+            {
+                $repo['readme'] = $readme;
+            }
+            else
+            {
+                $repo = [
+                    'readme'    =>  $readme
+                ];
+            }
+            $this->_cache->set($this->_buildRepoCacheId(), $repo);
+        }
+        return $readme;
+    }
+
     public function getTree($branch, $path)
     {
         $tree = new Tree($branch, $path, null, $this->_repo);
@@ -181,5 +218,27 @@ class RepositoryProxy extends Proxy
         $tree->parseLastCommit();
 
         return $tree;
+    }
+
+    public function getTreeOutput($branch, $path)
+    {
+        $tree = $this->_cache->get($this->_buildTreeCacheId($path));
+        if(is_null($tree))
+        {
+            $tree = $this->getTree($branch, $path)->output();
+            $this->_cache->set($this->_buildTreeCacheId($path), $tree);
+        }
+
+        return $tree;
+    }
+
+    private function _buildRepoCacheId()
+    {
+        return 'repo.' . $this->_account->identifier . '/' . $this->_project->identifier;
+    }
+
+    private function _buildTreeCacheId($path)
+    {
+        return 'tree.' . $this->_account->identifier . '/' . $this->_project->identifier . '/' . $path;
     }
 }

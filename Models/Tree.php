@@ -199,7 +199,7 @@ class Tree
                         'name'  =>  $author->getName(),
                         'email' =>  $author->getEmail()
                     ],
-                    'message'   =>  $node->getLastCommit()->getMessage(),
+                    'message'   =>  $commit->getMessage(),
                     'time'      =>  $date->getTimestamp()
                 ];
                 $files[] = $file;
@@ -223,7 +223,7 @@ class Tree
                         'name'  =>  $author->getName(),
                         'email' =>  $author->getEmail()
                     ],
-                    'message'   =>  $node->getLastCommit()->getMessage(),
+                    'message'   =>  $commit->getMessage(),
                     'time'      =>  $date->getTimestamp()
                 ];
                 $folders[] = $folder;
@@ -247,7 +247,7 @@ class Tree
                         'name'  =>  $author->getName(),
                         'email' =>  $author->getEmail()
                     ],
-                    'message'   =>  $node->getLastCommit()->getMessage(),
+                    'message'   =>  $commit->getMessage(),
                     'time'      =>  $date->getTimestamp()
                 ];
                 $folders[] = $folder;
@@ -257,27 +257,48 @@ class Tree
         // Little hack to make folders appear before files
         $files = array_merge($folders, $files);
 
-        $folder['type'] = 'folder';
-        $folder['name'] = $node->getName();
-        $folder['size'] = '';
-        $folder['mode'] = $node->getMode();
-        $folder['hash'] = $node->getHash();
-        $commit = $node->getLastCommit();
+        if(!empty($this->_path))
+        {
+            $parent['type'] = 'folder';
+            $parent['name'] = '..';
+            $parent['size'] = '';
+            $parent['mode'] = '';
+            $parent['hash'] = '';
+            $parent['path'] = $this->_getParentPath();
+            $parent['commit'] = [
+                'hash'      =>  '',
+                'shorthash' =>  '',
+                'author'    =>  [
+                    'name'  =>  '',
+                    'email' =>  ''
+                ],
+                'message'   =>  '',
+                'time'      =>  ''
+            ];
+            array_unshift($files, $parent);
+        }
+
+        $current['type'] = 'folder';
+        $current['name'] = $this->getName();
+        $current['size'] = '';
+        $current['mode'] = $this->getMode();
+        $current['hash'] = $this->getHash();
+        $commit = $this->getLastCommit();
         $author = $commit->getAuthor();
         $date = $commit->getDate();
-        $folder['commit'] = [
+        $current['commit'] = [
             'hash'      =>  $commit->getHash(),
             'shorthash' =>  $commit->getShortHash(),
             'author'    =>  [
                 'name'  =>  $author->getName(),
                 'email' =>  $author->getEmail()
             ],
-            'message'   =>  $node->getLastCommit()->getMessage(),
+            'message'   =>  $commit->getMessage(),
             'time'      =>  $date->getTimestamp()
         ];
 
         return [
-            'current'   =>  $folder,
+            'current'   =>  $current,
             'children'  =>  $files
         ];
     }
@@ -367,6 +388,17 @@ class Tree
     public function setLastCommit($lastCommit)
     {
         $this->_lastCommit = $lastCommit;
+    }
+
+    private function _getParentPath()
+    {
+        if(empty($this->_path))
+        {
+            return '';
+        }
+        $paths = explode('/', $this->_path);
+        array_pop($paths);
+        return implode('/', $paths);
     }
 
 }

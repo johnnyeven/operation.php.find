@@ -32,6 +32,7 @@ return array(
     'error305'     =>  'dbdriver_unsupported_function',
     'error306'     =>  'dbdriver_illegal_query',
     'error307'     =>  'dbdriver_query_failed',
+    'error308'     =>  'dbdriver_not_support_function',
 
     'error401'     =>  'ar_illegal_query',
     'error402'     =>  'ar_invalid_function_type',
@@ -45,6 +46,7 @@ return array(
 
     'error601'     =>  'cache_invalid_driver',
     'error602'     =>  'cache_invalid_config',
+    'error603'     =>  'cache_mongo_invalid_collection',
 
     'error701'     =>  'cache_redisdriver_connect_failed',
 
