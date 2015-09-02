@@ -30,7 +30,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12 table-responsive">
-						<table class="table table-hover">
+						<table class="table table-hover find-repo-table">
 							<thead>
 							<tr>
 								<th>文件名</th>

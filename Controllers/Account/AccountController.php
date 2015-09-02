@@ -35,8 +35,6 @@ class AccountController extends Controller
 	function __construct()
 	{
 		parent::__construct();
-		Loader::helper('Url');
-		View::registerFunction('baseUrl', 'baseUrl');
 
 		$this->validation = Loader::library('Validation');
 		$this->validation->load('Account');

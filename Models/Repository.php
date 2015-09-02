@@ -36,6 +36,14 @@ class Repository
         $this->_currentBranch = $currentBranch;
     }
 
+    /**
+     * @return string
+     */
+    public function getDefaultBranch()
+    {
+        return $this->_defaultBranch;
+    }
+
     public function setCurrentBranch($currentBranch)
     {
         $this->_currentBranch = $currentBranch;
