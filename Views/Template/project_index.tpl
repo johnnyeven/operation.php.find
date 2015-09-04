@@ -22,9 +22,9 @@
 				{%include file="project_title.tpl"%}
 				<div class="row text-center">
 					<div class="col-md-12">
-						<img class="img-circle" src="/assets/img/gitlab-logo-square.png" width="100" height="100">
-						<h1>Operation.PHP Framework</h1>
-						<h1><small>一个轻量级的、高效的、敏捷的MVC框架，采用PHP编写</small></h1>
+						<img class="img-circle" src="{%if empty($params['project']->avatar_path)%}/assets/img/find-icon.png{%else%}{%$params['project']->avatar_path%}{%/if%}" width="100" height="100">
+						<h1>{%$params['project']->name%}</h1>
+						<h1><small>{%$params['project']->description%}</small></h1>
 						<div class="find-project-index-button">
 							<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-heart"></i> 喜欢</a>
 							<a href="#" class="btn btn-info"><i class="glyphicon glyphicon-download-alt"></i> 下载</a>

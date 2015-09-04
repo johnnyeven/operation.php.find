@@ -63,4 +63,43 @@ class DateTime extends \DateTime
 
         return false;
     }
+
+    public function diffFromNow()
+    {
+        return time() - $this->getTimestamp();
+    }
+
+    public function diffFromNowHumanReadable()
+    {
+        $diff = $this->diffFromNow();
+        $year = $diff / (60*60*24*30*12);
+        if($year > 1)
+        {
+            return intval($year) . ' 年前';
+        }
+        $month = $diff / (60*60*24*30);
+        if($month > 1)
+        {
+            return intval($month) . ' 月前';
+        }
+        $day = $diff / (60*60*24);
+        if($day > 1)
+        {
+            return intval($day) . ' 天前';
+        }
+        $hour = $diff / (60*60);
+        if($hour > 1)
+        {
+            return intval($hour) . ' 小时前';
+        }
+        $minutes = $diff / 60;
+        if($minutes > 1)
+        {
+            return intval($minutes) . ' 分钟前';
+        }
+        if($diff > 1)
+        {
+            return intval($diff) . ' 秒前';
+        }
+    }
 }

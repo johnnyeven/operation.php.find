@@ -7,7 +7,7 @@
 <ul class="nav nav-pills nav-stacked">
 	<li role="presentation"{%if $params['pageName'] == 'project_index'%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}"><i class="glyphicon glyphicon-home"></i> 首页</a></li>
 	<li role="presentation"{%if $params['pageName'] == 'project_notice'%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/notice"><i class="glyphicon glyphicon-time"></i> 活动<span class="badge pull-right">12</span></a></li>
-	<li role="presentation"{%if in_array($params['pageName'], ['project_repo_tree'])%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%getDefaultBranch()%}"><i class="glyphicon glyphicon-hdd"></i> 版本库</a></li>
+	<li role="presentation"{%if in_array($params['pageName'], ['project_repo_tree','project_repo_blob'])%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%getDefaultBranch()%}"><i class="glyphicon glyphicon-hdd"></i> 版本库</a></li>
 	<li role="presentation"{%if $params['pageName'] == 'project_wiki'%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/wiki"><i class="glyphicon glyphicon-th-list"></i> Wiki<span class="badge pull-right">12</span></a></li>
 	<li class="nav-divider"></li>
 </ul>

@@ -43,6 +43,46 @@ class Blob
         $this->_repo = $repo;
     }
 
+    public function parse()
+    {
+        $params = $this->_branch;
+        if(!empty($this->_path))
+        {
+            $params .= ':' . $this->_getParentPath();
+        }
+        $data = $this->_repo->getTree($params);
+        $lines = explode("\n", $data);
+        $files = array();
+        $fileName = $this->getNameByPath();
+
+        foreach ($lines as $key => $line) {
+            if (empty($line)) {
+                unset($lines[$key]);
+                continue;
+            }
+
+            $files[] = preg_split("/[\s]+/", $line, 5);
+        }
+
+        foreach ($files as $file)
+        {
+            if ($file[1] == 'commit')
+            {
+                // submodule
+                continue;
+            }
+
+            if ($file[1] == 'blob' && $file[4] == $fileName)
+            {
+                $this->setHash($file[2]);
+                $this->setMode($file[0]);
+                $this->setName($file[4]);
+                $this->setSize($file[3]);
+                break;
+            }
+        }
+    }
+
     /**
      * @return mixed
      */
@@ -115,9 +155,26 @@ class Blob
         return $this->_hash;
     }
 
+    /**
+     * @param mixed $hash
+     */
+    public function setHash($hash)
+    {
+        $this->_hash = $hash;
+    }
+
     public function output()
     {
-        $data = $this->_repo->getBlob($this->_hash);
+        $args = '';
+        if(!empty($this->_hash) && $this->_hash != $this->_path)
+        {
+            $args = $this->_hash;
+        }
+        else
+        {
+            $args = "{$this->_branch}:{$this->_path}";
+        }
+        $data = $this->_repo->getBlob($args);
         return $data;
     }
 
@@ -173,6 +230,37 @@ class Blob
     {
         $this->_size = $size;
         return $this;
+    }
+
+    public function getNameByPath()
+    {
+        if(empty($this->_path))
+        {
+            return '';
+        }
+        $paths = explode('/', $this->_path);
+        return array_pop($paths);
+    }
+
+    public function parseLastCommit()
+    {
+        $branch = $this->_repo->getCurrentBranch();
+        if(!empty($branch))
+        {
+            $this->setLastCommitId(trim($this->_repo->getLastCommit($branch, $this->getPath()), "\n"));
+            $this->setLastCommit($this->_repo->getCommit($this->getLastCommitId()));
+        }
+    }
+
+    private function _getParentPath()
+    {
+        if(empty($this->_path))
+        {
+            return '';
+        }
+        $paths = explode('/', $this->_path);
+        array_pop($paths);
+        return implode('/', $paths);
     }
 
 }
