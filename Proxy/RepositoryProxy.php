@@ -18,6 +18,7 @@ use Foundation\Proxy;
 use Foundation\Support\Facades\Exception;
 use Foundation\Support\Facades\Loader;
 use Models\Account;
+use Models\Blob;
 use Models\Commit;
 use Models\Project;
 use Models\Repository;
@@ -211,6 +212,52 @@ class RepositoryProxy extends Proxy
         return $readme;
     }
 
+    public function getBlob($branch, $path)
+    {
+        return new Blob($branch, $path, null, $this->_repo);
+    }
+
+    public function getBlobOutput($branch, $path)
+    {
+        $json = $this->_cache->get($this->_buildTreeCacheId($path));
+        if(is_null($json))
+        {
+            Loader::helper('File');
+            $blob = $this->getBlob($branch, $path);
+            $blob->parse();
+            $blob->parseLastCommit();
+            $output = $blob->output();
+
+            /**
+             * @var \Models\Commit $commit
+             */
+            $commit = $blob->getLastCommit();
+            $author = $commit->getAuthor();
+            $date = $commit->getDate();
+            $json = [
+                'name'      =>  $blob->getName(),
+                'type'      =>  getFileType($blob->getName()),
+                'path'      =>  $blob->getPath(),
+                'hash'      =>  $blob->getHash(),
+                'size'      =>  $blob->getSize(),
+                'content'   =>  $output,
+                'commit'    =>  [
+                    'hash'      =>  $commit->getHash(),
+                    'shorthash' =>  $commit->getShortHash(),
+                    'author'    =>  [
+                        'name'  =>  $author->getName(),
+                        'email' =>  $author->getEmail()
+                    ],
+                    'message'   =>  $commit->getMessage(),
+                    'time'      =>  $date
+                ]
+            ];
+            $this->_cache->set($this->_buildTreeCacheId($path), $json);
+        }
+
+        return $json;
+    }
+
     public function getTree($branch, $path)
     {
         $tree = new Tree($branch, $path, null, $this->_repo);
@@ -230,6 +277,25 @@ class RepositoryProxy extends Proxy
         }
 
         return $tree;
+    }
+
+    public function getBreadcrumbs($path)
+    {
+        if(empty($path))
+        {
+            return [];
+        }
+        $pathes = explode('/', $path);
+        $result = [];
+        array_walk($pathes, function($path, $i) use($pathes, &$result)
+        {
+            $tmp = array_slice($pathes, 0, $i + 1);
+            $result[] = [
+                'name'  =>  $path,
+                'path'  =>  implode('/', $tmp)
+            ];
+        });
+        return $result;
     }
 
     private function _buildRepoCacheId()

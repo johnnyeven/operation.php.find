@@ -56,6 +56,24 @@ App.prototype = {
         }, function(){
             $(this).removeClass('expand');
         });
+
+        if($("#file-content").length > 0 && $("#file-type").length > 0) {
+            if($("#file-type").text() != 'markdown') {
+                require(['ace/build/src-min-noconflict/ace'], function($ace) {
+                    var editor = ace.edit("file-content");
+                    editor.setReadOnly(true);
+                    editor.setShowPrintMargin(false);
+                    editor.setTheme("ace/theme/github");
+                    editor.session.setMode("ace/mode/" + $("#file-type").text());
+                    editor.session.setUseWrapMode(true);
+                    editor.setOptions({
+                        maxLines: Infinity
+                    });
+                    editor.renderer.$cursorLayer.element.style.opacity=0;
+                });
+            }
+        }
+
         prettyPrint();
     },
     getAppUrl: function() {

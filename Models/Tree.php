@@ -164,6 +164,7 @@ class Tree
                 $blob->setMode($file[0]);
                 $blob->setName($file[4]);
                 $blob->setSize($file[3]);
+                $result = $blob->output();
                 $root[] = $blob;
                 continue;
             }
@@ -200,7 +201,7 @@ class Tree
                         'email' =>  $author->getEmail()
                     ],
                     'message'   =>  $commit->getMessage(),
-                    'time'      =>  $date->getTimestamp()
+                    'time'      =>  $date
                 ];
                 $files[] = $file;
                 continue;
@@ -224,7 +225,7 @@ class Tree
                         'email' =>  $author->getEmail()
                     ],
                     'message'   =>  $commit->getMessage(),
-                    'time'      =>  $date->getTimestamp()
+                    'time'      =>  $date
                 ];
                 $folders[] = $folder;
                 continue;
@@ -248,7 +249,7 @@ class Tree
                         'email' =>  $author->getEmail()
                     ],
                     'message'   =>  $commit->getMessage(),
-                    'time'      =>  $date->getTimestamp()
+                    'time'      =>  $date
                 ];
                 $folders[] = $folder;
             }
@@ -294,7 +295,7 @@ class Tree
                 'email' =>  $author->getEmail()
             ],
             'message'   =>  $commit->getMessage(),
-            'time'      =>  $date->getTimestamp()
+            'time'      =>  $date
         ];
 
         return [
@@ -354,7 +355,6 @@ class Tree
                 }
             }
         }
-        return null;
     }
 
     /**

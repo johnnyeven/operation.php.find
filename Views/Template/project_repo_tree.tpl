@@ -24,8 +24,7 @@
 			<div class="col-md-8 find-main" id="find-main">
 				<div class="row find-project-main-title">
 					<div class="col-lg-12">
-						<a href="#">Operation.php</a> / <a href="#">Controllers</a> / <a href="#">AccountController</a> /
-						<a href="" class="pull-right"><span class="glyphicon glyphicon-plus"></span> 新增文件</a>
+						{%include file='project_repo_title.tpl'%}
 					</div>
 				</div>
 				<div class="row">
@@ -41,9 +40,11 @@
 							<tbody>
 							{%foreach $params['files']['children'] as $children%}
 								<tr>
-									<td class="find-tree-file"><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$params['branch']%}/{%$children['path']%}"><span class="glyphicon {%if $children['type'] == 'folder'%}glyphicon-folder-close{%else%}glyphicon-file{%/if%}"></span> {%$children['name']%}</a></td>
+									<td class="find-tree-file">
+										<a href="{%if $children['type'] == 'blob'%}{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/blob/{%$params['branch']%}/{%$children['path']%}{%elseif $children['type'] == 'folder'%}{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$params['branch']%}/{%$children['path']%}{%else%}{%/if%}"><span class="glyphicon {%if $children['type'] == 'folder'%}glyphicon-folder-close{%else%}glyphicon-file{%/if%}"></span> {%$children['name']%}</a>
+									</td>
 									<td class="find-tree-commit"><img class="img-circle" src="/assets/img/468149.png" width="16" height="16"> <a href="">{%$children['commit']['author']['name']%}</a> {%$children['commit']['message']%}</td>
-									<td class="find-tree-updatetime">{%$children['commit']['time']%}</td>
+									<td class="find-tree-updatetime">{%if !empty($children['commit']['time'])%}{%$children['commit']['time']->diffFromNowHumanReadable()%}{%/if%}</td>
 								</tr>
 							{%/foreach%}
 							</tbody>

@@ -2,88 +2,126 @@ html,
 body {
     height: 100%;
 }
+
 html {
     overflow: hidden;
 }
+
 body {
     background-color: #fff;
-    font-family:Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+    font-family: Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 }
+
 .cursor {
     cursor: pointer;
 }
+
+.panel-nopadding {
+    padding: 0;
+}
+
+.find-file-editor-header {
+    line-height: 34px;
+}
+
+.find-file-editor {
+    font-size: 14px!important;
+    line-height: 26px!important;
+    font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif!important;
+}
+
 .bottom-borderd {
     border-bottom: 1px #ddd solid;
 }
+
 .btn-info {
     background-color: #2abf9e;
 }
+
 .btn-info:hover {
     background-color: #2abf9e;
 }
+
 .navbar-inverse {
     background-color: #25282D;
 }
-.find-navbar-spaceholder {
-    height:50px;
+
+.find-index-nav-button {
+    margin-right: 80px;
 }
+
+.find-navbar-spaceholder {
+    height: 50px;
+}
+
 .row-padding {
     padding-top: 20px;
 }
+
 .find-container {
     padding-left: 0;
     padding-right: 0;
 }
+
 .find-sidebar {
     background-color: #33373b;
-    color:#7c858e;
-    -moz-box-shadow:-5px 0 5px #2b2f33 inset;             /* For Firefox3.6+ */
-    -webkit-box-shadow:-5px 0 5px #2b2f33 inset;          /* For Chrome5+, Safari5+ */
-    box-shadow:-5px 0 5px #2b2f33 inset;                  /* For Latest Opera */
+    color: #7c858e;
+    -moz-box-shadow: -5px 0 5px #2b2f33 inset; /* For Firefox3.6+ */
+    -webkit-box-shadow: -5px 0 5px #2b2f33 inset; /* For Chrome5+, Safari5+ */
+    box-shadow: -5px 0 5px #2b2f33 inset; /* For Latest Opera */
     height: 100%;
     overflow-y: hidden;
 }
+
 .find-sidebar a {
     color: inherit;
 }
+
 .find-project-title {
     height: 70px;
     line-height: 70px;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 16px;
     border-bottom: 1px #2b2f33 solid;
 }
-.find-sidebar .nav-pills>li>a {
+
+.find-sidebar .nav-pills > li > a {
     font-size: 16px;
     border-radius: 0;
     margin-left: -15px;
     margin-right: -15px;
 }
-.find-sidebar .nav-pills>li.active>a, .find-sidebar .nav-pills>li.active>a:focus, .find-sidebar .nav-pills>li.active>a:hover {
+
+.find-sidebar .nav-pills > li.active > a, .find-sidebar .nav-pills > li.active > a:focus, .find-sidebar .nav-pills > li.active > a:hover {
     background-color: #2b2f33;
     color: #7c858e;
 }
-.find-sidebar .nav>li>a:focus, .find-sidebar .nav>li>a:hover {
+
+.find-sidebar .nav > li > a:focus, .find-sidebar .nav > li > a:hover {
     background-color: #2f3338;
     color: #beccd9;
 }
+
 .find-sidebar .nav-divider {
     background-color: #2b2f33;
 }
-.find-sidebar .badge, .find-sidebar .nav-pills>.active>a>.badge {
+
+.find-sidebar .badge, .find-sidebar .nav-pills > .active > a > .badge {
     background-color: #7c858e;
     color: #2b2f33;
 }
+
 .find-sub-sidebar {
     height: 100%;
     color: #727a82;
     background-color: #eee;
     overflow-y: hidden;
 }
+
 .find-project-sub-title {
     height: 70px;
     line-height: 70px;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 16px;
     background-color: #2abf9e;
     margin-left: -15px;
@@ -91,61 +129,75 @@ body {
     color: #1c8069;
     margin-bottom: 10px;
 }
+
 .find-sub-sidebar .dropdown-menu {
     width: 100%;
 }
-.find-sub-sidebar .nav-pills>li>a {
+
+.find-sub-sidebar .nav-pills > li > a {
     color: #999;
 }
-.find-sub-sidebar .nav-pills>li.active>a, .find-sub-sidebar .nav-pills>li.active>a:focus, .find-sub-sidebar .nav-pills>li.active>a:hover {
+
+.find-sub-sidebar .nav-pills > li.active > a, .find-sub-sidebar .nav-pills > li.active > a:focus, .find-sub-sidebar .nav-pills > li.active > a:hover {
     background-color: #fff;
     color: #666;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-left: 15px;
-    width:100%;
+    width: 100%;
 }
-.find-sub-sidebar .nav>li>a:focus, .find-sub-sidebar .nav>li>a:hover {
+
+.find-sub-sidebar .nav > li > a:focus, .find-sub-sidebar .nav > li > a:hover {
     color: #666;
 }
+
 .find-main {
     overflow-y: hidden;
     height: 100%;
     background-color: #FFF;
 }
+
 .find-repo-table th {
     font-size: 16px;
 }
+
 .find-repo-table th a {
     font-size: 12px;
 }
+
 .find-repo-table th small {
     font-size: 12px;
     font-weight: normal;
     color: #aaa;
 }
+
 .find-project-name {
     border-bottom: 1px #ddd solid;
     margin-bottom: 20px;
 }
+
 .find-project-index-button {
     margin: 50px 0 20px 0;
 }
+
 .find-project-index-ssh {
     width: 70%;
     margin: 0 auto;
 }
+
 .find-project-index-meta {
-    padding:20px 0;
+    padding: 20px 0;
     border-bottom: 1px #ddd solid;
 }
+
 .find-project-readme {
     padding: 0 20px;
 }
+
 .find-project-main-title {
     height: 70px;
     line-height: 70px;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 16px;
     background-color: #43484d;
     margin-left: -15px;
@@ -153,70 +205,94 @@ body {
     color: #beccd9;
     margin-bottom: 10px;
 }
+
 .find-project-main-title a {
     color: #beccd9;
     font-weight: normal;
 }
+
+.find-project-main-title .breadcrumb {
+    padding: 0;
+    background-color: inherit;
+}
+
 .find-project-merge-title {
-    font-weight:bold;
+    font-weight: bold;
     font-size: 16px;
     color: #beccd9;
 }
+
 .find-notice-time {
     color: #aaa;
 }
+
 .find-tree-commit, .find-tree-updatetime {
     color: #888;
 }
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 10px;
 }
+
 .find-commit hr {
     border-color: #ccc;
 }
+
 .find-borderd-list, .find-branch-list {
     list-style-type: none;
     text-indent: 0;
     padding-left: 0;
 }
+
 .find-borderd-list li, .find-branch-list li {
-    padding:5px;
+    padding: 5px;
     border-bottom: 1px #ccc solid;
 }
+
 .find-borderd-list li:last-child, .find-branch-list li:last-child {
     border-bottom: none;
 }
+
 .find-commit-row .find-commit-count {
     color: #999;
 }
+
 .find-commit-message, .find-commit-user {
     padding: 5px;
     color: #999;
 }
+
 .find-commit-message strong a {
     color: #666;
 }
+
 .find-commit-browse a {
     color: #999;
 }
+
 .fin-branch-name-link:hover {
     text-decoration: none;
 }
+
 .find-branch-name .label {
     font-weight: normal;
 }
+
 .find-branch-commit {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .find-branch-commit-msg {
     color: #999
 }
+
 .find-project-main-compare-title {
     font-weight: normal;
     font-size: inherit;
     color: inherit;
 }
+
 .find-project-main-compare-title a {
     color: #fff;
 }
@@ -224,6 +300,7 @@ body {
 .files-meta {
     padding: 10px 0;
 }
+
 .diff-file {
     border: 1px solid #e5e5e5;
     margin-bottom: 1em
@@ -611,6 +688,7 @@ body {
     margin: 0;
     border: none
 }
+
 .diff-file .diff-content tr.line_holder:hover > td.line_content {
     background: #fffaf1 !important;
     border-color: #ffe8be !important
@@ -630,28 +708,35 @@ body {
     margin: 0;
     border: none
 }
+
 .find-merge-condition-form {
     padding: 10px;
     border-left: 1px #ddd solid;
     border-right: 1px #ddd solid;
     background-color: #fff;
 }
+
 .find-merge-condition-content .list-group-item:first-child {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
 .find-project-merge-detail-title {
     margin-left: 20px;
 }
+
 .find-project-merge-detail-title small {
     color: #aaa;
 }
+
 .find-project-merge-detail hr {
     border-top: 1px #ddd solid;
 }
+
 .find-project-merge-tab .tab-pane {
     padding: 20px 0;
 }
+
 .find-commit-timeline {
     list-style: none;
     display: block;
@@ -660,6 +745,7 @@ body {
     border-bottom: 1px #ddd solid;
     position: relative;
 }
+
 .find-commit-timeline:before {
     top: 0;
     bottom: 0;
@@ -670,10 +756,12 @@ body {
     margin-left: 29px;
     z-index: 0;
 }
+
 .find-commit-timeline-entry-inner:before, .find-commit-timeline-entry-inner:after, .find-commit-timeline:after {
     display: table;
     content: " ";
 }
+
 .find-commit-timeline-entry {
     display: block;
     padding-top: 5px;
@@ -681,16 +769,19 @@ body {
     margin-left: 30px;
     clear: both;
 }
+
 .find-commit-timeline-entry-inner {
     position: relative;
     margin-left: 20px;
     z-index: 1;
 }
+
 .timeline-icon {
     float: left;
     margin-left: -39px;
     overflow: hidden;
 }
+
 .system .timeline-icon {
     border-radius: 50%;
     width: 15px;
@@ -700,12 +791,14 @@ body {
     margin-left: -27px;
     margin-top: 4px;
 }
+
 .timeline-content {
     position: relative;
     background: whitesmoke;
     padding: 10px 15px;
     margin-left: 25px;
 }
+
 .timeline-content:after {
     content: " ";
     display: block;
@@ -719,65 +812,84 @@ body {
     top: 10px;
     margin-left: -9px;
 }
+
 .system .timeline-content {
     padding: 0 15px;
     background: transparent;
 }
+
 .system .timeline-content:after {
     border: none;
 }
+
 .timeline-content-content {
     padding: 10px 0;
 }
+
 .timeline-content-header-time {
     color: #666;
 }
+
 .timeline-content-list {
     list-style-type: disc;
 }
+
 .timeline-content-list li {
     line-height: 26px;
     border-bottom: 1px #ddd dashed;
 }
+
 .timeline-content-list li:last-child {
     border-bottom: none;
 }
+
 .find-commit-write {
     clear: both;
 }
+
 .find-commit-write form {
     margin-top: 15px;
     margin-left: 75px;
 }
+
 .find-commit-write-avatar {
     margin-left: 10px;
 }
+
 .merge-assignee {
     margin-left: 35px;
 }
+
 .merge-assignee h4 {
     margin-top: 0;
 }
+
 .merge-assignee h5 {
     margin-bottom: 0;
 }
+
 .merge-control {
     padding: 5px 0;
 }
+
 .merge-control-item {
-    float:left;
+    float: left;
     line-height: 40px;
     margin-right: 20px;
 }
+
 .merge-control-comment {
     color: #999;
 }
+
 .find-project-setting {
     padding: 20px;
 }
+
 .find-project-setting-visibility {
     margin-top: 0;
 }
+
 form .form-actions {
     padding: 17px 20px 18px;
     margin-top: 18px;
@@ -785,64 +897,81 @@ form .form-actions {
     background-color: whitesmoke;
     border-top: 1px solid #e5e5e5;
 }
+
 .panel-body form .form-actions {
     margin-left: -15px;
     margin-right: -15px;
     margin-bottom: -15px;
 }
+
 .find-project-setting-tips {
     padding-top: 15px;
 }
-.list-group-item.active>.badge, .nav-pills>.active>a>.badge {
+
+.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     background-color: #666;
     color: #fff;
 }
+
 .find-manage-condition-item {
     line-height: 34px;
 }
+
 .find-manage-condition-item .close {
     font-size: 30px;
 }
+
 .account-notice-list {
     list-style: none;
     padding-left: 10px;
 }
+
 .account-notice-list li {
     border-bottom: 1px #ddd solid;
     padding: 10px;
 }
+
 .account-notice-list li:last-child {
     border-bottom: none;
 }
+
 .account-notice-meta-time {
     color: #aaa;
 }
+
 .account-notice-content {
     color: #999;
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .account-notice-content-list {
     list-style-type: disc;
 }
+
 .account-notice-content-list li {
     padding: 3px;
     border-bottom: 1px #ddd dashed;
 }
+
 .account-notice-content-list li:last-child {
     border-bottom: none;
 }
+
 .find-notice-checkbox {
     margin-left: 10px;
     padding: 10px 10px 20px 10px;
     border-bottom: 1px #ddd solid;
 }
+
 .find-group {
     padding-left: 25px;
 }
+
 .find-group-container {
     padding: 10px 0 25px 0;
 }
+
 .find-group-meta {
     margin-left: 120px;
 }

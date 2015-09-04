@@ -50,3 +50,21 @@ if(!function_exists('getDefaultBranch'))
         return 'master';
     }
 }
+if(!function_exists('fileSizeHumanReadable'))
+{
+    function fileSizeHumanReadable($size, $unit = 'B', $decimals = 1, $targetUnit = 'auto') {
+        $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB');
+        $theUnit = array_search(strtoupper($unit), $units); //初始单位是哪个
+        //判断是否自动计算，
+        if ($targetUnit != 'auto')
+            $targetUnit = array_search(strtoupper($targetUnit), $units);
+        //循环计算
+        while ($size >= 1024) {
+            $size/=1024;
+            $theUnit++;
+            if ($theUnit == $targetUnit)//已符合给定则退出循环吧！
+                break;
+        }
+        return sprintf("%1\$.{$decimals}f", $size) . $units[$theUnit];
+    }
+}
