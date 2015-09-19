@@ -13,6 +13,7 @@
 
 namespace Models;
 
+use Extend\Library\PrettyFormat;
 use Foundation\Support\Facades\Loader;
 
 class Repository
@@ -32,7 +33,6 @@ class Repository
         $this->_shell = Loader::library('ShellAdapter');
         $repoHome = $this->_shell->getRepoHome();
         $this->_path = $repoHome . DS . $accountIdentifier . DS . $projectIdentifier . '.git';
-        $this->_defaultBranch = $this->_shell->getCurrentBranch($this);
         $this->_currentBranch = $currentBranch;
     }
 
@@ -41,6 +41,10 @@ class Repository
      */
     public function getDefaultBranch()
     {
+        if(empty($this->_defaultBranch))
+        {
+            $this->_defaultBranch = $this->_shell->getCurrentBranch($this);
+        }
         return $this->_defaultBranch;
     }
 
@@ -62,6 +66,29 @@ class Repository
     public function getPath()
     {
         return $this->_path;
+    }
+
+    public function getCommits($hash, $page, $limit)
+    {
+        $logs = $this->_shell->getCommits($this, $hash, $page, $limit);
+        $format = new PrettyFormat();
+
+        try
+        {
+            $logs = $format->parse($logs);
+            $commits = [];
+            foreach ($logs as $log) {
+                $commit = new Commit();
+                $commit->importData($log);
+                $commits[] = $commit;
+            }
+
+            return $commits;
+        }
+        catch(\RuntimeException $e)
+        {
+            return [];
+        }
     }
 
     public function hasCommit($hash)
@@ -92,7 +119,7 @@ class Repository
         return $this->_shell->getTree($this, $hash);
     }
 
-    public function getCommit($commitHash)
+    public function getCommit($commitHash, $parseDiff = FALSE)
     {
         $logs = $this->_shell->getCommit($this, $commitHash);
 
@@ -107,12 +134,11 @@ class Repository
         $commit = new Commit();
         $commit->importData($data[0]);
 
-//        if ($commit->getParentsHash()) {
-//            $command = 'diff ' . $commitHash . '~1..' . $commitHash;
-//            $logs = explode("\n", $this->getClient()->run($this, $command));
-//        }
-//
-//        $commit->setDiffs($this->readDiffLogs($logs));
+        if ($parseDiff && $commit->getParentsHash()) {
+            $diffs = $this->getDiff("{$commitHash}~1", $commitHash);
+            $diffs = new GitDiff($diffs);
+            $commit->setDiffs($diffs);
+        }
 
         return $commit;
     }
@@ -122,9 +148,14 @@ class Repository
         return $this->_shell->getLastCommit($this, $branch, $hash);
     }
 
+    public function getDiff($baseBranch, $sourceBranch)
+    {
+        return $this->_shell->getDiff($this, $baseBranch, $sourceBranch);
+    }
+
     public function readme()
     {
-        $result = $this->_shell->getBlob($this, $this->_defaultBranch . ':README.md');
+        $result = $this->_shell->getBlob($this, $this->getDefaultBranch() . ':README.md');
         $parsedown = new \Parsedown();
         $result = $parsedown->text($result);
         return str_replace('<pre>', '<pre class="prettyprint linenums">', $result);

@@ -23,6 +23,10 @@ class Commit
     protected $commiterDate;
     protected $message;
     protected $body;
+
+    /**
+     * @var GitDiff
+     */
     protected $diffs;
 
     public function importData(array $data)

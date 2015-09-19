@@ -64,6 +64,47 @@ class RepositoryProxy extends Proxy
         return $this->_repo;
     }
 
+    public function getCommits($hash, $page, $limit)
+    {
+        return $this->_repo->getCommits($hash, $page, $limit);
+    }
+
+    public function getCommitsOutput($hash, $page, $limit)
+    {
+//        $commits = $this->_cache->get($this->_buildCommitCacheId($hash));
+//        if(is_null($commits))
+//        {
+            $result = $this->getCommits($hash, $page, $limit);
+            $commits = [];
+
+            /**
+             * @var \Models\Commit $commit
+             */
+            foreach($result as $commit)
+            {
+                $author = $commit->getAuthor();
+                $date = $commit->getDate();
+                $key = $date->format('Y-m-d');
+                if(!isset($commits[$key]))
+                {
+                    $commits[$key] = [];
+                }
+                $commits[$key][] = [
+                    'hash'      =>  $commit->getHash(),
+                    'shorthash' =>  $commit->getShortHash(),
+                    'author'    =>  [
+                        'name'  =>  $author->getName(),
+                        'email' =>  $author->getEmail()
+                    ],
+                    'message'   =>  $commit->getMessage(),
+                    'time'      =>  $date
+                ];
+            }
+//            $this->_cache->set($this->_buildCommitCacheId($hash), $commits);
+//        }
+        return $commits;
+    }
+
     public function hasCommit($commitName)
     {
         return $this->_repo->hasCommit($commitName);
@@ -71,17 +112,145 @@ class RepositoryProxy extends Proxy
 
     public function getBranches()
     {
-        return json_decode($this->_repo->getBranches());
+        $repo = $this->_cache->get($this->_buildRepoCacheId());
+        if(isset($repo['branches']))
+        {
+            $branches = $repo['branches'];
+        }
+        else
+        {
+            $branches = $this->_repo->getBranches();
+            if(!is_null($repo))
+            {
+                $repo['branches'] = $branches;
+            }
+            else
+            {
+                $repo = [
+                    'branches'    =>  $branches
+                ];
+            }
+            $this->_cache->set($this->_buildRepoCacheId(), $repo);
+        }
+        return json_decode($branches);
+    }
+
+    public function getBranchesWithLastCommit()
+    {
+        $branches = $this->getBranches();
+        $defaultBranch = $this->getDefaultBranch();
+        $result = [];
+        foreach($branches as $branch)
+        {
+            $lastCommitId = trim($this->_repo->getLastCommit($branch, './'), "\n");
+            $lastCommit = $this->_repo->getCommit($lastCommitId);
+            $date = $lastCommit->getDate();
+            $author = $lastCommit->getAuthor();
+            $result[] = [
+                'name'      =>  $branch,
+                'default'   =>  $branch == $defaultBranch ? 1 : 0,
+                'protected' =>  1,
+                'merged'    =>  1,
+                'commit'    =>  [
+                    'hash'          =>  $lastCommit->getHash(),
+                    'shorthash'     =>  $lastCommit->getShortHash(),
+                    'message'       =>  $lastCommit->getMessage(),
+                    'author'        =>  [
+                        'name'          =>  $author->getName(),
+                        'email'         =>  $author->getEmail()
+                    ],
+                    'date'          =>  $date->diffFromNowHumanReadable()
+                ]
+            ];
+        }
+        return $result;
+    }
+
+    public function getTagsWithLastCommit()
+    {
+        $tags = $this->getTags();
+        $result = [];
+        foreach($tags as $tag)
+        {
+            $lastCommitId = trim($this->_repo->getLastCommit($tag, './'), "\n");
+            $lastCommit = $this->_repo->getCommit($lastCommitId);
+            $date = $lastCommit->getDate();
+            $author = $lastCommit->getAuthor();
+            $result[] = [
+                'name'      =>  $tag,
+                'commit'    =>  [
+                    'hash'          =>  $lastCommit->getHash(),
+                    'shorthash'     =>  $lastCommit->getShortHash(),
+                    'message'       =>  $lastCommit->getMessage(),
+                    'author'        =>  [
+                        'name'          =>  $author->getName(),
+                        'email'         =>  $author->getEmail()
+                    ],
+                    'date'          =>  $date->diffFromNowHumanReadable()
+                ]
+            ];
+        }
+        return $result;
     }
 
     public function getTags()
     {
-        return json_decode($this->_repo->getTags());
+        $repo = $this->_cache->get($this->_buildRepoCacheId());
+        if(isset($repo['tags']))
+        {
+            $tags = $repo['tags'];
+        }
+        else
+        {
+            $tags = $this->_repo->getTags();
+            if(!is_null($repo))
+            {
+                $repo['tags'] = $tags;
+            }
+            else
+            {
+                $repo = [
+                    'tags'    =>  $tags
+                ];
+            }
+            $this->_cache->set($this->_buildRepoCacheId(), $repo);
+        }
+        return json_decode($tags);
     }
 
-    public function getCommit($commitHash)
+    public function getCommit($commitHash, $parseDiff = FALSE)
     {
-        return $this->_repo->getCommit($commitHash);
+        return $this->_repo->getCommit($commitHash, $parseDiff);
+    }
+
+    public function getDefaultBranch()
+    {
+        $repo = $this->_cache->get($this->_buildRepoCacheId());
+        if(isset($repo['default_branch']))
+        {
+            $default = $repo['default_branch'];
+        }
+        else
+        {
+            $default = $this->_repo->getDefaultBranch();
+            if(!is_null($repo))
+            {
+                $repo['default_branch'] = $default;
+            }
+            else
+            {
+                $repo = [
+                    'default_branch'    =>  $default
+                ];
+            }
+            $this->_cache->set($this->_buildRepoCacheId(), $repo);
+        }
+        return $default;
+    }
+
+    public function getCurrentBranch()
+    {
+        return $this->_repo->getCurrentBranch();
     }
 
     public function parseBranchAndPath($treePath)
@@ -219,7 +388,7 @@ class RepositoryProxy extends Proxy
 
     public function getBlobOutput($branch, $path)
     {
-        $json = $this->_cache->get($this->_buildTreeCacheId($path));
+        $json = $this->_cache->get($this->_buildTreeCacheId($branch, $path));
         if(is_null($json))
         {
             Loader::helper('File');
@@ -252,7 +421,7 @@ class RepositoryProxy extends Proxy
                     'time'      =>  $date
                 ]
             ];
-            $this->_cache->set($this->_buildTreeCacheId($path), $json);
+            $this->_cache->set($this->_buildTreeCacheId($branch, $path), $json);
         }
 
         return $json;
@@ -269,11 +438,11 @@ class RepositoryProxy extends Proxy
 
     public function getTreeOutput($branch, $path)
     {
-        $tree = $this->_cache->get($this->_buildTreeCacheId($path));
+        $tree = $this->_cache->get($this->_buildTreeCacheId($branch, $path));
         if(is_null($tree))
         {
             $tree = $this->getTree($branch, $path)->output();
-            $this->_cache->set($this->_buildTreeCacheId($path), $tree);
+            $this->_cache->set($this->_buildTreeCacheId($branch, $path), $tree);
         }
 
         return $tree;
@@ -298,13 +467,18 @@ class RepositoryProxy extends Proxy
         return $result;
     }
 
+    private function _buildCommitCacheId($branch, $path)
+    {
+        return 'commits.' . $this->_account->identifier . '/' . $this->_project->identifier . '/' . $branch . $path;
+    }
+
     private function _buildRepoCacheId()
     {
         return 'repo.' . $this->_account->identifier . '/' . $this->_project->identifier;
     }
 
-    private function _buildTreeCacheId($path)
+    private function _buildTreeCacheId($branch, $path)
     {
-        return 'tree.' . $this->_account->identifier . '/' . $this->_project->identifier . '/' . $path;
+        return 'tree.' . $this->_account->identifier . '/' . $this->_project->identifier . '/' . $branch . '/' . $path;
     }
 }
