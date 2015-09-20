@@ -41,11 +41,13 @@ if(!function_exists('getDefaultBranch'))
         $project = Request::getParameter('project');
         if(!empty($project))
         {
-            $repo = $project->repository();
-            if(!empty($repo))
-            {
-                return $repo->getDefaultBranch();
-            }
+            /**
+             * @var \Proxy\RepositoryProxy $repoProxy
+             */
+            $repoProxy = \Foundation\Support\Facades\Loader::proxy('RepositoryProxy', [
+                'project'   =>  $project
+            ]);
+            return $repoProxy->getDefaultBranch();
         }
         return 'master';
     }
@@ -66,5 +68,137 @@ if(!function_exists('fileSizeHumanReadable'))
                 break;
         }
         return sprintf("%1\$.{$decimals}f", $size) . $units[$theUnit];
+    }
+}
+if(!function_exists('parallelDiff'))
+{
+    function parallelDiff(\Models\GitDiff $diff)
+    {
+        $files = $diff->files;
+        $result = [];
+
+        /**
+         * @var \Models\GitDiffFile $file
+         */
+        foreach($files as $m => $file)
+        {
+            $result[$m] = [
+                'header'    =>  $file->header,
+                'name'      =>  $file->file_name,
+                'meta'      =>  $file->meta,
+                'action'    =>  $file->action,
+                'sections'   =>  []
+            ];
+
+            /**
+             * @var \Models\GitDiffSection $section
+             */
+            foreach($file->sections as $j => $section)
+            {
+                $result[$m]['sections'][$j] = [
+                    'header'    =>  $section->header,
+                    'lines'     =>  []
+                ];
+
+                /**
+                 * @var \Models\GitDiffLine $line
+                 */
+                /**
+                 * @var \Models\GitDiffLine $lineNext
+                 */
+                $skipNext = FALSE;
+                foreach($section->lines as $i => $line)
+                {
+                    $currentMode = $line->mode;
+                    $currentLine = $line->line;
+                    $lineLeftNum = $line->line_numbers['left'];
+                    $lineRightNum = $line->line_numbers['right'];
+
+                    if($i < count($section->lines) - 1)
+                    {
+                        $lineNext = $section->lines[$i+1];
+                    }
+                    else
+                    {
+                        $lineNext = null;
+                    }
+
+                    $nextMode = null;
+                    $nextLine = null;
+                    $nextLineLeftNum = null;
+                    $nextLineRightNum = null;
+                    if(!empty($lineNext))
+                    {
+                        $nextMode = $lineNext->mode;
+                        $nextLine = $lineNext->line;
+                        $nextLineLeftNum = $lineNext->line_numbers['left'];
+                        $nextLineRightNum = $lineNext->line_numbers['right'];
+                    }
+
+                    if(empty($currentMode))
+                    {
+                        //左右匹配
+                        $result[$m]['sections'][$j]['lines'][] = [
+                            'mode'          =>  $currentMode,
+                            'left_number'   =>  $lineLeftNum,
+                            'left_content'  =>  $currentLine,
+                            'nextMode'      =>  $currentMode,
+                            'right_number'  =>  $lineRightNum,
+                            'right_content' =>  $currentLine
+                        ];
+                    }
+                    elseif($currentMode == -1)
+                    {
+                        if($nextMode == 1)
+                        {
+                            //左删右增
+                            $result[$m]['sections'][$j]['lines'][] = [
+                                'mode'          =>  $currentMode,
+                                'left_number'   =>  $lineLeftNum,
+                                'left_content'  =>  $currentLine,
+                                'nextMode'      =>  $nextMode,
+                                'right_number'  =>  $nextLineRightNum,
+                                'right_content' =>  $nextLine
+                            ];
+                            $skipNext = TRUE;
+                        }
+                        elseif($nextMode == -1)
+                        {
+                            //连续删除
+
+                            //左删右增
+                            $result[$m]['sections'][$j]['lines'][] = [
+                                'mode'          =>  $currentMode,
+                                'left_number'   =>  $lineLeftNum,
+                                'left_content'  =>  $currentLine,
+                                'nextMode'      =>  $nextMode,
+                                'right_number'  =>  '',
+                                'right_content' =>  ''
+                            ];
+                        }
+                    }
+                    elseif($currentMode == 1)
+                    {
+                        if($skipNext)
+                        {
+                            $skipNext = FALSE;
+                            continue;
+                        }
+                        //右增
+                        $result[$m]['sections'][$j]['lines'][] = [
+                            'mode'          =>  0,
+                            'left_number'   =>  '',
+                            'left_content'  =>  '',
+                            'nextMode'      =>  $currentMode,
+                            'right_number'  =>  $lineRightNum,
+                            'right_content' =>  $currentLine
+                        ];
+                    }
+                }
+            }
+        }
+        $tmp = new \stdClass();
+        $tmp->files = $result;
+        return $tmp;
     }
 }

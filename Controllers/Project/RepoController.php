@@ -72,6 +72,42 @@ class RepoController extends Controller
         ));
     }
 
+    public function branches($userName, $projectName)
+    {
+        /**
+         * @var \Proxy\RepositoryProxy $repoProxy
+         */
+        $repoProxy = Loader::proxy('RepositoryProxy', [
+            'project'   =>  $this->project
+        ]);
+        $branches = $repoProxy->getBranchesWithLastCommit();
+
+        View::render('project_repo_branches', array(
+            'pageName'      =>  'project_repo_branches',
+            'account'       =>  $this->account,
+            'project'       =>  $this->project,
+            'branches'      =>  $branches
+        ));
+    }
+
+    public function tags($userName, $projectName)
+    {
+        /**
+         * @var \Proxy\RepositoryProxy $repoProxy
+         */
+        $repoProxy = Loader::proxy('RepositoryProxy', [
+            'project'   =>  $this->project
+        ]);
+        $tags = $repoProxy->getTagsWithLastCommit();
+
+        View::render('project_repo_tags', array(
+            'pageName'      =>  'project_repo_tags',
+            'account'       =>  $this->account,
+            'project'       =>  $this->project,
+            'tags'          =>  $tags
+        ));
+    }
+
     public function blob($userName, $projectName, $treePath = null)
     {
         /**

@@ -25,9 +25,9 @@ body {
 }
 
 .find-file-editor {
-    font-size: 14px!important;
-    line-height: 26px!important;
-    font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif!important;
+    font-size: 14px !important;
+    line-height: 26px !important;
+    font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif !important;
 }
 
 .bottom-borderd {
@@ -449,22 +449,27 @@ body {
 
 .diff-file .diff-content .line_holder.new .old_line, .diff-file .diff-content .line_holder.new .new_line {
     background: #dbffdb;
-    border-color: #c1e9c1
+    border-color: #c1e9c1;
 }
 
 .diff-file .diff-content .line_content {
     display: block;
     margin: 0px;
     padding: 0px 0.5em;
-    border: none
+    border: none;
+    white-space: pre;
+}
+
+.diff-wrap-lines .line_content {
+    white-space: pre-wrap!important;
 }
 
 .diff-file .diff-content .line_content.new {
-    background: #eaffea
+    background: #eaffea;
 }
 
 .diff-file .diff-content .line_content.old {
-    background: #ffecec
+    background: #ffecec;
 }
 
 .diff-file .diff-content .line_content.matched {

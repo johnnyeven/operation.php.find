@@ -44,9 +44,16 @@ Router::group([
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/task', 'Project/ProjectController.task');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/wiki', 'Project/ProjectController.wiki');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/document', 'Project/ProjectController.document');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/commits(/.*)?\.json', 'Project/CommitController.apiLists');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/commits(/.*)?', 'Project/CommitController.lists');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/commit/(.*)\.diff', 'Project/CommitController.showDiffRaw');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/commit/(.*)\.patch', 'Project/CommitController.getDiffPatch');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/commit/(.*)?', 'Project/CommitController.show');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/tree(/.*)?', 'Project/RepoController.tree');
-    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/tree_logs', 'Project/RepoController.treeLogs');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/blob(/.*)?', 'Project/RepoController.blob');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/branches', 'Project/RepoController.branches');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/tags', 'Project/RepoController.tags');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/compare', 'Project/CompareController.index');
 });
 
 Router::group([

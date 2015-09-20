@@ -49,6 +49,12 @@ class ShellAdapter
         return $this->run($command);
     }
 
+    public function getCommits(Repository $repo, $hash, $page, $limit)
+    {
+        $command = "get-commits {$limit} {$page} {$hash}";
+        return $this->run($command, $repo);
+    }
+
     public function hasCommit(Repository $repo, $hash)
     {
         $command = 'has-commit ' . $hash;
@@ -97,6 +103,13 @@ class ShellAdapter
     public function getLastCommit(Repository $repo, $branch, $hash)
     {
         $command = 'get-last-commit ' . $branch . ' ' . $hash;
+        $result = $this->run($command, $repo);
+        return $result;
+    }
+
+    public function getDiff(Repository $repo, $baseBranch, $sourceBranch)
+    {
+        $command = "get-diff {$baseBranch}...{$sourceBranch}";
         $result = $this->run($command, $repo);
         return $result;
     }

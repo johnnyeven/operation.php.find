@@ -25,7 +25,7 @@ require.config({
 			'css!../css/font-awesome.min.css',
 			'css!../css/markdown-theme-dawn.css',
 			'css!../css/messenger.css',
-			'css!../css/messenger-theme-ice.css',
+			'css!../css/messenger-theme-air.css',
 			'css!../css/nprogress.css',
 			'css!../css/find-theme.css',
 			'css!../css/index.css',

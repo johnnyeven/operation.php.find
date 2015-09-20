@@ -45,11 +45,11 @@
 </form>
 <hr>
 <ul class="nav nav-pills nav-stacked">
-	<li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;文件</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;提交</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-road"></span>&nbsp;&nbsp;分支</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-transfer"></span>&nbsp;&nbsp;分支比较</a></li>
+	<li role="presentation"{%if in_array($params['pageName'], ['project_repo_tree','project_repo_blob'])%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%getDefaultBranch()%}"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;文件</a></li>
+	<li role="presentation"{%if in_array($params['pageName'], ['project_repo_commits', 'project_repo_commit'])%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commits/{%getDefaultBranch()%}"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;提交</a></li>
+	<li role="presentation"{%if $params['pageName'] == 'project_repo_branches'%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/branches"><span class="glyphicon glyphicon-road"></span>&nbsp;&nbsp;分支</a></li>
+	<li role="presentation"{%if $params['pageName'] == 'project_repo_tags'%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tags"><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;标签</a></li>
+	<li role="presentation"{%if $params['pageName'] == 'project_repo_compare'%} class="active"{%/if%}><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/compare"><span class="glyphicon glyphicon-transfer"></span>&nbsp;&nbsp;分支比较</a></li>
 	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-tasks"></span>&nbsp;&nbsp;合并请求</a></li>
 	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;设置</a></li>
 </ul>
