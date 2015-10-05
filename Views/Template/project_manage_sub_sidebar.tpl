@@ -27,10 +27,10 @@
 </form>
 <hr>
 <ul class="nav nav-pills nav-stacked">
-	<li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;全部</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;新建</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-play"></span>&nbsp;&nbsp;处理中</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;&nbsp;已解决</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-share-alt"></span>&nbsp;&nbsp;反馈</a></li>
-	<li role="presentation"><a href="#"><span class="glyphicon glyphicon-pause"></span>&nbsp;&nbsp;已关闭</a></li>
+	<li role="presentation" class="active"><a class="pjax" href="#"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;全部</a></li>
+	<li role="presentation"><a class="pjax" href="#"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;新建</a></li>
+	<li role="presentation"><a class="pjax" href="#"><span class="glyphicon glyphicon-play"></span>&nbsp;&nbsp;处理中</a></li>
+	<li role="presentation"><a class="pjax" href="#"><span class="glyphicon glyphicon-ok-sign"></span>&nbsp;&nbsp;已解决</a></li>
+	<li role="presentation"><a class="pjax" href="#"><span class="glyphicon glyphicon-share-alt"></span>&nbsp;&nbsp;反馈</a></li>
+	<li role="presentation"><a class="pjax" href="#"><span class="glyphicon glyphicon-pause"></span>&nbsp;&nbsp;已关闭</a></li>
 </ul>

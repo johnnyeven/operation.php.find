@@ -127,7 +127,7 @@ class ShellAdapter
         $process->run();
 
         if (!$process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
+            Exception::throwException(10008, $process->getErrorOutput());
         }
 
         return $process->getOutput();

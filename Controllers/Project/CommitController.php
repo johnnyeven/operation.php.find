@@ -53,7 +53,7 @@ class CommitController extends Controller
         $repo = $repoProxy->getRepo();
         list($branch, $path) = $repoProxy->extractRef($repo, $branch, $path);
 
-        $commits = $repoProxy->getCommitsOutput("{$branch}", 1, 10);
+        $commits = $repoProxy->getCommitsOutput($branch, 1, 10);
 
         View::render('project_repo_commits', array(
             'pageName'      =>  'project_repo_commits',

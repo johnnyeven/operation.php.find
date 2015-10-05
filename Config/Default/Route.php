@@ -54,6 +54,12 @@ Router::group([
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/branches', 'Project/RepoController.branches');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/tags', 'Project/RepoController.tags');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/compare', 'Project/CompareController.index');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/compare/(.*)\.\.\.(.*)', 'Project/CompareController.compare');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request', 'Project/MergeController.index');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/compare', 'Project/MergeController.compare');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/add', 'Project/MergeController.add');
+    Router::post('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/add', 'Project/MergeController.addSubmit');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/detail/(.*)', 'Project/MergeController.detail');
 });
 
 Router::group([

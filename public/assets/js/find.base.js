@@ -10,7 +10,7 @@ App.prototype = {
         var that = this;
         $.pjax({
             timeout: 600000,
-            selector: 'a:not(.opt)',
+            selector: 'a.pjax',
             container: 'body',
             show: '',
             cache: false,
@@ -82,13 +82,31 @@ App.prototype = {
 
         if($("#optDisplayType").length > 0) {
             $("#optDisplayType > button").click(function() {
+                var current = that.getCurrentUrl();
+                var seperator = '';
+                if(current.param != '') {
+                    var replace = [
+                        "?view=parallel",
+                        "&view=parallel",
+                        "?view=inline",
+                        "&view=inline"
+                    ];
+                    for(var i in replace) {
+                        current.param = current.param.replace(replace[i], "");
+                    }
+                }
+                if(current.param != '') {
+                    seperator = '&';
+                } else {
+                    seperator = '?';
+                }
                 var url = '';
                 if($(this).attr("data-content") == '1') {
-                    url = '?view=parallel';
+                    url = seperator + 'view=parallel';
                 } else {
-                    url = '?view=inline';
+                    url = seperator + 'view=inline';
                 }
-                that.redirectByPjax(url);
+                that.redirectByPjax(current.url + current.param + url);
             });
         }
 
@@ -149,6 +167,24 @@ App.prototype = {
             });
         }
 
+        if($("#compare").length > 0) {
+            $("#btnCompareExchange").click(function() {
+                var tmp = $("#sourceRef").val();
+                $("#sourceRef").selectpicker("val", $("#targetRef").val());
+                $("#targetRef").selectpicker("val", tmp);
+            });
+            $("#btnCompare").click(function() {
+                var sourceRef = $("#sourceRef").val();
+                var targetRef = $("#targetRef").val();
+                var url = that.getFormAction($(this));
+                that.redirectByPjax(url + sourceRef + "..." + targetRef);
+            });
+        }
+
+        if($("#iptComment").length > 0) {
+            $("#iptComment").markdown();
+        }
+
         prettyPrint();
     },
     getAppUrl: function() {
@@ -162,9 +198,10 @@ App.prototype = {
     },
 
     redirectByPjax: function(url) {
-        var html = '<a id="optDisplayTypeHref" href="' + url + '" style="display:none;"></a>';
+        var html = '<a id="optDisplayTypeHref" class="pjax" href="' + url + '" style="display:none;"></a>';
         $("body").append(html);
         $("#optDisplayTypeHref").click();
+        $("#optDisplayTypeHref").remove();
     },
 
     getCurrentUrl: function() {

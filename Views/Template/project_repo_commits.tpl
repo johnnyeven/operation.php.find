@@ -34,13 +34,13 @@
 								{%for $i = 0 to (count($commits) - 1)%}
 									<li>
 										<div class="find-commit-message">
-											<strong><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commit/{%$commits[$i]['hash']%}">{%$commits[$i]['message']%}</a></strong>
-											<span class="pull-right"><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commit/{%$commits[$i]['hash']%}">{%$commits[$i]['shorthash']%}</a></span>
+											<strong><a class="pjax" href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commit/{%$commits[$i]['hash']%}">{%$commits[$i]['message']%}</a></strong>
+											<span class="pull-right"><a class="pjax" href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commit/{%$commits[$i]['hash']%}">{%$commits[$i]['shorthash']%}</a></span>
 										</div>
 										<div class="find-commit-user">
 											<img src="/assets/img/468149.png" class="img-circle" width="32" height="32">
-											<a href="#">{%$commits[$i]['author']['name']%}</a> 上传于 {%$commits[$i]['time']->diffFromNowHumanReadable()%}
-											<span class="pull-right find-commit-browse"><a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$commits[$i]['hash']%}">浏览代码 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+											<a class="pjax" href="#">{%$commits[$i]['author']['name']%}</a> 上传于 {%$commits[$i]['time']->diffFromNowHumanReadable()%}
+											<span class="pull-right find-commit-browse"><a class="pjax" href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$commits[$i]['hash']%}">浏览代码 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 										</div>
 									</li>
 								{%/for%}

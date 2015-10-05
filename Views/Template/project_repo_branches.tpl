@@ -35,20 +35,20 @@
 							<li>
 								<div class="find-branch-name">
 									<h4>
-										<a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$branch['name']%}" class="fin-branch-name-link">
+										<a class="pjax" href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$branch['name']%}" class="fin-branch-name-link">
 											<strong><span class="glyphicon glyphicon-road"></span> {%$branch['name']%}</strong>
 											{%if $branch['default'] == 1%}<span class="label label-primary">默认</span>{%/if%}
 											{%if $branch['protected'] == 1%}<span class="label label-success"><span class="glyphicon glyphicon-lock"></span> 受保护</span>{%/if%}
 											{%if $branch['merged'] == 1%}<span class="label label-warning"><span class="glyphicon glyphicon-ok"></span> 已合并</span>{%/if%}
 										</a>
 										<div class="pull-right">
-											<a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span> 创建合并请求</a>
-											<a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-transfer"></span> 比较</a>
+											<a href="#" class="btn btn-default btn-xs pjax"><span class="glyphicon glyphicon-plus"></span> 创建合并请求</a>
+											<a href="#" class="btn btn-default btn-xs pjax"><span class="glyphicon glyphicon-transfer"></span> 比较</a>
 										</div>
 									</h4>
 								</div>
 								<div class="find-branch-commit">
-									<a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commits/{%$branch['commit']['hash']%}">{%$branch['commit']['shorthash']%}</a>&nbsp;
+									<a class="pjax" href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commits/{%$branch['commit']['hash']%}">{%$branch['commit']['shorthash']%}</a>&nbsp;
 									<span class="find-branch-commit-msg">{%$branch['commit']['message']%}</span>
 									<span class="find-branch-commit-time pull-right">{%$branch['commit']['date']%}</span>
 								</div>

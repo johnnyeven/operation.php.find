@@ -34,9 +34,9 @@
 							</div>
 						</div>
 						<div class="find-project-index-meta">
-							<a href="#" class="btn">0 Commits</a>
-							<a href="#" class="btn">0 Branches</a>
-							<a href="#" class="btn">0 Tags</a>
+							<a class="pjax" href="#" class="btn">0 Commits</a>
+							<a class="pjax" href="#" class="btn">0 Branches</a>
+							<a class="pjax" href="#" class="btn">0 Tags</a>
 						</div>
 					</div>
 				</div>

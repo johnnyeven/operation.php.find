@@ -27,7 +27,7 @@
 							<thead>
 							<tr>
 								<th>文件名</th>
-								<th>提交 <i class="fa fa-angle-right"></i> <a href="#">{%$params['files']['current']['commit']['shorthash']%}</a><small> - {%$params['files']['current']['commit']['message']%}</small></th>
+								<th>提交 <i class="fa fa-angle-right"></i> <a class="pjax" href="#">{%$params['files']['current']['commit']['shorthash']%}</a><small> - {%$params['files']['current']['commit']['message']%}</small></th>
 								<th>时间</th>
 							</tr>
 							</thead>
@@ -35,9 +35,9 @@
 							{%foreach $params['files']['children'] as $children%}
 								<tr>
 									<td class="find-tree-file">
-										<a href="{%if $children['type'] == 'blob'%}{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/blob/{%$params['branch']%}/{%$children['path']%}{%elseif $children['type'] == 'folder'%}{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$params['branch']%}/{%$children['path']%}{%else%}{%/if%}"><span class="glyphicon {%if $children['type'] == 'folder'%}glyphicon-folder-close{%else%}glyphicon-file{%/if%}"></span> {%$children['name']%}</a>
+										<a class="pjax" href="{%if $children['type'] == 'blob'%}{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/blob/{%$params['branch']%}/{%$children['path']%}{%elseif $children['type'] == 'folder'%}{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$params['branch']%}/{%$children['path']%}{%else%}{%/if%}"><span class="glyphicon {%if $children['type'] == 'folder'%}glyphicon-folder-close{%else%}glyphicon-file{%/if%}"></span> {%$children['name']%}</a>
 									</td>
-									<td class="find-tree-commit"><img class="img-circle" src="/assets/img/468149.png" width="16" height="16"> <a href="">{%$children['commit']['author']['name']%}</a> {%$children['commit']['message']%}</td>
+									<td class="find-tree-commit"><img class="img-circle" src="/assets/img/468149.png" width="16" height="16"> <a class="pjax" href="">{%$children['commit']['author']['name']%}</a> {%$children['commit']['message']%}</td>
 									<td class="find-tree-updatetime">{%if !empty($children['commit']['time'])%}{%$children['commit']['time']->diffFromNowHumanReadable()%}{%/if%}</td>
 								</tr>
 							{%/foreach%}
