@@ -8,6 +8,8 @@ require.config({
 		nprogress: "nprogress",
 		pjax: "jquery.pjax",
 		prettify: "prettify/prettify",
+		markdown: "markdown.min",
+		bmarkdown: "bootstrap-markdown",
 		findApp: "find.base"
 	},
 	waitSeconds: 15,
@@ -35,7 +37,7 @@ require.config({
 
 require(["jquery"], function($) {
 	require(["bootstrap", "nicescroll", "nprogress", "findApp"], function(bootstrap, nicescroll, nprogress, app) {
-		require(["bootstrapSelect", "prettify"], function(bootstrapSelect, prettify) {
+		require(["bootstrapSelect", "markdown", "bmarkdown", "prettify"], function(bootstrapSelect, prettify) {
 			$(function() {
 				app.start(nprogress);
 			});

@@ -64,57 +64,57 @@
 							<ul class="list-group">
 								<li class="list-group-item">
 									<div class="find-commit-message">
-										<strong><span class="label label-danger">新建</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<strong><span class="label label-danger">新建</span> <a class="pjax" href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
 										<span class="pull-right">#43987</span>
 									</div>
 									<div class="find-commit-user">
 										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
-										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
-										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+										<a class="pjax" href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a class="pjax" href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a class="pjax" href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 									</div>
 								</li>
 								<li class="list-group-item">
 									<div class="find-commit-message">
-										<strong><span class="label label-success">解决</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<strong><span class="label label-success">解决</span> <a class="pjax" href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
 										<span class="pull-right">#43988</span>
 									</div>
 									<div class="find-commit-user">
 										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
-										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
-										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+										<a class="pjax" href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a class="pjax" href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a class="pjax" href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 									</div>
 								</li>
 								<li class="list-group-item">
 									<div class="find-commit-message">
-										<strong><span class="label label-info">处理</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<strong><span class="label label-info">处理</span> <a class="pjax" href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
 										<span class="pull-right">#43988</span>
 									</div>
 									<div class="find-commit-user">
 										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
-										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
-										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+										<a class="pjax" href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a class="pjax" href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a class="pjax" href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 									</div>
 								</li>
 								<li class="list-group-item">
 									<div class="find-commit-message">
-										<strong><span class="label label-warning">反馈</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<strong><span class="label label-warning">反馈</span> <a class="pjax" href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
 										<span class="pull-right">#43988</span>
 									</div>
 									<div class="find-commit-user">
 										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
-										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
-										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+										<a class="pjax" href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a class="pjax" href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a class="pjax" href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 									</div>
 								</li>
 								<li class="list-group-item">
 									<div class="find-commit-message">
-										<strong><span class="label label-default">关闭</span> <a href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
+										<strong><span class="label label-default">关闭</span> <a class="pjax" href="#">Remove user OAuth tokens stored in database for Bitbucket...</a></strong>
 										<span class="pull-right">#43988</span>
 									</div>
 									<div class="find-commit-user">
 										<img src="/assets/img/468149.png" class="img-circle" width="16" height="16">
-										<a href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a href="#">李翌文</a> 更新于2天前
-										<span class="pull-right find-commit-browse"><a href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+										<a class="pjax" href="#">李翌文</a> 发表于2天前 <span class="glyphicon glyphicon-edit"></span> <a class="pjax" href="#">李翌文</a> 更新于2天前
+										<span class="pull-right find-commit-browse"><a class="pjax" href="#">浏览模块 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 									</div>
 								</li>
 							</ul>
@@ -122,17 +122,17 @@
 						<nav class="text-center">
 							<ul class="pagination">
 								<li>
-									<a href="#" aria-label="Previous">
+									<a class="pjax" href="#" aria-label="Previous">
 										<span aria-hidden="true">&laquo;</span>
 									</a>
 								</li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
+								<li class="active"><a class="pjax" href="#">1</a></li>
+								<li><a class="pjax" href="#">2</a></li>
+								<li><a class="pjax" href="#">3</a></li>
+								<li><a class="pjax" href="#">4</a></li>
+								<li><a class="pjax" href="#">5</a></li>
 								<li>
-									<a href="#" aria-label="Next">
+									<a class="pjax" href="#" aria-label="Next">
 										<span aria-hidden="true">&raquo;</span>
 									</a>
 								</li>

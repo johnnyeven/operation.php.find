@@ -136,7 +136,6 @@ class Repository
 
         if ($parseDiff && $commit->getParentsHash()) {
             $diffs = $this->getDiff("{$commitHash}~1", $commitHash);
-            $diffs = new GitDiff($diffs);
             $commit->setDiffs($diffs);
         }
 
@@ -150,7 +149,8 @@ class Repository
 
     public function getDiff($baseBranch, $sourceBranch)
     {
-        return $this->_shell->getDiff($this, $baseBranch, $sourceBranch);
+        $diffs = $this->_shell->getDiff($this, $baseBranch, $sourceBranch);
+        return new GitDiff($diffs);
     }
 
     public function readme()

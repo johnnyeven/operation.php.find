@@ -22,7 +22,7 @@
                             提交 #{%$params['commit']->getShortHash()%}
                         </span>
                         <span class="find-project-merge-detail-title">
-                            <small>由 <a href="#"><img src="/assets/img/468149.png" class="img-circle" width="16" height="16"> {%$params['author']->getName()%}</a> 在 {%$params['date']->diffFromNowHumanReadable()%} 创建</small>
+                            <small>由 <a class="pjax" href="#"><img src="/assets/img/468149.png" class="img-circle" width="16" height="16"> {%$params['author']->getName()%}</a> 在 {%$params['date']->diffFromNowHumanReadable()%} 创建</small>
                         </span>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 						<hr>
 						<div class="find-project-compare-files">
 							<div class="files-meta clearfix">
-								<div class="pull-left">显示 <a href="#">44个变动的文件</a></div>
+								<div class="pull-left">显示 <a class="pjax" href="#">44个变动的文件</a></div>
 								<div class="btn-group pull-right" role="group" id="optDisplayType">
 									<button type="button" data-content="0" class="btn btn-primary{%if $params['view'] != 'parallel'%} active{%/if%}">内联</button>
 									<button type="button" data-content="1" class="btn btn-primary{%if $params['view'] == 'parallel'%} active{%/if%}">独立</button>

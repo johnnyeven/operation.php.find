@@ -27,13 +27,13 @@
 							<div class="col-lg-12">
 								<div class="well well-sm">
 									<div class="find-commit-message">
-										<strong><a href="#">{%$params['file']['commit']['message']%}</a></strong>
-										<span class="pull-right"><a href="#">{%$params['file']['commit']['shorthash']%}</a></span>
+										<strong><a class="pjax" href="#">{%$params['file']['commit']['message']%}</a></strong>
+										<span class="pull-right"><a class="pjax" href="#">{%$params['file']['commit']['shorthash']%}</a></span>
 									</div>
 									<div class="find-commit-user">
 										<img src="/assets/img/468149.png" class="img-circle" width="32" height="32">
-										<a href="#">{%$params['file']['commit']['author']['name']%}</a> 上传于 {%$params['file']['commit']['time']->diffFromNowHumanReadable()%}
-										<span class="pull-right find-commit-browse"><a href="#">浏览代码 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
+										<a class="pjax" href="#">{%$params['file']['commit']['author']['name']%}</a> 上传于 {%$params['file']['commit']['time']->diffFromNowHumanReadable()%}
+										<span class="pull-right find-commit-browse"><a class="pjax" href="#">浏览代码 <span class="glyphicon glyphicon-chevron-right"></span></a></span>
 									</div>
 								</div>
 							</div>

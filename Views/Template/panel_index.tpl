@@ -45,19 +45,19 @@
 								<div class="input-group">
 									<input type="text" class="form-control" placeholder="按项目名查询">
                                     <span class="input-group-btn">
-                                        <a class="btn btn-info" href="{%baseUrl('create')%}">新建项目</a>
+                                        <a class="btn btn-info " href="{%baseUrl('create')%}">新建项目</a>
                                     </span>
 								</div>
 							</div>
 							<ul class="list-group">
 								{%foreach $params['projects'] as $project%}
 									<li class="list-group-item">
-										<img src="/assets/img/gitlab-logo-square.png" class="img-circle" width="25" height="25">&nbsp;&nbsp;<a href="{%baseUrl($project->account_identifier|cat:'/'|cat:$project->identifier)%}">{%$project->account_realname|cat:' / '|cat:$project->name%}</a>
+										<img src="/assets/img/gitlab-logo-square.png" class="img-circle" width="25" height="25">&nbsp;&nbsp;<a class="pjax" href="{%baseUrl($project->account_identifier|cat:'/'|cat:$project->identifier)%}">{%$project->account_realname|cat:' / '|cat:$project->name%}</a>
 									</li>
 								{%/foreach%}
 								{%foreach $params['otherProjects'] as $project%}
 									<li class="list-group-item">
-										<img src="/assets/img/gitlab-logo-square.png" class="img-circle" width="25" height="25">&nbsp;&nbsp;<a href="{%baseUrl($project->account_identifier|cat:'/'|cat:$project->identifier)%}">{%$project->account_realname|cat:' / '|cat:$project->name%}</a>
+										<img src="/assets/img/gitlab-logo-square.png" class="img-circle" width="25" height="25">&nbsp;&nbsp;<a class="pjax" href="{%baseUrl($project->account_identifier|cat:'/'|cat:$project->identifier)%}">{%$project->account_realname|cat:' / '|cat:$project->name%}</a>
 									</li>
 								{%/foreach%}
 								<li class="list-group-item"><button class="btn btn-info btn-block" type="button">加载更多...</button></li>

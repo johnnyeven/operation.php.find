@@ -20,6 +20,7 @@ use Foundation\Support\Facades\Loader;
 use Models\Account;
 use Models\Blob;
 use Models\Commit;
+use Models\GitDiff;
 use Models\Project;
 use Models\Repository;
 use Models\Tree;
@@ -69,7 +70,7 @@ class RepositoryProxy extends Proxy
         return $this->_repo->getCommits($hash, $page, $limit);
     }
 
-    public function getCommitsOutput($hash, $page, $limit)
+    public function getCommitsOutput($hash, $page, $limit, $isSortByDate = TRUE)
     {
 //        $commits = $this->_cache->get($this->_buildCommitCacheId($hash));
 //        if(is_null($commits))
@@ -84,21 +85,37 @@ class RepositoryProxy extends Proxy
             {
                 $author = $commit->getAuthor();
                 $date = $commit->getDate();
-                $key = $date->format('Y-m-d');
-                if(!isset($commits[$key]))
+                if($isSortByDate)
                 {
-                    $commits[$key] = [];
+                    $key = $date->format('Y-m-d');
+                    if(!isset($commits[$key]))
+                    {
+                        $commits[$key] = [];
+                    }
+                    $commits[$key][] = [
+                        'hash'      =>  $commit->getHash(),
+                        'shorthash' =>  $commit->getShortHash(),
+                        'author'    =>  [
+                            'name'  =>  $author->getName(),
+                            'email' =>  $author->getEmail()
+                        ],
+                        'message'   =>  $commit->getMessage(),
+                        'time'      =>  $date
+                    ];
                 }
-                $commits[$key][] = [
-                    'hash'      =>  $commit->getHash(),
-                    'shorthash' =>  $commit->getShortHash(),
-                    'author'    =>  [
-                        'name'  =>  $author->getName(),
-                        'email' =>  $author->getEmail()
-                    ],
-                    'message'   =>  $commit->getMessage(),
-                    'time'      =>  $date
-                ];
+                else
+                {
+                    $commits[] = [
+                        'hash'      =>  $commit->getHash(),
+                        'shorthash' =>  $commit->getShortHash(),
+                        'author'    =>  [
+                            'name'  =>  $author->getName(),
+                            'email' =>  $author->getEmail()
+                        ],
+                        'message'   =>  $commit->getMessage(),
+                        'time'      =>  $date
+                    ];
+                }
             }
 //            $this->_cache->set($this->_buildCommitCacheId($hash), $commits);
 //        }
@@ -465,6 +482,11 @@ class RepositoryProxy extends Proxy
             ];
         });
         return $result;
+    }
+
+    public function getDiff($baseBranch, $sourceBranch)
+    {
+        return $this->_repo->getDiff($baseBranch, $sourceBranch);
     }
 
     private function _buildCommitCacheId($branch, $path)

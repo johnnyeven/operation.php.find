@@ -38,10 +38,10 @@
                                 <input type="password" class="form-control input-lg" id="iptPassword" placeholder="密码">
                             </div>
                             <button type="submit" class="btn btn-lg btn-info" data-toggle="tooltip" data-placement="top" title="点击“注册”按钮表示您已经同意服务条款和隐私申明。我们会向您的邮箱发送通知邮件。">注册</button>
-                            已经注册？<a href="#">登录</a>
+                            已经注册？<a class="pjax" href="#">登录</a>
                             <div class="form-group pull-right find-index-policy">
-                                <a href="https://help.github.com/terms" target="_blank">服务条款</a>
-                                <a href="https://help.github.com/privacy" target="_blank">隐私申明</a>
+                                <a class="pjax" href="https://help.github.com/terms" target="_blank">服务条款</a>
+                                <a class="pjax" href="https://help.github.com/privacy" target="_blank">隐私申明</a>
                             </div>
                         </form>
                     </div>

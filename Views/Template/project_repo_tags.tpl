@@ -29,17 +29,17 @@
 							<li>
 								<div class="find-branch-name">
 									<h4>
-										<a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$tag['name']%}" class="fin-branch-name-link">
+										<a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/tree/{%$tag['name']%}" class="fin-branch-name-link pjax">
 											<strong><span class="glyphicon glyphicon-tag"></span> {%$tag['name']%}</strong>
 										</a>
 										<div class="pull-right">
-											<a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-download-alt"></span> zip</a>
-											<a href="#" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-download-alt"></span> tar.gz</a>
+											<a href="#" class="btn btn-default btn-xs pjax"><span class="glyphicon glyphicon-download-alt"></span> zip</a>
+											<a href="#" class="btn btn-default btn-xs pjax"><span class="glyphicon glyphicon-download-alt"></span> tar.gz</a>
 										</div>
 									</h4>
 								</div>
 								<div class="find-branch-commit">
-									<a href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commits/{%$tag['commit']['hash']%}">{%$tag['commit']['shorthash']%}</a>&nbsp;
+									<a class="pjax" href="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/commits/{%$tag['commit']['hash']%}">{%$tag['commit']['shorthash']%}</a>&nbsp;
 									<span class="find-branch-commit-msg">{%$tag['commit']['message']%}</span>
 									<span class="find-branch-commit-time pull-right">{%$tag['commit']['date']%}</span>
 								</div>

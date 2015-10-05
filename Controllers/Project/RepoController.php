@@ -37,35 +37,44 @@ class RepoController extends Controller
      */
     private $project;
 
+    /**
+     * @var \Proxy\RepositoryProxy
+     */
+    private $_repoProxy;
+
+    private $_sltBranches;
+
     function __construct()
     {
         parent::__construct();
         $this->account = Request::getParameter('account');
         $this->project = Request::getParameter('project');
+        $this->_repoProxy = Loader::proxy('RepositoryProxy', [
+            'project'   =>  $this->project
+        ]);
+        $this->_sltBranches = [
+            'branches'  =>  $this->_repoProxy->getBranches(),
+            'tags'      =>  $this->_repoProxy->getTags()
+        ];
     }
 
     public function tree($userName, $projectName, $treePath = null)
     {
-        /**
-         * @var \Proxy\RepositoryProxy $repoProxy
-         */
-        $repoProxy = Loader::proxy('RepositoryProxy', [
-            'project'   =>  $this->project
-        ]);
-        list($branch, $path) = $repoProxy->parseBranchAndPath($treePath);
+        list($branch, $path) = $this->_repoProxy->parseBranchAndPath($treePath);
 
-        $repo = $repoProxy->getRepo();
-        list($branch, $path) = $repoProxy->extractRef($repo, $branch, $path);
+        $repo = $this->_repoProxy->getRepo();
+        list($branch, $path) = $this->_repoProxy->extractRef($repo, $branch, $path);
 
-        $tree = $repoProxy->getTreeOutput($branch, $path);
+        $tree = $this->_repoProxy->getTreeOutput($branch, $path);
 
-        $breadcrumb = $repoProxy->getBreadcrumbs($path);
+        $breadcrumb = $this->_repoProxy->getBreadcrumbs($path);
 
 
         View::render('project_repo_tree', array(
             'pageName'      =>  'project_repo_tree',
             'account'       =>  $this->account,
             'project'       =>  $this->project,
+            'sltBranches'   =>  $this->_sltBranches,
             'branch'        =>  $branch,
             'breadcrumb'    =>  $breadcrumb,
             'files'         =>  $tree
@@ -74,54 +83,38 @@ class RepoController extends Controller
 
     public function branches($userName, $projectName)
     {
-        /**
-         * @var \Proxy\RepositoryProxy $repoProxy
-         */
-        $repoProxy = Loader::proxy('RepositoryProxy', [
-            'project'   =>  $this->project
-        ]);
-        $branches = $repoProxy->getBranchesWithLastCommit();
+        $branches = $this->_repoProxy->getBranchesWithLastCommit();
 
         View::render('project_repo_branches', array(
             'pageName'      =>  'project_repo_branches',
             'account'       =>  $this->account,
             'project'       =>  $this->project,
+            'sltBranches'   =>  $this->_sltBranches,
             'branches'      =>  $branches
         ));
     }
 
     public function tags($userName, $projectName)
     {
-        /**
-         * @var \Proxy\RepositoryProxy $repoProxy
-         */
-        $repoProxy = Loader::proxy('RepositoryProxy', [
-            'project'   =>  $this->project
-        ]);
-        $tags = $repoProxy->getTagsWithLastCommit();
+        $tags = $this->_repoProxy->getTagsWithLastCommit();
 
         View::render('project_repo_tags', array(
             'pageName'      =>  'project_repo_tags',
             'account'       =>  $this->account,
             'project'       =>  $this->project,
+            'sltBranches'   =>  $this->_sltBranches,
             'tags'          =>  $tags
         ));
     }
 
     public function blob($userName, $projectName, $treePath = null)
     {
-        /**
-         * @var \Proxy\RepositoryProxy $repoProxy
-         */
-        $repoProxy = Loader::proxy('RepositoryProxy', [
-            'project'   =>  $this->project
-        ]);
-        list($branch, $path) = $repoProxy->parseBranchAndPath($treePath);
+        list($branch, $path) = $this->_repoProxy->parseBranchAndPath($treePath);
 
-        $repo = $repoProxy->getRepo();
-        list($branch, $path) = $repoProxy->extractRef($repo, $branch, $path);
+        $repo = $this->_repoProxy->getRepo();
+        list($branch, $path) = $this->_repoProxy->extractRef($repo, $branch, $path);
 
-        $file = $repoProxy->getBlobOutput($branch, $path);
+        $file = $this->_repoProxy->getBlobOutput($branch, $path);
         if($file['type'] == 'markdown')
         {
             $parsedown = new \Parsedown();
@@ -133,12 +126,13 @@ class RepoController extends Controller
             $file['content'] = htmlentities($file['content']);
         }
 
-        $breadcrumb = $repoProxy->getBreadcrumbs($path);
+        $breadcrumb = $this->_repoProxy->getBreadcrumbs($path);
 
         View::render('project_repo_blob', array(
             'pageName'      =>  'project_repo_blob',
             'account'       =>  $this->account,
             'project'       =>  $this->project,
+            'sltBranches'   =>  $this->_sltBranches,
             'branch'        =>  $branch,
             'breadcrumb'    =>  $breadcrumb,
             'file'          =>  $file
