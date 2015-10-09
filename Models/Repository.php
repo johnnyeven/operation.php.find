@@ -36,6 +36,16 @@ class Repository
         $this->_currentBranch = $currentBranch;
     }
 
+    public function checkout($branch)
+    {
+        return $this->_shell->checkout($this, $branch);
+    }
+
+    public function merge($branch)
+    {
+        return $this->_shell->merge($this, $branch);
+    }
+
     /**
      * @return string
      */

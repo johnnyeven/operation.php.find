@@ -36,6 +36,9 @@ class RepositoryProxy extends Proxy
      */
     private $_project;
 
+    /**
+     * @var Repository
+     */
     private $_repo;
 
     /**
@@ -58,6 +61,16 @@ class RepositoryProxy extends Proxy
         {
             Exception::throwCustomException(500, 'The repository must contain by a project');
         }
+    }
+
+    public function checkout($branch)
+    {
+        return $this->_repo->checkout($branch);
+    }
+
+    public function merge($branch)
+    {
+        return $this->_repo->merge($branch);
     }
 
     public function getRepo()

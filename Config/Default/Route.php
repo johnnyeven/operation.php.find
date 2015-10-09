@@ -60,6 +60,7 @@ Router::group([
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/add', 'Project/MergeController.add');
     Router::post('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/add', 'Project/MergeController.addSubmit');
     Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/detail/(.*)', 'Project/MergeController.detail');
+    Router::get('([A-Za-z0-9_\-]+)/([A-Za-z0-9_\-]+)/merge_request/process/(.*)', 'Project/MergeController.process');
 });
 
 Router::group([
