@@ -258,4 +258,60 @@ class MergeController extends Controller
             }
         }
     }
+
+    public function process($userName, $projectName, $mergeId)
+    {
+        $result = MergeRequest::findOne([
+            'id'    =>  $mergeId
+        ]);
+
+        if(!empty($result))
+        {
+            $type = Input::get('type');
+
+            if($type == '1')
+            {
+                $this->_accept($result);
+            }
+            elseif($type == '2')
+            {
+                $this->_deny($result);
+            }
+
+            if(Input::get('chkDeleteBranch'))
+            {
+
+            }
+            redirect("{$this->account->identifier}/{$this->project->identifier}/merge_request/detail/{$result->id}");
+        }
+    }
+
+    /**
+     * @param \Models\MergeRequest $mergeRequest
+     */
+    private function _accept($mergeRequest)
+    {
+        if(!empty($mergeRequest))
+        {
+            $sourceBranch = $mergeRequest->source_branch;
+            $targetBranch = $mergeRequest->target_branch;
+            /**
+             * @var \Proxy\RepositoryProxy $repoProxy
+             */
+            $repoProxy = Loader::proxy('RepositoryProxy', [
+                'project'   =>  $this->project
+            ]);
+
+            $result = $repoProxy->checkout($mergeRequest->target_branch);
+            $result = $repoProxy->merge($mergeRequest->source_branch);
+
+            $mergeRequest->status = 'merged';
+            $mergeRequest->save();
+        }
+    }
+
+    private function _deny($mergeRequest)
+    {
+
+    }
 }

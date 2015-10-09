@@ -51,18 +51,21 @@
 						<p>请求将 <strong>{%$params['result']->source_branch%}</strong> 合并至 <strong>{%$params['result']->target_branch%}</strong></p>
 						<div class="well">
 							<div class="merge-control clearfix">
-								<div class="merge-control-item">
-									<button class="btn btn-info"><span class="glyphicon glyphicon-ok"></span> 接受合并请求</button>
-									<button class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> 驳回并关闭</button>
-								</div>
-								<div class="merge-control-item">
-									<label>
-										<input type="checkbox"> 删除源分支
-									</label>
-								</div>
-								<div class="merge-control-item">
-									<a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑提交信息</a>
-								</div>
+								<form id="formProcessMerge" action="{%baseUrl($params['account']->identifier)%}/{%$params['project']->identifier%}/merge_request/process/{%$params['result']->id%}" method="get">
+									<input type="hidden" name="type">
+									<div class="merge-control-item">
+										<button id="btnAcceptMerge" type="button" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span> 接受合并请求</button>
+										<button id="btnDenyMerge" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> 驳回并关闭</button>
+									</div>
+									<div class="merge-control-item">
+										<label>
+											<input name="chkDeleteBranch" type="checkbox"> 删除源分支
+										</label>
+									</div>
+									<div class="merge-control-item">
+										<a href="#"><span class="glyphicon glyphicon-edit"></span> 编辑提交信息</a>
+									</div>
+								</form>
 							</div>
 							<div class="merge-control merge-control-comment">
 								<div class="modal fade" id="mergeControlComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

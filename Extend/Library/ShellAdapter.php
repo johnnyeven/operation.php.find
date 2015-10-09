@@ -37,6 +37,18 @@ class ShellAdapter
         }
     }
 
+    public function checkout(Repository $repo, $branch)
+    {
+        $command = 'checkout ' . $branch;
+        return $this->run($command);
+    }
+
+    public function merge(Repository $repo, $branch)
+    {
+        $command = 'merge ' . $branch;
+        return $this->run($command);
+    }
+
     public function getRepoHome()
     {
         $command = 'get-repo-home';

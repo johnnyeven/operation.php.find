@@ -185,6 +185,17 @@ App.prototype = {
             $("#iptComment").markdown();
         }
 
+        if($("#formProcessMerge").length > 0) {
+            $("#btnAcceptMerge").click(function() {
+                $("#formProcessMerge > input[name='type']").val("1");
+                $("#formProcessMerge").submit();
+            });
+            $("#btnDenyMerge").click(function() {
+                $("#formProcessMerge > input[name='type']").val("2");
+                $("#formProcessMerge").submit();
+            });
+        }
+
         prettyPrint();
     },
     getAppUrl: function() {
